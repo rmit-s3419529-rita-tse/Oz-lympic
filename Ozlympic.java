@@ -8,7 +8,7 @@
  **
  ***
  ****
- *****
+ *****hello
  */
 
 public class Ozlympic {
