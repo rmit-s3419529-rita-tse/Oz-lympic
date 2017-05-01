@@ -74,7 +74,6 @@ public class Driver {
 		switch (userInput) {
 		case(1): Game.chosenAthletes.clear();
 		SelectGame(); 
-		//needs to remove last Game if it did not run????
 		break;
 		case(2): Game.runGame();
 		Menu();

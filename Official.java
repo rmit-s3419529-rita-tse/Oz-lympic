@@ -15,10 +15,10 @@ public class Official extends Participant {
 		super(ID, name, age, state);
 	}
 
-	//ArrayList to store the winners of each game
+	//ArrayList to store the winners of each game; will display the top 3 with the Game ID
 	static ArrayList<String> GameResults = new ArrayList<String>();
 
-	//ArrayList to store sorted results of each game
+	//ArrayList to store sorted results of each game;
 	static TreeMap<Integer, Athlete> sort = new TreeMap<Integer, Athlete>();
 
 	//Winners of each game, handled as ID and Names to be used to check predictions and storing final game results
@@ -29,13 +29,21 @@ public class Official extends Participant {
 	public static String Results2;
 	public static String Results3;
 
-	//Official's method to summarize the game results, add points to 1st, 2nd and 3rd places for each game
+	//Official's method to summarize the game results using a treemap.
 	public static void sumGame(HashMap results){
 
 		sort.clear();
 		sort.putAll(results);
 		results.clear();
 
+		//Driver.checkPrediction(Driver.betmade);
+
+	}
+
+	
+	//Award the Top 3 Athletes their points and record their names in the Game Results list
+	public static void awardWinners() {
+		
 		System.out.println("*************** W I N N E R S ****************");  
 		Collection<Athlete> winners = sort.values();
 		Iterator<Athlete> it = winners.iterator();
@@ -66,20 +74,19 @@ public class Official extends Participant {
 		Bronze.addScore(1);
 		ThirdAth = Bronze.getID();
 		Results3=Bronze.getName();
-
-		Driver.checkPrediction(Driver.betmade);
-
-		//add this game results to arraylist
+		
+		//add this game results to GameResults arraylist
 		GameResults.add("1: " + Results1 + " |  2: " + Results2 + " |  3: " + Results3);
-
-
-		//clear treemap for next game
+		
+		//after game results is recorded, list is cleared for the next game
 		winners.clear();
+		
+		//clear treemap for next game
 		sort.clear();
-
-
+		
 	}
-
+	
+	
 	//Inner class to compare the Athletes score to produce overall ranking
 	static class RankComp implements Comparator<Athlete>{
 		@Override
@@ -97,44 +104,19 @@ public class Official extends Participant {
 
 		//The ranking is held is a TreeSet, loaded with Athletes Objects
 		TreeSet <Athlete> rankings = new TreeSet<Athlete>(new RankComp());
+		
+		//adding all the athletes types to the rankings board
+		rankings.addAll(GameDB.sprinters);
+		rankings.addAll(GameDB.cyclists);
+		rankings.addAll(GameDB.superAthletes);
+		rankings.addAll(GameDB.swimmers);
 
-		rankings.add(GameDB.swimmer1);
-		rankings.add(GameDB.swimmer2);
-		rankings.add(GameDB.swimmer3);
-		rankings.add(GameDB.swimmer4);
-		rankings.add(GameDB.swimmer5);
-		rankings.add(GameDB.swimmer6);
-		rankings.add(GameDB.swimmer7);
-		rankings.add(GameDB.swimmer8);
-
-		rankings.add(GameDB.sprinter1);
-		rankings.add(GameDB.sprinter2);
-		rankings.add(GameDB.sprinter3);
-		rankings.add(GameDB.sprinter4);
-		rankings.add(GameDB.sprinter5);
-		rankings.add(GameDB.sprinter6);
-		rankings.add(GameDB.sprinter7);
-		rankings.add(GameDB.sprinter8);
-
-		rankings.add(GameDB.cyclist1);
-		rankings.add(GameDB.cyclist2);
-		rankings.add(GameDB.cyclist3);
-		rankings.add(GameDB.cyclist4);
-		rankings.add(GameDB.cyclist5);
-		rankings.add(GameDB.cyclist6);
-		rankings.add(GameDB.cyclist7);
-		rankings.add(GameDB.cyclist8);
-
-		rankings.add(GameDB.superA1);
-		rankings.add(GameDB.superA2);
-		rankings.add(GameDB.superA3);
-		rankings.add(GameDB.superA4);
-		rankings.add(GameDB.superA5);
-		rankings.add(GameDB.superA6);
-
+		//prints the athletes rankings in an order, with highest score first
 		for (Athlete a:rankings) {
 			System.out.println(a);
 		}
 
 	}
+
+
 }

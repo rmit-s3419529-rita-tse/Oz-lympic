@@ -18,7 +18,7 @@ public class Game {
 	static String gameType;
 	public Official officials;
 
-	//Hashmap for keeping game results
+	//Hashmap for keeping game results for each event
 	static HashMap<Integer, Athlete> results = new HashMap<Integer, Athlete>();
 
 	//ArrayList for chosen Athletes participating in the game event
@@ -57,6 +57,8 @@ public class Game {
 	}
 
 
+	//*** METHOD TO BE UPDATED - as USER PICKS ATHLETES, random pick and joining the lists of athletes are not needed
+	
 	//Method to add regular and super athletes lists together, then pick out athletes for the Game based on User's selection
 	public static void AddAthletes(int selection){
 
@@ -93,7 +95,7 @@ public class Game {
 	}
 
 
-	//Method that Runs the Game Event
+	//Method that Runs the Game Event, loops through the chosenAthletes list, checks if their athlete types and generate a time for each
 	public static void runGame(){
 
 		System.out.println("\n Ready Set Go!!!  ----------------------------------- \n");
@@ -126,15 +128,21 @@ public class Game {
 			}
 		}
 
+		
+		FinishLine();
+	}
+	
+	//method to handle the official methods after the game is run
+	public static void FinishLine() {
 		System.out.println(".............................................");
 		Official.sumGame(results);
+		Official.awardWinners();
 
 
 		System.out.println("===========================================.\n \n");
 
 		//Clear list for new game
 		chosenAthletes.clear();
-
 	}
 
 }
