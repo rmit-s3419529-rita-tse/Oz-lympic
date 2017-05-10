@@ -26,7 +26,7 @@ import javafx.scene.control.TextArea;
 
 //Main controller
 public class Driver implements Initializable {
-		
+	//NEW CODE
 	@FXML
 	private Label Message;
 	
@@ -44,6 +44,7 @@ public class Driver implements Initializable {
 	//displays and confirms message
 	String msg = null;
 	
+	//NEW BUTTONS
 	//buttons to select sports
 	public void selectSwim(ActionEvent event) {
 		Message.setText("You have selected Swimming.");
@@ -72,7 +73,7 @@ public class Driver implements Initializable {
 		
 	}
 	
-	
+	//NEW CODE ENDS
 	
 	//Game selection
 	private int selection;
@@ -100,8 +101,6 @@ public class Driver implements Initializable {
 		newGame();
 
 	}
-
-
 
 	//Method to Create Game Object
 	public void newGame(){
@@ -145,7 +144,7 @@ public class Driver implements Initializable {
 
 	}
 
-//not needed
+//not needed - needs to be changed to select official
 	//Method to select the Official referee for the Game
 	public Official SelectOfficial (){
 
@@ -180,7 +179,7 @@ public class Driver implements Initializable {
 	}
 
 
-
+//updated code - exit in TOP MENU
 	//Method when User leaves game, prints a good-bye message.
 	public void Exit(){
 		Message.setText("Thank you for playing.");

@@ -30,6 +30,7 @@ public class Official extends Participant {
 	public static String Results2;
 	public static String Results3;
 
+	//UPDATED CODE
 	//Official's method to summarize the game results using a treemap.
 	public static void sumGame(HashMap results){
 
@@ -37,7 +38,6 @@ public class Official extends Participant {
 		sort.putAll(results);
 		results.clear();
 
-		//Driver.checkPrediction(Driver.betmade);
 
 	}
 
@@ -101,6 +101,8 @@ public class Official extends Participant {
 		}
 	}
 
+	
+	//UPDATED CODE
 	//Method to generate the ranking of Athletes for Ozlympic
 	public static void awardRank(){
 

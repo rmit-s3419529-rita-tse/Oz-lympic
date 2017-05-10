@@ -133,6 +133,8 @@ public class Game {
 		FinishLine();
 	}
 	
+	
+	//UPDATED CODE
 	//method to handle the official methods after the game is run
 	public static void FinishLine() {
 		System.out.println(".............................................");
