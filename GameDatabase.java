@@ -122,4 +122,4 @@ public static void createTable(String[] args) {
 	        System.out.println(result+" Rows effected");
 	    }
 	}
-	}
+	
