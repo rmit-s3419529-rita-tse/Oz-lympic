@@ -81,6 +81,7 @@ public class Official extends Participant {
 		//after game results is recorded, list is cleared for the next game
 		winners.clear();
 		
+		
 		//clear treemap for next game
 		sort.clear();
 		
