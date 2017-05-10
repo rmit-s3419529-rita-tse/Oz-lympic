@@ -1,7 +1,19 @@
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
+import java.util.ResourceBundle;
 import java.util.Scanner;
+
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
 /**
  * The is the Driver of Ozlympic Game Program
@@ -12,8 +24,55 @@ import java.util.Scanner;
  * @since   2017-04-07
  */
 
-public class Driver {
+//Main controller
+public class Driver implements Initializable {
+		
+	@FXML
+	private Label Message;
+	
+	private TextArea ta;
+	
+	
+	//public ComboBox<String> cb;
+	ObservableList<Athlete> list = FXCollections.observableArrayList();
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		//cb.setItems(list);
+	}
+	
+	//displays and confirms message
+	String msg = null;
+	
+	//buttons to select sports
+	public void selectSwim(ActionEvent event) {
+		Message.setText("You have selected Swimming.");
 
+		Swimcount++;
+		GenerateGameID("SW0");
+		selection = 7;
+
+	}
+	
+	public void selectTrack(ActionEvent event) {
+			Message.setText("You have selected Track.");
+
+			Trackcount++;
+			GenerateGameID("T0");
+			selection =8;
+
+	}
+	
+	public void selectCycle(ActionEvent event) {
+		Message.setText("You have selected Cycling.");
+
+		Cyclecount++;
+		GenerateGameID("C0");
+		selection =9;
+		
+	}
+	
+	
 	
 	//Game selection
 	private int selection;
@@ -28,139 +87,16 @@ public class Driver {
 	private String GID=null;
 	private String Event=null;
 
-	//User's Prediction
-	private static String prediction;
-	static boolean betmade = false;
 
 	//Referee for the Game
 	private Official chosenReferee;
 
-	//Start of Game
-	public void OzlympicStart(){
-
-		int input=0;
-		do
-		{
-			try
-			{
-				Menu();
-				input=1;
-			}
-
-			catch(NumberFormatException e)
-			{
-				System.out.println("Please enter a valid ID");
-				System.out.println();
-				Menu();
-			}
-			catch(InputMismatchException e)
-			{
-				System.out.println();
-				System.out.println("Please enter a valid number from the menu");
-				System.out.println();
-				Menu();
-			}
-		}while(input!=0);	
-
-	}
-
-
-	//Menu Method
-	public void Menu(){
-
-		Scanner sc = new Scanner(System.in);
-		printMenu();
-		int userInput = sc.nextInt();
-
-		switch (userInput) {
-		case(1): Game.chosenAthletes.clear();
-		SelectGame(); 
-		break;
-		case(2): Game.runGame();
-		Menu();
-		break;
-		case(3): DisplayResults();
-		Menu();//results of game - 3 winners for each game
-		break;
-		case(4): DisplayRankings();//score/ranking for athletes - overall ranking for all athletes
-		Menu();
-		break;
-		case(0): Exit();
-		default:
-			System.out.println("Please enter the correct value from the menu");
-			System.out.println();
-		}	
-	}
-
-	//Game Selection Menu
-	public void SelectGame(){
-		boolean correct=false;
-		do
-		{
-			System.out.println("");
-			System.out.println(":::::::::::::Choose a Game to Run::::::::::::::");
-			System.out.println("Select <7> for Swimming");
-			System.out.println("Select <8> for Track");
-			System.out.println("Select <9> for Cycling");
-			System.out.println("");
-
-			try {
-
-				Scanner sc= new Scanner(System.in);
-				selection = sc.nextInt();
-
-				//User selects Swimming Game
-				switch (selection){
-				case(7): System.out.println("You have selected Swimming.\n");
-
-				Swimcount++;
-				GenerateGameID("SW0");
-
-				startGame();
-				;
-				correct=true;
-
-				break;
-
-				//User selects Track Game 
-				case(8): System.out.println("You have selected Track.\n");
-
-				Trackcount++;
-				GenerateGameID("T0");
-
-				startGame();
-
-				correct=true;
-				break;
-
-				//User selects Cycling Game
-				case(9): System.out.println("You have selected Cycling.\n");
-
-				Cyclecount++;
-				GenerateGameID("C0");
-
-				startGame();
-
-				correct=true;
-
-				break;
-
-				default:
-					System.out.println("Please enter the correct value from the menu");
-					System.out.println();
-				}
-			} catch (NumberFormatException e) {
-				System.out.println("Error ---- Please enter a valid option [0, 1, 2, 3, 4, 5]");
-			}
-
-		}while(!correct);
-	}
 
 	//Method to Start Game Event; after Game ID is created and to add in Athletes
 	public void startGame(){
 
 		System.out.println("====================  GAME INFO ===================");
-		Game.AddAthletes(selection);
+		Game.AddAthletes(selection);//needs to remove
 		newGame();
 
 	}
@@ -177,66 +113,10 @@ public class Driver {
 		System.out.println("___________________________________________________");
 		System.out.println("GAME ID   " + n.getGameID() + " |  EVENT   " +  n.getGameType());
 		System.out.println("___________________________________________________");
-
-		MakeBet();
-
-	}
-
-
-	//Method to ask User to make a bet on the winner of the game
-	public boolean MakeBet(){
-
-		System.out.println("Would you like to predict a winner for this game?");
-		System.out.println("Press 4 to make a prediction, or 5 to Continue with game without prediction.");
-		Scanner sc= new Scanner(System.in);
-		int input = sc.nextInt();
-
-		if (input ==4){
-
-			try{
-				System.out.println("Please enter Athletes ID: ");
-
-				String predict = sc.next();
-				for (int i =0; i < Game.chosenAthletes.size(); i++) {
-					if (predict.equals(Game.chosenAthletes.get(i)));
-
-				}System.out.println("Your prediction is stored");
-				System.out.println(predict);
-				prediction = predict;
-				betmade = true;
-
-			} catch (InputMismatchException a) { //not really catching exception...
-				System.out.println("problem");
-			}
-
-		} else if (input ==5){
-			System.out.println("\n You did not make a bet");
-			betmade= false;
-
-		}
-		System.out.println("\n To run this game, press 2 on main menu.");
-		Menu();
-		return betmade;
-	}
-
-
-	//Method to check User's prediction
-	public static void checkPrediction(boolean betmade){
-
-		if (betmade=true){
-
-			if (prediction == Official.winningAthlete) {
-				System.out.println("Congratulation, your athlete has won First Place in this game!!");
-			} else if (prediction == Official.SecondAth) {
-				System.out.println("Congratulation, your athlete has won Second Place in this game!!");
-			} else if (prediction == Official.ThirdAth) {
-				System.out.println("Congratulation, your athlete has won Third Place in this game!!");
-			} else {
-
-			} }
-
+		Game.runGame();
 
 	}
+
 
 	//Method that generates GameID for the game event	
 	public String GenerateGameID(String prefix){
@@ -265,7 +145,7 @@ public class Driver {
 
 	}
 
-
+//not needed
 	//Method to select the Official referee for the Game
 	public Official SelectOfficial (){
 
@@ -301,25 +181,14 @@ public class Driver {
 
 
 
-	//Method to Print Main Menu
-	public void printMenu(){
-		System.out.println("");
-		System.out.println(">>>>>>>>>>>>>>>>>>>>> O Z  L Y M P I C <<<<<<<<<<<<<<<<<<< \n");
-		System.out.println("---------------------GAME MAIN MENU ----------------------");
-		System.out.println("<1> Select a Game");
-		System.out.println("<2> Run Selected Game");
-		System.out.println("<3> Display Game Results");
-		System.out.println("<4> Display Athletes Rankings");
-		System.out.println("<0> Exit Game");
-		System.out.println("");
-	}	
-
-
 	//Method when User leaves game, prints a good-bye message.
 	public void Exit(){
-		System.out.println("Thank you for playing.");
+		Message.setText("Thank you for playing.");
+		Platform.exit();
 		System.exit(0);
 	}
+
+
 
 
 }

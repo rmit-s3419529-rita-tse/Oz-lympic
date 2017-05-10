@@ -14,7 +14,6 @@ import java.util.Random;
 
 public class Game {
 
-	
 	public String gameID;
 	static String gameType;
 	public Official officials;
@@ -28,7 +27,6 @@ public class Game {
 	//ArrayList to hold game events
 	ArrayList<Game> games = new ArrayList<Game>();
 
-	
 	//Game constructor
 	public Game(String gameID, String gameType, Official officials, ArrayList<Athlete> chosenAthletes){
 		this.gameID = gameID;
@@ -130,6 +128,7 @@ public class Game {
 			}
 		}
 
+		
 		
 		FinishLine();
 	}
