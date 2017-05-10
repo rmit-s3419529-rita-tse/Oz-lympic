@@ -14,6 +14,7 @@ import java.util.Random;
 
 public class Game {
 
+	
 	public String gameID;
 	static String gameType;
 	public Official officials;
