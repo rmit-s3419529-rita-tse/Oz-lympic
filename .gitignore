@@ -57,4 +57,9 @@ Temporary Items
 /Sprinter.class
 /SuperAthlete.class
 /Swimmer.class
+<<<<<<< HEAD
 /Main.class
+=======
+/GameFile.class
+/GameDatabase.class
+>>>>>>> origin/master
