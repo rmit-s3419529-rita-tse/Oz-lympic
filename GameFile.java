@@ -16,19 +16,21 @@ import java.io.PrintWriter;
 
 public class GameFile {
 	
+	
 	public static void main(String[] args) throws Exception {
-		GameFile.loadFile("participants.txt");
+		GameFile gamefile = new GameFile();
+		gamefile.loadFile("participants.txt");
 		
 		//do {
 	//		Interface();
 		//} while ();
 
-		GameFile.saveToFile("gameResults.txt");
+		gamefile.saveToFile("gameResults.txt");
 		
 		System.out.println("Good Bye!");
 	}
 //read a txt file
-		public static String loadFile(String filepath) {
+		public String loadFile(String filepath) {
 
 			try {
 				BufferedReader input = new BufferedReader(new FileReader(filepath));
@@ -48,7 +50,7 @@ public class GameFile {
 			return null;
 		}
 //	write a txt file
-		public static void saveToFile(String filepath) {
+		public void saveToFile(String filepath) {
 
 	PrintWriter writer = null;
 	
