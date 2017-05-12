@@ -15,9 +15,8 @@ public class Sprinter extends Athlete {
 
 
 	//Constructor
-	public Sprinter(String ID, String name, int age, String state, int score) {
-		super(ID, name, age, state, score, "SPRINTER");
-
+	public Sprinter(String ID, String type, String name, int age, String state, int score) {
+		super(ID, type, name, age, state, score);
 	}
 
 	//Compete Method

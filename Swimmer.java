@@ -14,8 +14,8 @@ public class Swimmer extends Athlete {
 	public double time;
 
 	//Constructor
-	public Swimmer(String ID, String name, int age, String state, int score) {
-		super(ID, name, age, state, score, "SWIMMER");
+	public Swimmer(String ID, String type, String name, int age, String state, int score) {
+		super(ID, type, name, age, state, score);
 	}
 
 	//Compete Method

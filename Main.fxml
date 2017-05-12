@@ -71,9 +71,9 @@
                         <VBox prefHeight="272.0" prefWidth="152.0">
                            <children>
                               <ImageView fitHeight="155.0" fitWidth="153.0" pickOnBounds="true" preserveRatio="true" />
-                              <Button fx:id="cycle" mnemonicParsing="false" onAction="#selectCycle" text="Cycling" />
-                              <Button fx:id="track" mnemonicParsing="false" onAction="#selectTrack" text="Track" />
-                              <Button fx:id="swim" mnemonicParsing="false" onAction="#selectSwim" text="Swimming" />
+                              <Button fx:id="sports" mnemonicParsing="false" onAction="#selectCycle" text="C Y C L I N G" />
+                              <Button fx:id="sports" mnemonicParsing="false" onAction="#selectTrack" text="Track" />
+                              <Button fx:id="sports" mnemonicParsing="false" onAction="#selectSwim" text="Swimming" />
                               <Button mnemonicParsing="false" onAction="#startGame" text="Start Game" />
                            </children>
                         </VBox>

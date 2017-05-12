@@ -10,13 +10,15 @@ public abstract class Participant {
 
 	private String ID;
 	private String name;
+	private String type;
 	private int age;
 	private String state;
 
 	//Constructor
-	public Participant (String ID, String name, int age, String state ) 
+	public Participant (String ID, String type, String name, int age, String state ) 
 	{
 		this.ID = ID;
+		this.type = type;
 		this.name = name;
 		this.age = age;
 		this.state = state;  		
@@ -35,6 +37,10 @@ public abstract class Participant {
 	public String getState() {
 		return state;
 	}
+	
+	public String getType() {
+		return type;
+	}
 
 	public void setID(String Id) {
 		this.ID=Id;
@@ -50,6 +56,9 @@ public abstract class Participant {
 
 	public void setState(String state) {
 		this.state = state;
-
+	}
+	
+	public void setType(String type) {
+		this.type = type;
 	}
 }

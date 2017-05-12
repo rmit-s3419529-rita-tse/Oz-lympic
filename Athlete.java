@@ -10,20 +10,17 @@
 public class Athlete extends Participant {
 
 	private int score=0;
-	public String type;
 
 
 	//Constructor
-	public Athlete(String iD, String name, int age, String state, int score, String type) {
-		super(iD, name, age, state);
+	public Athlete(String ID, String type, String name, int age, String state, int score) {
+		super(ID, type, name, age, state);
 		this.score=score;
-		this.type=type;
+
 	}
 
 	//Getters
-	public String getType() {
-		return type;
-	}
+
 	public int getScore(){
 		return score;
 	}

@@ -143,7 +143,7 @@ public class Driver implements Initializable {
 		return GID;
 
 	}
-
+/*
 //not needed - needs to be changed to select official
 	//Method to select the Official referee for the Game
 	public Official SelectOfficial (){
@@ -156,7 +156,7 @@ public class Driver implements Initializable {
 		return chosenReferee = GameDB.officials[ref];
 
 	}
-
+*/
 
 	//Method to display each game winners
 	public void DisplayResults(){

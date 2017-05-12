@@ -12,8 +12,8 @@ import java.util.*;
 public class Official extends Participant {
 
 	
-	public Official(String ID, String name, int age, String state) {
-		super(ID, name, age, state);
+	public Official(String ID, String type, String name, int age, String state) {
+		super(ID, type, name, age, state);
 	}
 
 	//ArrayList to store the winners of each game; will display the top 3 with the Game ID
@@ -37,7 +37,6 @@ public class Official extends Participant {
 		sort.clear();
 		sort.putAll(results);
 		results.clear();
-
 
 	}
 
