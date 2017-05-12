@@ -108,7 +108,7 @@ public class Driver implements Initializable {
 		Game n = new Game(GID, Event, chosenReferee, Game.chosenAthletes);
 		games.add(n);
 
-		SelectOfficial();
+		//SelectOfficial();
 		System.out.println("___________________________________________________");
 		System.out.println("GAME ID   " + n.getGameID() + " |  EVENT   " +  n.getGameType());
 		System.out.println("___________________________________________________");
