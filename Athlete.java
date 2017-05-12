@@ -20,7 +20,6 @@ public class Athlete extends Participant {
 	}
 
 	//Getters
-
 	public int getScore(){
 		return score;
 	}
