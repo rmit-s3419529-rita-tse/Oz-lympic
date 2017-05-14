@@ -1,4 +1,52 @@
-Oz1123, officer, Derek, 21, WA
-Oz3434, sprinter, Mary, 35, VIC
-Oz0091, super, Hannah, 24, NSW
-Oz1234, swimmer, Beck, 30, TAS
+Oz1001, swimmer, A. Edwin, 30, VIC 
+Oz1002, swimmer, M. McKendrick, 34, NSW
+Oz1003, swimmer, C. Brown, 54, SA
+Oz1004, swimmer, Y. Lee, 42, NSW
+Oz1005, swimmer, S. Fary, 36, NT
+Oz1006, swimmer, M. Phelps, 22, TAS
+Oz1007, swimmer, D. Shakes, 43, QLD
+Oz1008, swimmer, J. Mahadevan, 18, WA
+Oz1009, swimmer, M. Jasmine, 23, WA
+Oz1010, swimmer, A. Allison, 40, QLD
+Oz1011, swimmer, J. Savannah, 18, TAS
+Oz1012, swimmer, R. Isabel, 31, QLD
+Oz2001, sprinters, U. Bolt, 20, VIC
+Oz2002, sprinters, S. Pearson, 34, WA
+Oz2003, sprinters, F. Gump, 33, QLD
+Oz2004, sprinters, R. Fenty, 41, NT
+Oz2005, sprinters, S. Germanotta, 38, TAS
+Oz2006, sprinters, C. Freeman, 44, NSW
+Oz2007, sprinters, J. Ross, 52, NT
+Oz2008, sprinters, P. Johnson, 23, SA
+Oz2009, sprinters, B. Anna, 18, NT
+Oz2010, sprinters, C. Zoe, 24, SA
+Oz2011, sprinters, F. Natalie, 42, NT
+Oz2012, sprinters, W. Kylie, 33, WA
+Oz3001, cyclist, C. Evans, 24, VIC
+Oz3002, cyclist, L. Armstrong, 25, WA
+Oz3003, cyclist, H. Huntley, 24, SA
+Oz3004, cyclist, P. Gilert, 27, VIC
+Oz3005, cyclist, A. Chan, 25, NSW
+Oz3006, cyclist, R. Tsang, 34, NT
+Oz3007, cyclist, E. Kawamura, 32, QLD
+Oz3008, cyclist, B. Hayes, 25, TAS
+Oz3005, cyclist, K. Gavin, 27, SA
+Oz3006, cyclist, T. Daniel, 20, NT
+Oz3007, cyclist, E. Kawamura, 34, VIC
+Oz3008, cyclist, I. Luke, 44, WA
+Oz4001, super, T. Fernande, 18, NT
+Oz4002, super, C. Bird, 28, TAS
+Oz4003, super, F. Jalal, 25, NSW
+Oz4004, super, G. Seow, 26, SA
+Oz4005, super, D. Chinn, 30, QLD
+Oz4006, super, P. Lai, 43, VIC
+Oz4007, super, L. Sade, 36, NSW
+Oz4008, super, D. Laraine, 29, QLD
+Oz4009, super, C. Aletta, 24, VIC			
+REF002, Official, Frank", 48, QLD
+REF003, Official, Tamora, 34, NSW
+REF004, Official, Nicole, 24, NT
+REF005, Official, Claudia, 20, SA
+REF006, Official, Lilith, 18, QLD
+REF007, Official, Michael, 24, NSW
+REF008, Official, Andrew, 28, WA
