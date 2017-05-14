@@ -16,7 +16,7 @@ public class Game {
 
 	public String gameID;
 	static String gameType;
-	public Official officials;
+	public Official off;
 
 	//Hashmap for keeping game results for each event
 	static HashMap<Integer, Athlete> results = new HashMap<Integer, Athlete>();
@@ -24,15 +24,16 @@ public class Game {
 	//ArrayList for chosen Athletes participating in the game event
 	static ArrayList<Athlete> chosenAthletes = new ArrayList<Athlete>();
 
+
 	//ArrayList to hold game events
 	ArrayList<Game> games = new ArrayList<Game>();
 
 	//Game constructor
-	public Game(String gameID, String gameType, Official officials, ArrayList<Athlete> chosenAthletes){
+	public Game(String gameID, String gameType, Official off, ArrayList<Athlete> chosenAthletes){
 		this.gameID = gameID;
 		Game.gameType = gameType;
 		this.chosenAthletes= chosenAthletes;
-		this.officials=officials;
+		this.off=off;
 	}
 
 	//Getters
@@ -45,7 +46,7 @@ public class Game {
 	}
 
 	public Official getOfficials() {
-		return officials;
+		return off;
 	}
 
 	public static ArrayList<Athlete> getChosenAthletes() {
@@ -56,6 +57,7 @@ public class Game {
 		return games;
 	}
 
+/*	
 
 	//*** METHOD TO BE UPDATED - as USER PICKS ATHLETES, random pick and joining the lists of athletes are not needed
 	
@@ -93,6 +95,7 @@ public class Game {
 		chosenAthletes.addAll(TchosenAthletes);
 
 	}
+	*/
 
 
 	//Method that Runs the Game Event, loops through the chosenAthletes list, checks if their athlete types and generate a time for each
@@ -100,7 +103,7 @@ public class Game {
 
 		System.out.println("\n Ready Set Go!!!  ----------------------------------- \n");
 
-		for (Athlete athlete : chosenAthletes){
+		for (Athlete athlete : Driver.chosen){
 
 			if (athlete instanceof Swimmer){
 				Swimmer swim = (Swimmer) athlete;
@@ -128,8 +131,6 @@ public class Game {
 			}
 		}
 
-		
-		
 		FinishLine();
 	}
 	

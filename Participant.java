@@ -1,3 +1,6 @@
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  * The is the Participant class of Ozlympic Game Program
  * An abstract class for Officials and Athletes
@@ -8,57 +11,37 @@
  */
 public abstract class Participant {
 
-	private String ID;
-	private String name;
-	private String type;
-	private int age;
-	private String state;
+	private SimpleStringProperty ID;
+	private SimpleStringProperty name;
+	private SimpleStringProperty type;
+	private SimpleIntegerProperty age;
+	private SimpleStringProperty state;
 
 	//Constructor
 	public Participant (String ID, String type, String name, int age, String state ) 
 	{
-		this.ID = ID;
-		this.type = type;
-		this.name = name;
-		this.age = age;
-		this.state = state;  		
+		this.ID =  new SimpleStringProperty(ID);
+		this.type = new SimpleStringProperty(type);
+		this.name = new SimpleStringProperty(name);
+		this.age = new SimpleIntegerProperty(age);
+		this.state = new SimpleStringProperty(state);  		
 	}
 
 	//Getters and Setters
 	public String getID() {
-		return ID;
+		return ID.get();
 	}
 	public String getName() {
-		return name;
+		return name.get();
 	}
 	public int getAge() {
-		return age;
+		return age.get();
 	}
 	public String getState() {
-		return state;
+		return state.get();
 	}
 	
 	public String getType() {
-		return type;
-	}
-
-	public void setID(String Id) {
-		this.ID=Id;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-	
-	public void setType(String type) {
-		this.type = type;
+		return type.get();
 	}
 }

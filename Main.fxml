@@ -8,15 +8,19 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Driver">
+<AnchorPane fx:id="pane" prefHeight="616.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Driver">
    <children>
-      <BorderPane prefHeight="600.0" prefWidth="800.0">
+      <BorderPane fx:id="pane" prefHeight="616.0" prefWidth="800.0">
          <top>
             <MenuBar fx:id="menu" prefHeight="25.0" prefWidth="620.0" BorderPane.alignment="CENTER">
               <menus>
@@ -37,52 +41,94 @@
             <Label prefHeight="17.0" prefWidth="81.0" text="Label" BorderPane.alignment="CENTER" />
          </right>
          <center>
-            <SplitPane dividerPositions="0.4416058394160584" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+            <SplitPane fx:id="pane" dividerPositions="0.4940577249575552" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <SplitPane dividerPositions="0.4928825622775801" layoutY="1.0" prefHeight="250.0" prefWidth="564.0">
+                        <SplitPane fx:id="pane" dividerPositions="0.5" layoutY="1.0" prefHeight="297.0" prefWidth="564.0">
                           <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="248.0" prefWidth="218.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="240.0" prefWidth="274.0">
                                  <children>
-                                    <ComboBox layoutX="68.0" layoutY="20.0" prefWidth="150.0" promptText="Select Official" />
-                                    <ListView layoutX="52.0" layoutY="45.0" prefHeight="200.0" prefWidth="200.0" />
+                                    <Button fx:id="btn2" layoutX="122.0" layoutY="248.0" mnemonicParsing="false" onAction="#addAthlete" text="+" />
+                                    <ComboBox fx:id="cb" layoutX="67.0" layoutY="14.0" prefWidth="150.0" promptText="Select Official" />
+                                    <TableView fx:id="table" layoutX="27.0" layoutY="39.0" prefHeight="200.0" prefWidth="223.0">
+                                      <columns>
+                                        <TableColumn fx:id="ID" prefWidth="53.0" text="ID" />
+                                        <TableColumn fx:id="type" prefWidth="84.0" text="TYPE" />
+                                          <TableColumn fx:id="name" prefWidth="88.0" text="NAME" />
+                                      </columns>
+                                    </TableView>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="248.0" prefWidth="334.0" />
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="248.0" prefWidth="334.0">
+                                 <children>
+                                    <ListView fx:id="list" layoutX="41.0" layoutY="36.0" prefHeight="200.0" prefWidth="200.0" />
+                                    <Text fx:id="instruction" fill="WHITE" layoutX="10.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Select 1 Official, 5-8 Athletes for each Game." underline="true">
+                                       <font>
+                                          <Font name="Calibri Light Italic" size="14.0" />
+                                       </font></Text>
+                                    <Button fx:id="btn2" layoutX="128.0" layoutY="246.0" mnemonicParsing="false" onAction="#removeAthlete" text="-" />
+                                 </children></AnchorPane>
                           </items>
                         </SplitPane>
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="352.0" prefWidth="563.0">
+                <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="276.0" prefWidth="581.0">
                      <children>
-                        <Label fx:id="Message" layoutX="14.0" layoutY="14.0" prefHeight="109.0" prefWidth="155.0" />
-                        <TextArea fx:id="ta" layoutX="282.0" layoutY="23.0" prefHeight="200.0" prefWidth="200.0" />
+                        <Label fx:id="Message" layoutX="40.0" layoutY="14.0" prefHeight="42.0" prefWidth="236.0" text="Please make a selection." textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Light" size="14.0" />
+                           </font></Label>
+                        <TextArea fx:id="ta" layoutX="39.0" layoutY="69.0" prefHeight="163.0" prefWidth="475.0" />
                      </children>
                   </AnchorPane>
               </items>
             </SplitPane>
          </center>
          <left>
-            <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="394.0" prefWidth="154.0" BorderPane.alignment="CENTER">
+            <SplitPane dividerPositions="0.4940577249575552" orientation="VERTICAL" prefHeight="595.0" prefWidth="154.0" BorderPane.alignment="CENTER">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="193.0" prefWidth="206.0">
+                <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="193.0" prefWidth="206.0">
                      <children>
-                        <VBox prefHeight="272.0" prefWidth="152.0">
+                        <VBox prefHeight="284.0" prefWidth="153.0">
                            <children>
                               <ImageView fitHeight="155.0" fitWidth="153.0" pickOnBounds="true" preserveRatio="true" />
-                              <Button fx:id="sports" mnemonicParsing="false" onAction="#selectCycle" text="C Y C L I N G" />
-                              <Button fx:id="sports" mnemonicParsing="false" onAction="#selectTrack" text="Track" />
-                              <Button fx:id="sports" mnemonicParsing="false" onAction="#selectSwim" text="Swimming" />
-                              <Button mnemonicParsing="false" onAction="#startGame" text="Start Game" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ozlympic">
+                                 <font>
+                                    <Font name="Calibri Bold Italic" size="36.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </VBox>
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="302.0" prefWidth="152.0">
                      <children>
-                        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#DisplayResults" text="Game Results" />
-                        <Button layoutX="14.0" layoutY="58.0" mnemonicParsing="false" onAction="#DisplayRankings" text="Rankings" />
+                        <VBox prefHeight="298.0" prefWidth="153.0">
+                           <children>
+                              <Text fx:id="instruction" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Select a Sport Event" underline="true">
+                                 <font>
+                                    <Font name="Calibri Light Italic" size="14.0" />
+                                 </font></Text>
+                              <Button fx:id="sports" mnemonicParsing="false" onAction="#selectSwim" stylesheets="@application.css" text="S W I M M I N G" />
+                              <Button fx:id="sports" mnemonicParsing="false" onAction="#selectTrack" stylesheets="@application.css" text="T R A C K" />
+                              <Button fx:id="sports" mnemonicParsing="false" onAction="#selectCycle" stylesheets="@application.css" text="C Y C L I N G" />
+                              <Text id="instruction" fx:id="instruction" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Ready, Set, Go!" underline="true">
+                                 <font>
+                                    <Font name="Calibri Light Italic" size="14.0" />
+                                 </font></Text>
+                              <Button fx:id="btn" mnemonicParsing="false" onAction="#startGame" stylesheets="@application.css" text="START GAME" />
+                              <Text fx:id="instruction1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Check Scoreboard" underline="true">
+                                 <font>
+                                    <Font name="Calibri Light Italic" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Button fx:id="btn" mnemonicParsing="false" onAction="#DisplayResults" stylesheets="@application.css" text="GAME RESULTS" />
+                              <Button fx:id="btn" mnemonicParsing="false" onAction="#DisplayRankings" stylesheets="@application.css" text="RANKINGS" />
+                           </children>
+                        </VBox>
                      </children>
                   </AnchorPane>
               </items>

@@ -57,7 +57,7 @@ public class GameDB {
 	static SuperAthlete superA6 = new SuperAthlete("4006", "super", "P. Lai", 43, "VIC",0);
 	
 	
-	
+	//list of officials
 	static Official off1 = new Official("REF001", "Official", "Thomas", 50, "VIC");
 	static Official off2 = new Official("REF002", "Official", "Frank", 48, "QLD" );
 	static Official off3 = new Official("REF003", "Official", "Tamora", 34, "NSW" );

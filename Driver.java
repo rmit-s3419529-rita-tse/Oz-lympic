@@ -13,7 +13,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * The is the Driver of Ozlympic Game Program
@@ -29,17 +34,67 @@ public class Driver implements Initializable {
 	//NEW CODE
 	@FXML
 	private Label Message;
-	
+	@FXML
 	private TextArea ta;
+	@FXML
+	public ListView<Athlete> list;
 	
 	
-	//public ComboBox<String> cb;
-	ObservableList<Athlete> list = FXCollections.observableArrayList();
+	//table view to handle DB
+	@FXML private TableView<Athlete> table;
+	@FXML private TableColumn<Athlete, String> ID;
+	@FXML private TableColumn<Athlete, String> type;
+	@FXML private TableColumn<Athlete, String> name;
+	
+	
+	public ObservableList<Athlete> data = FXCollections.observableArrayList(
+
+			//test dummy data			
+			new Athlete("123", "super", "name1", 23, "vic", 0),
+			new Athlete("123", "cyc", "name1", 23, "vic", 0),
+			new Athlete("122", "sprint", "name1", 23, "vic", 0),
+			new Athlete("123", "swim", "name1", 23, "vic", 0),
+			new Athlete("123", "super", "name1", 23, "vic", 0)
+			
+			);
+		
+			
+	//https://stackoverflow.com/questions/22191954/javafx-casting-arraylist-to-observablelist
+
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//cb.setItems(list);
+		ID.setCellValueFactory(new PropertyValueFactory<Athlete, String>("ID"));
+		type.setCellValueFactory(new PropertyValueFactory<Athlete, String>("type"));
+		name.setCellValueFactory(new PropertyValueFactory<Athlete, String>("name"));
+		table.setItems(data);
+		table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		list.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		
+		//to be worked on:
+		table.getItems().addAll(GameDB.swimmers);
 	}
+
+	/*pls ignore
+	//table view to load athletes db
+	@FXML
+	private TableView<Table>  table = new TableView<>();
+	@FXML
+	TableView<Table> data = FXCollections.observableArrayList();
+	@FXML
+	TableColumn col1 = new TableColumn("ID");
+	
+	
+	/*COMBOBOX FOR OFFICIALS........not sure if it works
+	//combox for officials
+	public ComboBox<Official> cb;
+	ObservableList<Official> referees = FXCollections.observableArrayList(GameDB.officials);
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		cb.setItems(referees);
+	}
+	pls ignore*/
 	
 	//displays and confirms message
 	String msg = null;
@@ -61,7 +116,6 @@ public class Driver implements Initializable {
 			Trackcount++;
 			GenerateGameID("T0");
 			selection =8;
-
 	}
 	
 	public void selectCycle(ActionEvent event) {
@@ -72,8 +126,6 @@ public class Driver implements Initializable {
 		selection =9;
 		
 	}
-	
-	//NEW CODE ENDS
 	
 	//Game selection
 	private int selection;
@@ -87,28 +139,48 @@ public class Driver implements Initializable {
 	private int Trackcount = 0;
 	private String GID=null;
 	private String Event=null;
-
-
-	//Referee for the Game
-	private Official chosenReferee;
-
-
-	//Method to Start Game Event; after Game ID is created and to add in Athletes
-	public void startGame(){
-
-		System.out.println("====================  GAME INFO ===================");
-		Game.AddAthletes(selection);//needs to remove
-		newGame();
+	
+	
+	//list to handle user selections
+	static ObservableList<Athlete> chosen = null;
+			
+	//button to control listview
+	public void addAthlete(ActionEvent e){
+		
+		chosen = table.getSelectionModel().getSelectedItems();
+		for (Athlete z : chosen) {
+			list.getItems().addAll(chosen);
+		}
+		
+		//add this observable list to Arraylist for Game to run
 
 	}
+	
+	
+	public void removeAthlete(ActionEvent e){
+		ObservableList<Athlete> remove = null;
+		
+		remove = list.getSelectionModel().getSelectedItems();
+		for (Athlete q : remove){
+			list.getItems().removeAll(remove);
+		}
+		
+	}
+	
+	
 
+	//temp
+	private Official ref=GameDB.off1;
+
+	//this method needs to be updated.... currently crashing
 	//Method to Create Game Object
-	public void newGame(){
+	public void startGame(ActionEvent e){
+		
+		//Game.AddAthletes(selection);
 
-		Game n = new Game(GID, Event, chosenReferee, Game.chosenAthletes);
+		Game n = new Game(GID, Event, ref, Game.chosenAthletes);
 		games.add(n);
 
-		//SelectOfficial();
 		System.out.println("___________________________________________________");
 		System.out.println("GAME ID   " + n.getGameID() + " |  EVENT   " +  n.getGameType());
 		System.out.println("___________________________________________________");
@@ -143,23 +215,10 @@ public class Driver implements Initializable {
 		return GID;
 
 	}
-/*
-//not needed - needs to be changed to select official
-	//Method to select the Official referee for the Game
-	public Official SelectOfficial (){
 
-		Random ran = new Random();
-		int ref = ran.nextInt(4);
-
-		System.out.println("The Official Referee for this Game is: " + GameDB.officials[ref].getID() + "   " + GameDB.officials[ref].getName());
-
-		return chosenReferee = GameDB.officials[ref];
-
-	}
-*/
 
 	//Method to display each game winners
-	public void DisplayResults(){
+	public void DisplayResults(ActionEvent e){
 
 		System.out.println("\n ========= Game Results: =========== \n");
 		for (int i=0; i < games.size(); i++){
@@ -186,6 +245,8 @@ public class Driver implements Initializable {
 		Platform.exit();
 		System.exit(0);
 	}
+
+
 
 
 

@@ -1,4 +1,41 @@
 /*css*/
 #sports {
-	-fx-font-size: 10px;
+	-fx-font-size: 14px;
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #3498db;
+  -fx-padding: 10 20 10 20;
+  -fx-font-weight: bold;
 }
+#sports:hover {
+  -fx-background-color: #3cb0fd;
+}
+
+#btn {
+	-fx-font-size: 14px;
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #63d934;
+  -fx-padding: 10 20 10 20;
+  -fx-font-weight: bold;
+}
+#btn:hover {
+  -fx-background-color: #1f8c64;
+}
+#btn2 {
+	-fx-font-size: 14px;
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #f44242;
+  -fx-padding: 5 10 5 10;
+  -fx-font-weight: bold;
+}
+#btn2:hover {
+  -fx-background-color: #fc1919;
+}
+#pane {
+	 /*-fx-background-image: url("bg.jpg");*/
+	 -fx-background-color: #333333;
+}
+
+
+
+
+

@@ -11,7 +11,7 @@ import java.util.*;
 
 public class Official extends Participant {
 
-	
+	//Official constructor
 	public Official(String ID, String type, String name, int age, String state) {
 		super(ID, type, name, age, state);
 	}
