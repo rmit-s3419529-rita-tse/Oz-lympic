@@ -19,11 +19,10 @@ import org.hsqldb.Server;
  */
 	
 	
-
 	public class GameDatabase {
 
-		Connection connection = null;
-		ResultSet rs = null;
+		static Connection connection = null;
+		static ResultSet rs = null;
 	public GameDatabase() {
 	Server hsqlServer = null;
 
@@ -41,7 +40,7 @@ import org.hsqldb.Server;
 	//The table can only be created but not dropped, so once it created, comment out the following commands
 	//connection.prepareStatement("drop table barcodes ifexists;").execute();
 	try{
-		connection.prepareStatement("create table participants(id varchar(20), type varchar(20), name varchar(20), age integer, state varchar(20) );").execute();
+//		connection.prepareStatement("create table participants(id varchar(20), type varchar(20), name varchar(20), age integer, state varchar(20) );").execute();
 	}catch(Exception e2){
 		
 	}
@@ -61,30 +60,54 @@ import org.hsqldb.Server;
 //				"values ('Oz1123', 'officer', 'Derek', 21,'WA'), " +
 //				"('Oz3434', 'sprinter', 'Mary', 35, 'VIC'), "+
 //				"('Oz0091', 'super', 'Hannah', 24, 'NSW'), "+
-//				"('Oz1234', 'swimmer', 'Beck', 30, 'TAS');").execute();
-			
+//				"('Oz1234', 'swimmer', 'Beck', 30, 'TAS');").execute();			
 			connection.prepareStatement("insert into participants (id, type, name, age, state) "+
-			"values ("+ ID +", "+strType+", "+ strName +", "+Age+", "+State+");").execute();
+			"values ('"+ ID +"', '"+strType+"', '"+ strName +"', "+Age+", '"+State+"');").execute();
 			
-	//		connection.prepareStatement(strSQL).execute();
+//			connection.prepareStatement(strSQL).execute();
 			
 			connection.commit();
 		} catch (SQLException e2) {
 			e2.printStackTrace();
 			}
 	}
-	public Collection GetParticipants(){
+	public void DeleteParticipants(){
+		try{
+			connection.prepareStatement("DELETE FROM participants").execute();
+			connection.commit();
+		} catch (SQLException e2) {
+			e2.printStackTrace();
+			}
+	}
+// This is the way to check if the database can connection and work	
+//	public static void main(String[] args){
+//		GameDatabase TestGame= new GameDatabase();
+//		TestGame.AddParticipants("ID", "strType", "strName", 26, "State");
+//		TestGame.DeleteParticipants();
+//		TestGame.GetParticipants();		
+//	}
+	public void PrintParticipants(){
 		try{
 		rs = connection.prepareStatement("select * from participants;").executeQuery();
 		while(rs.next())
 			System.out.println(String.format("ID: %1s, type:%1s, name:%1s, age:%1s, state:%1s",  rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5)));
-		return null;
+		//return null;
+		} catch (SQLException e2) {
+			e2.printStackTrace();
+		}
+		System.out.println("This is no data!");
+	}
+	
+	public Collection GetParticipants(){
+		try{
+		rs = connection.prepareStatement("select * from participants;").executeQuery();
+		while(rs.next())
+          return null;
 		} catch (SQLException e2) {
 			e2.printStackTrace();
 		}
 		return null;
 	}
-	
-	
+		
 }	
 	
