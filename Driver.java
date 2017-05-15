@@ -143,7 +143,12 @@ public class Driver implements Initializable {
 	//button to add and remove selected participants
 	//add from table
 	public void addAthlete(ActionEvent e){
-				
+		/*
+		//check duplication before adding to list
+		for (Participant a : chosen){
+			list.getItems() 
+		}
+			*/	
 		chosen = table.getSelectionModel().getSelectedItems();
 		
 		for (Participant z : chosen) {

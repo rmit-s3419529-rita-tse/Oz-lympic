@@ -68,44 +68,40 @@ public class Game {
 
 		System.out.println("\n Ready Set Go!!!  ----------------------------------- \n");
 		
-		//if (gametype==swim) {
-		//swim.compete();
-		//results.put((int).swim.time, athlete);
-		
-		//casted from previous..might have to change back
-		for (Participant athlete : Driver.chosen){
+		for (Athlete athlete : chosenAthletes){
 
 			if (athlete instanceof Swimmer){
 				Swimmer swim = (Swimmer) athlete;
 				swim.compete();
 				System.out.println(athlete.getName() + "  ...   " + swim.time);
-				results.put((int) swim.time, (Athlete) athlete);
+				results.put((int) swim.time, athlete);
 			}
 			else if (athlete instanceof Cyclist){
 				Cyclist c = (Cyclist) athlete;
 				c.compete();
 				System.out.println(athlete.getName() + "  ...  " + c.time);
-				results.put((int) c.time, (Athlete) athlete);
+				results.put((int) c.time, athlete);
 			}
 			else if (athlete instanceof Sprinter){
 				Sprinter s = (Sprinter) athlete;
 				s.compete();
 				System.out.println(athlete.getName() + "  ...   " + s.time);
-				results.put((int) s.time, (Athlete) athlete);
+				results.put((int) s.time, athlete);
 			}
 			else if (athlete instanceof SuperAthlete){
 				SuperAthlete SA = (SuperAthlete) athlete;
 				SA.compete(Game.gameType);
 				System.out.println(athlete.getName() + "  ...   " + SA.time);
-				results.put((int) SA.time, (Athlete) athlete);
+				results.put((int) SA.time, athlete);
 			}
 		}
+		
 
 		FinishLine();
 	}
 	
 	
-	//UPDATED CODE
+	//
 	//method to handle the official methods after the game is run
 	public static void FinishLine() {
 		System.out.println(".............................................");
