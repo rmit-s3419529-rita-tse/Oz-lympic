@@ -71,19 +71,8 @@ public class GameDB {
 	static SuperAthlete superA8 = new SuperAthlete("Oz4008", "super", "D. Laraine", 29, "QLD", 0);
 	static SuperAthlete superA9 = new SuperAthlete("Oz4009", "super", "C. Aletta", 24, "VIC", 0);
 
-<<<<<<< HEAD
-	//list of super athletes
-	static SuperAthlete superA1 = new SuperAthlete("4001", "super", "T. Fernandez", 18, "NT", 0);
-	static SuperAthlete superA2 = new SuperAthlete("4002", "super", "C. Bird", 28, "TAS", 0);
-	static SuperAthlete superA3 = new SuperAthlete("4003", "super", "F. Jalal", 25, "NSW",0 );
-	static SuperAthlete superA4 = new SuperAthlete("4004", "super", "G. Seow", 26, "SA",0);
-	static SuperAthlete superA5 = new SuperAthlete("4005", "super", "D. Chinn", 30, "QLD",0);
-	static SuperAthlete superA6 = new SuperAthlete("4006", "super", "P. Lai", 43, "VIC",0);
-	
 	
 	//list of officials
-=======
->>>>>>> 4724b2ed1646cf9b676f650d206ea4327a25cae6
 	static Official off1 = new Official("REF001", "Official", "Thomas", 50, "VIC");
 	static Official off2 = new Official("REF002", "Official", "Frank", 48, "QLD");
 	static Official off3 = new Official("REF003", "Official", "Tamora", 34, "NSW");
@@ -96,6 +85,7 @@ public class GameDB {
 	public static void LoadDB() {
 		// add the list of Athletes and Officials into database
 		GameDatabase TestGame = new GameDatabase();
+		
 		// delete old database
 		TestGame.DeleteParticipants();
 		TestGame.AddParticipants("Oz1001", "swimmer", "A. Edwin", 30, "VIC");
@@ -152,6 +142,7 @@ public class GameDB {
 		TestGame.AddParticipants("REF007", "Official", "Michael", 24, "NSW");
 		TestGame.AddParticipants("REF008", "Official", "Andrew", 28, "WA");
 
+		//
 		swimmers.addAll(swimmers);
 		sprinters.addAll(sprinters);
 		cyclists.addAll(cyclists);

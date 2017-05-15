@@ -102,6 +102,9 @@ public class Game {
 	public static void runGame(){
 
 		System.out.println("\n Ready Set Go!!!  ----------------------------------- \n");
+		
+		//if (gametype==swim) {
+		//swim.compete()
 
 		for (Athlete athlete : Driver.chosen){
 

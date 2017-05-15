@@ -49,6 +49,8 @@ public class Driver implements Initializable {
 	
 	public ObservableList<Athlete> data = FXCollections.observableArrayList(
 
+			new Athlete
+			
 			//test dummy data			
 			new Athlete("123", "super", "name1", 23, "vic", 0),
 			new Athlete("123", "cyc", "name1", 23, "vic", 0),
