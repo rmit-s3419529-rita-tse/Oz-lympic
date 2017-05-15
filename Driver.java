@@ -153,7 +153,7 @@ public class Driver implements Initializable {
 		}
 		
 		//add this observable list to Arraylist for Game to run
-
+		Game.chosenAthletes.addAll(chosen);
 	}
 	
 	
@@ -173,11 +173,17 @@ public class Driver implements Initializable {
 	private Official ref=GameDB.off1;
 
 	//this method needs to be updated.... currently crashing
-	//Method to Create Game Object
+	
+	//Method to Start Game Event; after Game ID is created and to add in Athletes
 	public void startGame(ActionEvent e){
-		
-		//Game.AddAthletes(selection);
 
+		System.out.println("====================  GAME INFO ===================");
+		newGame();
+
+	}
+	//Method to Create Game Object
+	public void newGame(){
+		
 		Game n = new Game(GID, Event, ref, Game.chosenAthletes);
 		games.add(n);
 
@@ -231,7 +237,7 @@ public class Driver implements Initializable {
 	}
 
 	//Method to Display Overall Rankings of Athletes
-	public void DisplayRankings(){
+	public void DisplayRankings(ActionEvent e){
 
 		System.out.println("\n ++++++++++ OZLYMPIC GAME RANKINGS +++++++++++++");
 		Official.awardRank();
