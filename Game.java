@@ -57,46 +57,11 @@ public class Game {
 		return games;
 	}
 
-/*	
 
-	//*** METHOD TO BE UPDATED - as USER PICKS ATHLETES, random pick and joining the lists of athletes are not needed
 	
-	//Method to add regular and super athletes lists together, then pick out athletes for the Game based on User's selection
-	public static void AddAthletes(int selection){
+	
 
-		ArrayList<Athlete> Tathletes = new ArrayList<Athlete>();
-		if (selection ==7){	
-			Tathletes.addAll(GameDB.swimmers);
-			Tathletes.addAll(GameDB.superAthletes);
-		} else if (selection ==8) {
-			Tathletes.addAll(GameDB.sprinters);
-			Tathletes.addAll(GameDB.superAthletes);
-		} else if (selection ==9){
-			Tathletes.addAll(GameDB.cyclists);
-			Tathletes.addAll(GameDB.superAthletes);
-		}
-
-		//Shuffles the athletes up before picking them for the game
-		Collections.shuffle(Tathletes);
-
-		//Pick a random number of athletes to be selected in the game
-		Random r = new Random();
-		int numChosen = r.nextInt(8-5 +1)+5;
-
-		ArrayList<Athlete> TchosenAthletes = new ArrayList(Tathletes.subList(0, numChosen));
-
-		// Print out the chosen Athletes for the User
-		System.out.println("================ Participating Athletes ============== ");
-
-		for (int x = 0;x < numChosen;x++)
-		{
-			System.out.println(TchosenAthletes.get(x).getID() + "    |    " + TchosenAthletes.get(x).getName() + "    |   " + TchosenAthletes.get(x).getState() + "\n");
-		}
-		chosenAthletes.addAll(TchosenAthletes);
-
-	}
-	*/
-
+	
 
 	//Method that Runs the Game Event, loops through the chosenAthletes list, checks if their athlete types and generate a time for each
 	public static void runGame(){
@@ -104,33 +69,35 @@ public class Game {
 		System.out.println("\n Ready Set Go!!!  ----------------------------------- \n");
 		
 		//if (gametype==swim) {
-		//swim.compete()
-
-		for (Athlete athlete : Driver.chosen){
+		//swim.compete();
+		//results.put((int).swim.time, athlete);
+		
+		//casted from previous..might have to change back
+		for (Participant athlete : Driver.chosen){
 
 			if (athlete instanceof Swimmer){
 				Swimmer swim = (Swimmer) athlete;
 				swim.compete();
 				System.out.println(athlete.getName() + "  ...   " + swim.time);
-				results.put((int) swim.time, athlete);
+				results.put((int) swim.time, (Athlete) athlete);
 			}
 			else if (athlete instanceof Cyclist){
 				Cyclist c = (Cyclist) athlete;
 				c.compete();
 				System.out.println(athlete.getName() + "  ...  " + c.time);
-				results.put((int) c.time, athlete);
+				results.put((int) c.time, (Athlete) athlete);
 			}
 			else if (athlete instanceof Sprinter){
 				Sprinter s = (Sprinter) athlete;
 				s.compete();
 				System.out.println(athlete.getName() + "  ...   " + s.time);
-				results.put((int) s.time, athlete);
+				results.put((int) s.time, (Athlete) athlete);
 			}
 			else if (athlete instanceof SuperAthlete){
 				SuperAthlete SA = (SuperAthlete) athlete;
 				SA.compete(Game.gameType);
 				System.out.println(athlete.getName() + "  ...   " + SA.time);
-				results.put((int) SA.time, athlete);
+				results.put((int) SA.time, (Athlete) athlete);
 			}
 		}
 
@@ -151,6 +118,7 @@ public class Game {
 		//Clear list for new game
 		chosenAthletes.clear();
 	}
+
 
 }
 

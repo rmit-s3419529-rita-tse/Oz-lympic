@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -33,76 +34,69 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class Driver implements Initializable {
 	//NEW CODE
 	@FXML
+	private Button swimbtn;
+	@FXML
+	private Button trackbtn;
+	@FXML
+	private Button cyclebtn;
+	@FXML 
+	private Button startbtn;
+	@FXML
+	private Button resultsbtn;
+	@FXML
+	private Button rankingsbtn;
+	
+	@FXML
 	private Label Message;
 	@FXML
 	private TextArea ta;
-	@FXML
-	public ListView<Athlete> list;
 	
-	
-	//table view to handle DB
-	@FXML private TableView<Athlete> table;
-	@FXML private TableColumn<Athlete, String> ID;
-	@FXML private TableColumn<Athlete, String> type;
-	@FXML private TableColumn<Athlete, String> name;
-	
-	
-	public ObservableList<Athlete> data = FXCollections.observableArrayList(
+	//listview of selected participants
+	@FXML public ListView<String> list;
 
-			new Athlete
-			
-			//test dummy data			
-			new Athlete("123", "super", "name1", 23, "vic", 0),
-			new Athlete("123", "cyc", "name1", 23, "vic", 0),
-			new Athlete("122", "sprint", "name1", 23, "vic", 0),
-			new Athlete("123", "swim", "name1", 23, "vic", 0),
-			new Athlete("123", "super", "name1", 23, "vic", 0)
-			
-			);
 		
-			
+	
+	//table view to handle DB- firstable view
+	@FXML private TableView<Participant> table;
+	@FXML private TableColumn<Participant, String> ID;
+	@FXML private TableColumn<Participant, String> type;
+	@FXML private TableColumn<Participant, String> name;
+	
+
+	//use later
+	//GameDatabase gdb = new GameDatabase();
+	
+	//test for now
+	GameDB gb = new GameDB();
+	public ObservableList<Participant> data = FXCollections.observableArrayList(gb.part);
+	
+	
+	
+	
+	//user line below later when DB is complete
+	//public ObservableList<Participant> data = FXCollections.observableArrayList(gdb .GetParticipants());
+	
+	
+
 	//https://stackoverflow.com/questions/22191954/javafx-casting-arraylist-to-observablelist
 
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ID.setCellValueFactory(new PropertyValueFactory<Athlete, String>("ID"));
-		type.setCellValueFactory(new PropertyValueFactory<Athlete, String>("type"));
-		name.setCellValueFactory(new PropertyValueFactory<Athlete, String>("name"));
+		ID.setCellValueFactory(new PropertyValueFactory<Participant, String>("ID"));
+		type.setCellValueFactory(new PropertyValueFactory<Participant, String>("type"));
+		name.setCellValueFactory(new PropertyValueFactory<Participant, String>("name"));
 		table.setItems(data);
 		table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		list.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		
-		//to be worked on:
-		table.getItems().addAll(GameDB.swimmers);
 	}
-
-	/*pls ignore
-	//table view to load athletes db
-	@FXML
-	private TableView<Table>  table = new TableView<>();
-	@FXML
-	TableView<Table> data = FXCollections.observableArrayList();
-	@FXML
-	TableColumn col1 = new TableColumn("ID");
 	
-	
-	/*COMBOBOX FOR OFFICIALS........not sure if it works
-	//combox for officials
-	public ComboBox<Official> cb;
-	ObservableList<Official> referees = FXCollections.observableArrayList(GameDB.officials);
-	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		cb.setItems(referees);
-	}
-	pls ignore*/
 	
 	//displays and confirms message
 	String msg = null;
 	
-	//NEW BUTTONS
-	//buttons to select sports
+	
+	
+	//Button actions
 	public void selectSwim(ActionEvent event) {
 		Message.setText("You have selected Swimming.");
 
@@ -144,57 +138,66 @@ public class Driver implements Initializable {
 	
 	
 	//list to handle user selections
-	static ObservableList<Athlete> chosen = null;
+	static ObservableList<Participant> chosen = null;
 			
-	//button to control listview
+	//button to add and remove selected participants
+	//add from table
 	public void addAthlete(ActionEvent e){
-		
+				
 		chosen = table.getSelectionModel().getSelectedItems();
-		for (Athlete z : chosen) {
-			list.getItems().addAll(chosen);
-		}
 		
-		//add this observable list to Arraylist for Game to run
-		Game.chosenAthletes.addAll(chosen);
+		for (Participant z : chosen) {
+			
+			list.getItems().add(z.getName() + " " + z.getType());
+		}
 	}
 	
-	
+	//remove from selected list
 	public void removeAthlete(ActionEvent e){
-		ObservableList<Athlete> remove = null;
+		ObservableList<String> remove = null;
 		
 		remove = list.getSelectionModel().getSelectedItems();
-		for (Athlete q : remove){
+
+		for (String q : remove){
 			list.getItems().removeAll(remove);
 		}
-		
 	}
 	
+		
 	
+	//add this observable list to Arraylist for Game to run
+	//might have to handled by the start button.........with exceptions.
+		//Game.chosenAthletes.addAll(chosen);
+		//Game.chosenAthletes.add(chosen);
 
-	//temp
-	private Official ref=GameDB.off1;
-
-	//this method needs to be updated.... currently crashing
-	
+				
 	//Method to Start Game Event; after Game ID is created and to add in Athletes
 	public void startGame(ActionEvent e){
+		
+		
+		//checks if chosen has enough athletes
+		//checks if there's an official selected
+		//checks if any 
 
 		System.out.println("====================  GAME INFO ===================");
 		newGame();
 
 	}
+	
+	
 	//Method to Create Game Object
 	public void newGame(){
 		
-		Game n = new Game(GID, Event, ref, Game.chosenAthletes);
-		games.add(n);
+		//Game n = new Game(GID, Event, ref, Game.chosenAthletes);
+		//games.add(n);
 
 		System.out.println("___________________________________________________");
-		System.out.println("GAME ID   " + n.getGameID() + " |  EVENT   " +  n.getGameType());
+		//System.out.println("GAME ID   " + n.getGameID() + " |  EVENT   " +  n.getGameType());
 		System.out.println("___________________________________________________");
 		Game.runGame();
 
 	}
+	
 
 
 	//Method that generates GameID for the game event	
@@ -242,7 +245,7 @@ public class Driver implements Initializable {
 	public void DisplayRankings(ActionEvent e){
 
 		System.out.println("\n ++++++++++ OZLYMPIC GAME RANKINGS +++++++++++++");
-		Official.awardRank();
+		//Official.awardRank();
 	}
 
 

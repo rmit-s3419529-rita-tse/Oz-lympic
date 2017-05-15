@@ -1,25 +1,71 @@
 /*css*/
-#sports {
+#swimbtn {
 	-fx-font-size: 14px;
   -fx-text-fill: #ffffff;
   -fx-background-color: #3498db;
   -fx-padding: 10 20 10 20;
   -fx-font-weight: bold;
 }
-#sports:hover {
+#swimbtn:hover {
+  -fx-background-color: #3cb0fd;
+}
+#trackbtn {
+	-fx-font-size: 14px;
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #3498db;
+  -fx-padding: 10 20 10 20;
+  -fx-font-weight: bold;
+}
+#trackbtn:hover {
+  -fx-background-color: #3cb0fd;
+}
+#cyclebtn {
+	-fx-font-size: 14px;
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #3498db;
+  -fx-padding: 10 20 10 20;
+  -fx-font-weight: bold;
+}
+#cyclebtn:hover {
   -fx-background-color: #3cb0fd;
 }
 
-#btn {
+
+#startbtn {
 	-fx-font-size: 14px;
   -fx-text-fill: #ffffff;
   -fx-background-color: #63d934;
   -fx-padding: 10 20 10 20;
   -fx-font-weight: bold;
 }
-#btn:hover {
+#startbtn:hover {
   -fx-background-color: #1f8c64;
 }
+
+#resultsbtn {
+	-fx-font-size: 14px;
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #63d934;
+  -fx-padding: 10 20 10 20;
+  -fx-font-weight: bold;
+}
+#resultsbtn:hover {
+  -fx-background-color: #1f8c64;
+}
+#rankingsbtn {
+	-fx-font-size: 14px;
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #63d934;
+  -fx-padding: 10 20 10 20;
+  -fx-font-weight: bold;
+}
+#rankingsbtn:hover {
+  -fx-background-color: #1f8c64;
+}
+
+
+
+
 #btn2 {
 	-fx-font-size: 14px;
   -fx-text-fill: #ffffff;

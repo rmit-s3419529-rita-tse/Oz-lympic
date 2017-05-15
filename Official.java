@@ -100,7 +100,7 @@ public class Official extends Participant {
 		}
 	}
 
-	
+/*	still need!!!! do not delete
 	//UPDATED CODE
 	//Method to generate the ranking of Athletes for Ozlympic
 	public static void awardRank(){
@@ -120,6 +120,6 @@ public class Official extends Participant {
 		}
 
 	}
-
+*/
 
 }

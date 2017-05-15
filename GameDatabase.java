@@ -1,9 +1,9 @@
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -75,16 +75,16 @@ public class GameDatabase {
 			e2.printStackTrace();
 		}
 	}
-
+/*
 	public void DeleteParticipants() {
 		try {
 			connection.prepareStatement("DELETE FROM participants").execute();
-			connection.commit();
+			//connection.commit();
 		} catch (SQLException e2) {
 			e2.printStackTrace();
 		}
 	}
-
+*/
 	// This is the way to check if the database can connection and work
 	// public static void main(String[] args){
 	// GameDatabase TestGame= new GameDatabase();
@@ -105,13 +105,24 @@ public class GameDatabase {
 		System.out.println("There is no data!");
 	}
 
-	public List<Participant> GetParticipants() {
-		List<Participant> participants = new LinkedList<Participant>();
+	public ArrayList<Participant> GetParticipants() {
+		//changed from LinkedList ot arraylist
+		ArrayList<Participant> participants = new ArrayList<Participant>();
 		try {
 			rs = connection.prepareStatement("select * from participants;").executeQuery();
 			while (rs.next())
-				participants.add(new DbParticipant(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4),
+				participants.add(new Participant(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4),
 						rs.getString(5)));
+			
+			//need to check as arraylist
+			//while - rs.next()
+			//if type.equals("super")
+			//partic.add(new(SA(ID,name,type..));
+			//else if.....
+			//type check for each obj types
+			
+			
+			
 		} catch (SQLException e2) {
 			e2.printStackTrace();
 			return null;

@@ -9,7 +9,7 @@ import javafx.beans.property.SimpleStringProperty;
  * @version 1.0
  * @since   2017-04-07
  */
-public abstract class Participant {
+public class Participant {
 
 	private SimpleStringProperty ID;
 	private SimpleStringProperty name;

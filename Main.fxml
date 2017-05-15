@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
@@ -50,24 +49,23 @@
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="240.0" prefWidth="274.0">
                                  <children>
                                     <Button fx:id="btn2" layoutX="122.0" layoutY="248.0" mnemonicParsing="false" onAction="#addAthlete" text="+" />
-                                    <ComboBox fx:id="cb" layoutX="67.0" layoutY="14.0" prefWidth="150.0" promptText="Select Official" />
                                     <TableView fx:id="table" layoutX="27.0" layoutY="39.0" prefHeight="200.0" prefWidth="223.0">
                                       <columns>
                                         <TableColumn fx:id="ID" prefWidth="53.0" text="ID" />
-                                        <TableColumn fx:id="type" prefWidth="84.0" text="TYPE" />
-                                          <TableColumn fx:id="name" prefWidth="88.0" text="NAME" />
+                                        <TableColumn fx:id="type" prefWidth="71.0" text="TYPE" />
+                                          <TableColumn fx:id="name" prefWidth="101.0" text="NAME" />
                                       </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="248.0" prefWidth="334.0">
                                  <children>
-                                    <ListView fx:id="list" layoutX="41.0" layoutY="36.0" prefHeight="200.0" prefWidth="200.0" />
                                     <Text fx:id="instruction" fill="WHITE" layoutX="10.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Select 1 Official, 5-8 Athletes for each Game." underline="true">
                                        <font>
                                           <Font name="Calibri Light Italic" size="14.0" />
                                        </font></Text>
                                     <Button fx:id="btn2" layoutX="128.0" layoutY="246.0" mnemonicParsing="false" onAction="#removeAthlete" text="-" />
+                                    <ListView fx:id="list" layoutX="39.0" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" />
                                  </children></AnchorPane>
                           </items>
                         </SplitPane>
@@ -112,21 +110,21 @@
                                  <font>
                                     <Font name="Calibri Light Italic" size="14.0" />
                                  </font></Text>
-                              <Button fx:id="sports" mnemonicParsing="false" onAction="#selectSwim" stylesheets="@application.css" text="S W I M M I N G" />
-                              <Button fx:id="sports" mnemonicParsing="false" onAction="#selectTrack" stylesheets="@application.css" text="T R A C K" />
-                              <Button fx:id="sports" mnemonicParsing="false" onAction="#selectCycle" stylesheets="@application.css" text="C Y C L I N G" />
+                              <Button fx:id="swimbtn" mnemonicParsing="false" onAction="#selectSwim" stylesheets="@application.css" text="S W I M M I N G" />
+                              <Button fx:id="trackbtn" mnemonicParsing="false" onAction="#selectTrack" stylesheets="@application.css" text="T R A C K" />
+                              <Button fx:id="cyclebtn" mnemonicParsing="false" onAction="#selectCycle" stylesheets="@application.css" text="C Y C L I N G" />
                               <Text id="instruction" fx:id="instruction" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Ready, Set, Go!" underline="true">
                                  <font>
                                     <Font name="Calibri Light Italic" size="14.0" />
                                  </font></Text>
-                              <Button fx:id="btn" mnemonicParsing="false" onAction="#startGame" stylesheets="@application.css" text="START GAME" />
+                              <Button fx:id="startbtn" mnemonicParsing="false" onAction="#startGame" stylesheets="@application.css" text="START GAME" />
                               <Text fx:id="instruction1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Check Scoreboard" underline="true">
                                  <font>
                                     <Font name="Calibri Light Italic" size="14.0" />
                                  </font>
                               </Text>
-                              <Button fx:id="btn" mnemonicParsing="false" onAction="#DisplayResults" stylesheets="@application.css" text="GAME RESULTS" />
-                              <Button fx:id="btn" mnemonicParsing="false" onAction="#DisplayRankings" stylesheets="@application.css" text="RANKINGS" />
+                              <Button fx:id="resultsbtn" mnemonicParsing="false" onAction="#DisplayResults" stylesheets="@application.css" text="GAME RESULTS" />
+                              <Button fx:id="rankingsbtn" mnemonicParsing="false" onAction="#DisplayRankings" stylesheets="@application.css" text="RANKINGS" />
                            </children>
                         </VBox>
                      </children>
