@@ -1,3 +1,5 @@
+import org.hsqldb.server.Server;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -33,7 +35,15 @@ public class Ozlympic extends Application {
 
 
 	public static void main(String[] args) {
-		
+        //run the database server        
+		Server hsqlServer = null;
+
+		hsqlServer = new Server();
+		hsqlServer.setLogWriter(null);
+		hsqlServer.setSilent(true);
+		hsqlServer.setDatabaseName(0, "TestDB");
+		hsqlServer.setDatabasePath(0, "file:TestDB");
+		hsqlServer.start();	
 		launch(args);
 	}
 
