@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class GameDB {
 	
+	//dummy data to be deleted
 	ArrayList <Participant> part = new ArrayList<Participant>();
 	
 	public GameDB() {
