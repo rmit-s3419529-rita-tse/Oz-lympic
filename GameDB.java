@@ -77,7 +77,7 @@ public class GameDB {
 
 	public static void LoadDB() {
 		// add the list of Athletes and Officials into database
-		GameDatabase TestGame = new GameDatabase();
+		DbParticipant TestGame = new DbParticipant();
 		
 		
 		

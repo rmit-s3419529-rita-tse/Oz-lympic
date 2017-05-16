@@ -66,3 +66,5 @@ Temporary Items
 /TestDB.class
 /DbParticipant.class
 /DbResult.class
+/IParticipant.class
+/DbParticipantTest.class
