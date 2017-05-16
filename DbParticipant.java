@@ -56,7 +56,7 @@ public class DbParticipant implements IParticipant {
 			e2.printStackTrace();
 		}
 	}
-
+    //print data from participants    
 	public void PrintParticipants() {
 		try {
 			rs = connection.prepareStatement("select * from participants;").executeQuery();
@@ -69,7 +69,6 @@ public class DbParticipant implements IParticipant {
 		}
 		System.out.println("There is no data!");
 	}
-
     //use linkedList to list the data from participants	
 	public List<Participant> GetParticipants() {
 		List<Participant> participants = new LinkedList<Participant>();

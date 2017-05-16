@@ -68,3 +68,6 @@ Temporary Items
 /DbResult.class
 /IParticipant.class
 /DbParticipantTest.class
+/DbGameResult.class
+/DbGameResultModel.class
+/IGameResult.class
