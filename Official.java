@@ -87,7 +87,8 @@ public class Official extends Participant {
 		
 	}
 	
-	
+	/*
+	score is going to be handled differently..... not within each athlete object
 	//Inner class to compare the Athletes score to produce overall ranking
 	static class RankComp implements Comparator<Athlete>{
 		@Override
@@ -99,6 +100,7 @@ public class Official extends Participant {
 			}
 		}
 	}
+	*/
 
 /*	still need!!!! do not delete
 	//UPDATED CODE

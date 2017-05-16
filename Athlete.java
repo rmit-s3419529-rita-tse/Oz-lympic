@@ -19,11 +19,10 @@ public class Athlete extends Participant {
 
 	}
 
-	//Getters
+	//Getter
 	public int getScore(){
 		return score;
 	}
-
 
 	//Compete method for all Athletes, will be overridden depending on type of Athlete
 	public double compete(){
