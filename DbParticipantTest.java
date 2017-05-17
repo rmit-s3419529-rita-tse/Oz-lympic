@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hsqldb.Server;
@@ -46,8 +47,8 @@ public class DbParticipantTest {
 	@Test
 	public void testGetParticipants() {
 		DbParticipant gameDB = new DbParticipant();
-		
-		List<Participant> actual = gameDB.GetParticipants();
+	
+		ArrayList<Participant> actual = gameDB.GetParticipants();
 		
 		Assert.assertTrue(actual.size() > 0);
 	}

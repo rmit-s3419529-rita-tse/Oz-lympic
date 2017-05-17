@@ -2,9 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedList;
-import java.util.List;
-
+import java.util.ArrayList;
 import org.hsqldb.Server;
 
 /**
@@ -69,9 +67,9 @@ public class DbParticipant implements IParticipant {
 		}
 		System.out.println("There is no data!");
 	}
-    //use linkedList to list the data from participants	
-	public List<Participant> GetParticipants() {
-		List<Participant> participants = new LinkedList<Participant>();
+    //use arrayList to list the data from participants	
+	public ArrayList<Participant> GetParticipants() {
+		ArrayList<Participant> participants = new ArrayList<Participant>();
 		try {
 			rs = connection.prepareStatement("select * from participants;").executeQuery();
 			while (rs.next())

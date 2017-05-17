@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * The is the Ozlympic Game Program.
@@ -13,5 +13,5 @@ public interface IParticipant {
 	Boolean AddParticipants(String ID, String strType, String strName, Integer Age, String State);
 	void DeleteParticipants();
 	void PrintParticipants();
-	List<Participant> GetParticipants();
+	ArrayList<Participant> GetParticipants();
 }

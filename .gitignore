@@ -71,3 +71,6 @@ Temporary Items
 /DbGameResult.class
 /DbGameResultModel.class
 /IGameResult.class
+/FileParticipant.class
+/FileGameResult.class
+/FileParticipantTest.class

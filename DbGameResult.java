@@ -3,9 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedList;
-import java.util.List;
-
+import java.util.ArrayList;
 import org.hsqldb.Server;
 
 /**
@@ -30,7 +28,7 @@ public class DbGameResult implements IGameResult {
 			connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/TestDB", "sa", "123");
 			// File mode
 			//connection = DriverManager.getConnection("jdbc:hsqldb:file:TestDB", "sa", "123");
-			connection.prepareStatement("select * from PUBLIC.GAMERESULTS").executeQuery();
+			connection.prepareStatement("select * from GAMERESULTS").executeQuery();
 		} catch (SQLException e2) {
 			e2.printStackTrace();
 		} catch (ClassNotFoundException e2) {
@@ -80,8 +78,8 @@ public class DbGameResult implements IGameResult {
 		System.out.println("There is no data!");
 	}
 
-	public List<DbGameResultModel> GetResult() {
-		List<DbGameResultModel> result = new LinkedList<DbGameResultModel>();
+	public ArrayList<DbGameResultModel> GetResult() {
+		ArrayList<DbGameResultModel> result = new ArrayList<DbGameResultModel>();
 		try {
 			ResultSet rs = connection.prepareStatement("select * from GAMERESULTS;").executeQuery();
 			while (rs.next())
