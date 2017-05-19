@@ -1,6 +1,7 @@
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,11 +10,11 @@ import java.util.Date;
 import org.hsqldb.server.Server;
 
 /**
- * The is the database of gameResult
- * It showed the database of the gameResult
- * Not finish yet,still debug this part 
+ * The is the DbGameResult class of Ozlympic Game
+ * It shows the database of the gameResult
+ * It can display the result from each game and store it
  * @author SZUYING CHEN
- * @version 2.0
+ * @version 2.1
  * @since 2017-05-14
  */
 
@@ -27,9 +28,9 @@ public class DbGameResult implements IGameResult {
 			String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
 			Class.forName("org.hsqldb.jdbcDriver");
 			// Server mode
-			connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/TestDB", "sa", "123");
+            //connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/TestDB", "sa", "123");
 			// File mode
-			//connection = DriverManager.getConnection("jdbc:hsqldb:file:TestDB", "sa", "123");
+			connection = DriverManager.getConnection("jdbc:hsqldb:file:TestDB", "sa", "123");
 			connection.prepareStatement("select * from GAMERESULTS").executeQuery();
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -39,18 +40,31 @@ public class DbGameResult implements IGameResult {
 		// end of stub code for in/out stub
 	}
 
+	//Add game result in to the database   
 	public void AddResult(String gameId, String officialId, String athleteId, Double result, Integer score) {
 		try {
-			connection.prepareStatement("insert into GAMERESULTS (" + DbGameResultModel.COL_GAME_ID + ","
-					+ " " + DbGameResultModel.COL_OFFICIAL_ID + ", " + DbGameResultModel.COL_ATHLETE_ID + ", " 
-				+ DbGameResultModel.COL_RESULT + ", " + DbGameResultModel.COL_SCORE + " ) values ( " 
-				+ "'" + gameId + "', '" + officialId + "', '" + athleteId + "', " + result + ", '" 
-				+ score + ");").execute();
-		} catch (SQLException e2) {
-			e2.printStackTrace();
+			PreparedStatement statement = connection.prepareStatement("insert into GAMERESULTS(" 
+					+ DbGameResultModel.COL_GAME_ID + ","
+					+ DbGameResultModel.COL_OFFICIAL_ID + ","
+					+ DbGameResultModel.COL_ATHLETE_ID + ","
+					+ DbGameResultModel.COL_RESULT + ","
+					+ DbGameResultModel.COL_SCORE
+					+ ") values (?, ?, ?, ?, ?)");
+				statement.setString(1, gameId);
+				statement.setString(2, officialId);
+				statement.setString(3, athleteId);
+				statement.setDouble(4, result);
+				statement.setInt(5, score);
+				statement.execute();
+				connection.commit();
+			}
+			catch(Exception e)
+			{
+				
+			}
 		}
-	}
-
+ 
+	// not using ,just for extra feature 
 	public void DeleteReault(String gameId) {
 		try {
 			connection.prepareStatement("delete from GAMERESULTS where " + DbGameResultModel.COL_GAME_ID + " = " + gameId + ";")
@@ -60,26 +74,14 @@ public class DbGameResult implements IGameResult {
 			e2.printStackTrace();
 		}
 	}
-	public static void main(String[] args) {
-		Server hsqlServer = null;
 
-		hsqlServer = new Server();
-		hsqlServer.setLogWriter(null);
-		hsqlServer.setSilent(true);
-		hsqlServer.setDatabaseName(0, "TestDB");
-		hsqlServer.setDatabasePath(0, "file:TestDB");
-		hsqlServer.start();	
-		DbGameResult Db = new DbGameResult();
-		Db.AddResult("gameId"," officialId", "athleteId", 11.5,1);
-		Db.PrintResult();
-	}
+	// not using ,just for extra feature and testing
 	public void PrintResult() {
 		try {
 			rs = connection.prepareStatement("select * from GAMERESULTS;").executeQuery();
 			while (rs.next())
 				System.out.println(
-						String.format("listId:%1s, gameId:%1s, athleteId:%1s, officialId:%1s, result:%1s, score:%1s",
-							rs.getInt(DbGameResultModel.COL_LISTID),
+						String.format("gameId:%1s, athleteId:%1s, officialId:%1s, result:%1s, score:%1s",
 							rs.getString(DbGameResultModel.COL_GAME_ID), 
 							rs.getString(DbGameResultModel.COL_OFFICIAL_ID),
 							rs.getString(DbGameResultModel.COL_ATHLETE_ID),
@@ -92,12 +94,13 @@ public class DbGameResult implements IGameResult {
 		System.out.println("There is no data!");
 	}
 
+	//use arrayList to store the result from each game
 	public ArrayList<DbGameResultModel> GetResult() {
 		ArrayList<DbGameResultModel> result = new ArrayList<DbGameResultModel>();
 		try {
 			ResultSet rs = connection.prepareStatement("select * from GAMERESULTS;").executeQuery();
 			while (rs.next())
-				result.add(new DbGameResultModel(rs.getInt(DbGameResultModel.COL_LISTID),
+				result.add(new DbGameResultModel(
 					rs.getString(DbGameResultModel.COL_GAME_ID), 
 					rs.getString(DbGameResultModel.COL_OFFICIAL_ID),
 					rs.getString(DbGameResultModel.COL_ATHLETE_ID),
@@ -110,6 +113,7 @@ public class DbGameResult implements IGameResult {
 		return result;
 	}
 
+//	not using
 	@Override
 	public void AddResult(String gameId, String officialId, String athleteId, Double result, Integer score,
 			Date timeStamp) {

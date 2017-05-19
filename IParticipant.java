@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 /**
  * The is the Ozlympic Game Program.
- * This the interface of DbParticipant 
+ * It is the interface of DbParticipant 
  * 
  * @author  SZUYING CHEN
  * @version 1.0
@@ -10,8 +10,16 @@ import java.util.ArrayList;
  */
 //Method bodies exist only for default methods and static methods
 public interface IParticipant {
+	
+	final String SWIMMER = "swimmer";
+	final String SPRINTERS = "sprinters";
+	final String CYCLIST = "cyclist";
+	final String SUPER = "super";
+	final String OFFICIAL = "Official";
+	
 	Boolean AddParticipants(String ID, String strType, String strName, Integer Age, String State);
 	void DeleteParticipants();
 	void PrintParticipants();
+	ArrayList<Participant> GetParticipants(String type);
 	ArrayList<Participant> GetParticipants();
 }

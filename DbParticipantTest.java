@@ -11,7 +11,7 @@ import org.junit.Test;
 
 /**
  * Test cases for the DbParticipant class
- * Not finish yet,will add more.
+ * To test connection,display participants table
  *
  * @author SZUYING CHEN
  * @version 1.0
@@ -48,8 +48,47 @@ public class DbParticipantTest {
 	public void testGetParticipants() {
 		DbParticipant gameDB = new DbParticipant();
 	
-		ArrayList<Participant> actual = gameDB.GetParticipants();
+		ArrayList<Participant> actual = gameDB.GetParticipants(null);
 		
+		Assert.assertTrue(actual.size() > 0);
+		
+		actual = gameDB.GetParticipants(IParticipant.CYCLIST);
+		Assert.assertTrue(actual.size() > 0);
+		
+		actual = gameDB.GetParticipants(IParticipant.OFFICIAL);
+		Assert.assertTrue(actual.size() > 0);
+		
+		actual = gameDB.GetParticipants(IParticipant.SPRINTERS);
+		Assert.assertTrue(actual.size() > 0);
+		
+		actual = gameDB.GetParticipants(IParticipant.SUPER);
+		Assert.assertTrue(actual.size() > 0);
+		
+		actual = gameDB.GetParticipants(IParticipant.SWIMMER);
+		Assert.assertTrue(actual.size() > 0);
+	}
+	
+	@Test
+	public void testGetParticipants_All() {
+		DbParticipant gameDB = new DbParticipant();
+		
+		ArrayList<Participant> actual = gameDB.GetParticipants(null);
+		Assert.assertTrue(actual.size() > 0);
+	}
+	
+	@Test
+	public void testGetParticipants_Cyclist() {
+		DbParticipant gameDB = new DbParticipant();
+		
+		ArrayList<Participant> actual = gameDB.GetParticipants(IParticipant.CYCLIST);
+		Assert.assertTrue(actual.size() > 0);
+	}
+	
+	@Test
+	public void testGetParticipants_Official() {
+		DbParticipant gameDB = new DbParticipant();
+		
+		ArrayList<Participant> actual = gameDB.GetParticipants(IParticipant.OFFICIAL);
 		Assert.assertTrue(actual.size() > 0);
 	}
 	

@@ -67,4 +67,10 @@ public class FileParticipant implements IParticipant {
 		testFile.PrintParticipants();
     }
 
+	@Override
+	public ArrayList<Participant> GetParticipants(String type) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
