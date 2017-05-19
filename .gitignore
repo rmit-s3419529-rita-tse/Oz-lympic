@@ -67,6 +67,7 @@ Temporary Items
 /DbParticipant.class
 /DbResult.class
 <<<<<<< HEAD
+/GameFullException.class
 =======
 /IParticipant.class
 /DbParticipantTest.class

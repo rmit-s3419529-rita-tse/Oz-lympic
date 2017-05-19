@@ -58,6 +58,9 @@ public class Game {
 	}
 
 
+	//NEW to print athlete time to GUI
+	static ArrayList <String> resultsdisplay = new ArrayList();
+	
 	
 	
 
@@ -73,24 +76,39 @@ public class Game {
 			if (athlete instanceof Swimmer){
 				Swimmer swim = (Swimmer) athlete;
 				swim.compete();
+				
+				//add to arraylist and sends to GUI
+				resultsdisplay.add(athlete.getName() + "  ...   " + swim.time);
+				
 				System.out.println(athlete.getName() + "  ...   " + swim.time);
 				results.put((int) swim.time, athlete);
 			}
 			else if (athlete instanceof Cyclist){
 				Cyclist c = (Cyclist) athlete;
 				c.compete();
+				
+				resultsdisplay.add(athlete.getName() + "  ...  " + c.time);
+				
 				System.out.println(athlete.getName() + "  ...  " + c.time);
+				
 				results.put((int) c.time, athlete);
 			}
 			else if (athlete instanceof Sprinter){
 				Sprinter s = (Sprinter) athlete;
 				s.compete();
+				
+				resultsdisplay.add(athlete.getName() + "  ...   " + s.time);
+				
 				System.out.println(athlete.getName() + "  ...   " + s.time);
+				
 				results.put((int) s.time, athlete);
 			}
 			else if (athlete instanceof SuperAthlete){
 				SuperAthlete SA = (SuperAthlete) athlete;
 				SA.compete(Game.gameType);
+				
+				resultsdisplay.add(athlete.getName() + "  ...   " + SA.time);
+				
 				System.out.println(athlete.getName() + "  ...   " + SA.time);
 				results.put((int) SA.time, athlete);
 			}

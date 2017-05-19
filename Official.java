@@ -40,6 +40,7 @@ public class Official extends Participant {
 
 	}
 
+	static ArrayList <String> awardslist = new ArrayList();
 	
 	//Award the Top 3 Athletes their points and record their names in the Game Results list
 	public static void awardWinners() {
@@ -50,27 +51,36 @@ public class Official extends Participant {
 
 		//1st Place
 		Athlete Gold = it.next();
+		
+		awardslist.add("1st PLACE  : " + Gold.getName() + "has scored 5pts");
 		System.out.println("1st PLACE  : " + Gold.getName());
 		System.out.println(Gold.getName() + " has scored 5pts.");
 		System.out.println("\n");
+		
 		Gold.addScore(5);
 		winningAthlete=Gold.getID();
 		Results1=Gold.getName();
 
 		//2nd Place
 		Athlete Silver = it.next();
+		
+		awardslist.add("2nd PLACE  : " + Silver.getName() + " has scored 3pts.");
 		System.out.println("2nd PLACE  : " + Silver.getName());
 		System.out.println(Silver.getName() + " has scored 3pts.");
 		System.out.println("\n");
+		
 		Silver.addScore(3);
 		SecondAth=Silver.getID();
 		Results2=Silver.getName();
 
 		//3rd Place
 		Athlete Bronze = it.next();
+		
+		awardslist.add("3rd PLACE  : " + Bronze.getName() + " has scored 1pts.");
 		System.out.println("3rd PLACE  : " + Bronze.getName());
 		System.out.println(Bronze.getName() + " has scored 1pts.");
 		System.out.println("\n");
+		
 		Bronze.addScore(1);
 		ThirdAth = Bronze.getID();
 		Results3=Bronze.getName();
@@ -86,6 +96,9 @@ public class Official extends Participant {
 		sort.clear();
 		
 	}
+	
+	
+	
 	
 	/*
 	score is going to be handled differently..... not within each athlete object

@@ -28,6 +28,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.TextFlow;
 
 /**
  * The is the Driver of Ozlympic Game Program
@@ -62,6 +63,7 @@ public class Driver implements Initializable {
 	private Label Message;
 	@FXML
 	private TextArea ta;
+
 	
 	//listview of selected participants
 	@FXML public ListView<String> list;
@@ -74,7 +76,7 @@ public class Driver implements Initializable {
 	
 
 	//use later when DB can be loaded
-	//GameDatabase gdb = new GameDatabase();
+	//DbParticipant gdb = new DbParticipant();
 	//public ObservableList<Participant> data = FXCollections.observableArrayList(gdb .GetParticipants());
 		
 	//TEMPORARY for now - ObservableList to fill the table, gets data from databse
@@ -189,6 +191,7 @@ public class Driver implements Initializable {
 			System.out.println(output[0]);
 			
 		//looping through gb.part database arraylist to find
+		//for (Participant p : gdb.GetParticipants()){
 		for (Participant p : gb.part){
 			if (p.getID().equals(output[0])){
 			System.out.println(p.getName()+p.getAge());
@@ -197,7 +200,7 @@ public class Driver implements Initializable {
 			//add to one arraylist to check for duplicates, wrong type
 			
 			//add directly to arraylist
-			//Game.chosenAthletes.add((Athlete) p);
+			Game.chosenAthletes.add((Athlete) p);
 			}
 		} 
 		
@@ -241,41 +244,24 @@ public class Driver implements Initializable {
 	}
 	
 	
-	
-
-	
-	
+		
 	//button to debug print console
-	public void testPrint(ActionEvent e) throws TooFewAthleteException, GameFullException, NoRefereeException, WrongTypeException{
+	public void ConfirmSelection(ActionEvent e) throws TooFewAthleteException, GameFullException, NoRefereeException, WrongTypeException{
 		
 		//EXCEPTION CHECKS
 		checkAthleteNo(list.getItems().size());
 		checkReferee(refselection);
 		
+		//not done
 		checkAthleteType(unchecked);
 		
-		
+		//PRINTING TO CONSOLE TO CHECK
 		//loop takes in size of list,
 		//but needs to be trimmed before using it to call particiapnts to create athletes objects
-		for (int i=0; i < list.getItems().size(); i++){ 
-			
-			System.out.println(list.getItems().get(i));
-			
-			String[] output = list.getItems().get(i).split("\\-");
-			System.out.println(output[0]);
-			
-		//looping through gb.part database arraylist to find
-		for (Participant p : gb.part){
-			if (p.getID().equals(output[0])){
-			System.out.println(p.getName()+p.getAge());
-			
-			Game.chosenAthletes.add(p);
-			Game.chosenAthletes.add((Athlete) p);
-			}
-		} 
-		}
-	
-	System.out.println(Game.getChosenAthletes());
+
+		
+		getUserSelectedAthletes();
+	System.out.println(Game.getChosenAthletes().toString());
 	
 	}
 
@@ -366,6 +352,34 @@ public class Driver implements Initializable {
 		//System.out.println("GAME ID   " + n.getGameID() + " |  EVENT   " +  n.getGameType());
 		System.out.println("___________________________________________________");
 		Game.runGame();
+		
+		//display to GUI
+		StringBuilder finish = new StringBuilder();
+		finish.append("GAME START");
+		finish.append("\n \n");
+		finish.append(Game.resultsdisplay.toString());
+		finish.append("\n \n");
+		finish.append("WINNERS + POINTS AWARDS: ");
+		finish.append("\n \n");
+		finish.append(Official.awardslist.toString());
+		String gameend = finish.toString();
+		
+		ta.setText(gameend);
+		
+		/*
+		ta.appendText("GAME START");
+		ta.appendText(Game.resultsdisplay.toString());
+		ta.appendText("\n \n");
+		ta.appendText("WINNERS: ");
+		ta.appendText(Official.awardslist.toString());
+		ta.appendText("\n \n");
+		ta.appendText("WINNERS: ");
+		ta.appendText(Official.GameResults.toString());
+		*/
+		
+		Game.resultsdisplay.clear();
+		Official.awardslist.clear();
+		
 
 	}
 	
