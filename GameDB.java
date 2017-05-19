@@ -13,61 +13,68 @@ public class GameDB {
 	
 	//dummy data to be deleted
 	ArrayList <Participant> part = new ArrayList<Participant>();
+
+	
+	
 	
 	public GameDB() {
-		part.add(new Participant("Oz1001", "swimmer", "A. Edwin", 30, "VIC"));
-		part.add(new Participant("Oz1002", "swimmer", "M. McKendrick", 34, "NSW"));
-		part.add(new Participant("Oz1003", "swimmer", "C. Brown", 54, "SA"));
-		part.add(new Participant("Oz1004", "swimmer", "Y. Lee", 42, "NSW"));
-		part.add(new Participant("Oz1005", "swimmer", "S. Fary", 36, "NT"));
-		part.add(new Participant("Oz1006", "swimmer", "M. Phelps", 22, "TAS"));
-		part.add(new Participant("Oz1007", "swimmer", "D. Shakes", 43, "QLD"));
-		part.add(new Participant("Oz1008", "swimmer", "J. Mahadevan", 18, "WA"));
-		part.add(new Participant("Oz1009", "swimmer", "M. Jasmine", 23, "WA"));
-		part.add(new Participant("Oz1010", "swimmer", "A. Allison", 40, "QLD"));
-		part.add(new Participant("Oz1011", "swimmer", "J. Savannah", 18, "TAS"));
-		part.add(new Participant("Oz1012", "swimmer", "R. Isabel", 31, "QLD"));
-		part.add(new Participant("Oz2001", "sprinters", "U. Bolt", 20, "VIC"));
-		part.add(new Participant("Oz2002", "sprinters", "S. Pearson", 34, "WA"));
-		part.add(new Participant("Oz2003", "sprinters", "F. Gump", 33, "QLD"));
-		part.add(new Participant("Oz2004", "sprinters", "R. Fenty", 41, "NT"));
-		part.add(new Participant("Oz2005", "sprinters", "S. Germanotta", 38, "TAS"));
-		part.add(new Participant("Oz2006", "sprinters", "C. Freeman", 44, "NSW"));
-		part.add(new Participant("Oz2007", "sprinters", "J. Ross", 52, "NT"));
-		part.add(new Participant("Oz2008", "sprinters", "P. Johnson", 23, "SA"));
-		part.add(new Participant("Oz2009", "sprinters", "B. Anna", 18, "NT"));
-		part.add(new Participant("Oz2010", "sprinters", "C. Zoe", 24, "SA"));
-		part.add(new Participant("Oz2011", "sprinters", "F. Natalie", 42, "NT"));
-		part.add(new Participant("Oz2012", "sprinters", "W. Kylie", 33, "WA"));
-		part.add(new Participant("Oz3001", "cyclist", "C. Evans", 24, "VIC"));
-		part.add(new Participant("Oz3002", "cyclist", "L. Armstrong", 25, "WA"));
-		part.add(new Participant("Oz3003", "cyclist", "H. Huntley", 24, "SA"));
-		part.add(new Participant("Oz3004", "cyclist", "P. Gilert", 27, "VIC"));
-		part.add(new Participant("Oz3005", "cyclist", "A. Chan", 25, "NSW"));
-		part.add(new Participant("Oz3006", "cyclist", "R. Tsang", 34, "NT"));
-		part.add(new Participant("Oz3007", "cyclist", "E. Kawamura", 32, "QLD"));
-		part.add(new Participant("Oz3008", "cyclist", "B. Hayes", 25, "TAS"));
-		part.add(new Participant("Oz3005", "cyclist", "K. Gavin", 27, "SA"));
-		part.add(new Participant("Oz3006", "cyclist", "T. Daniel", 20, "NT"));
-		part.add(new Participant("Oz3007", "cyclist", "E. Kawamura", 34, "VIC"));
-		part.add(new Participant("Oz3008", "cyclist", "I. Luke", 44, "WA"));
-		part.add(new Participant("Oz4001", "super", "T. Fernandez", 18, "NT"));
-		part.add(new Participant("Oz4002", "super", "C. Bird", 28, "TAS"));
-		part.add(new Participant("Oz4003", "super", "F. Jalal", 25, "NSW"));
-		part.add(new Participant("Oz4004", "super", "G. Seow", 26, "SA"));
-		part.add(new Participant("Oz4005", "super", "D. Chinn", 30, "QLD"));
-		part.add(new Participant("Oz4006", "super", "P. Lai", 43, "VIC"));
-		part.add(new Participant("Oz4007", "super", "L. Sade", 36, "NSW"));
-		part.add(new Participant("Oz4008", "super", "D. Laraine", 29, "QLD"));
-		part.add(new Participant("Oz4009", "super", "C. Aletta", 24, "VIC"));
-		part.add(new Participant("REF001", "Official", "Thomas", 50, "VIC"));
-		part.add(new Participant("REF002", "Official", "Frank", 48, "QLD"));
-		part.add(new Participant("REF003", "Official", "Tamora", 34, "NSW"));
-		part.add(new Participant("REF004", "Official", "Nicole", 24, "NT"));
-		part.add(new Participant("REF005", "Official", "Claudia", 20, "SA"));
-		part.add(new Participant("REF006", "Official", "Lilith", 18, "QLD"));
-		part.add(new Participant("REF007", "Official", "Michael", 24, "NSW"));
-		part.add(new Participant("REF008", "Official", "Andrew", 28, "WA"));
+		
+
+		part.add(new Swimmer("Oz1001", "swimmer", "A. Edwin", 30, "VIC"));
+		part.add(new Swimmer("Oz1002", "swimmer", "M. McKendrick", 34, "NSW"));
+		part.add(new Swimmer("Oz1003", "swimmer", "C. Brown", 54, "SA"));
+		part.add(new Swimmer("Oz1004", "swimmer", "Y. Lee", 42, "NSW"));
+		part.add(new Swimmer("Oz1005", "swimmer", "S. Fary", 36, "NT"));
+		part.add(new Swimmer("Oz1006", "swimmer", "M. Phelps", 22, "TAS"));
+		part.add(new Swimmer("Oz1007", "swimmer", "D. Shakes", 43, "QLD"));
+		part.add(new Swimmer("Oz1008", "swimmer", "J. Mahadevan", 18, "WA"));
+		part.add(new Swimmer("Oz1009", "swimmer", "M. Jasmine", 23, "WA"));
+		part.add(new Swimmer("Oz1010", "swimmer", "A. Allison", 40, "QLD"));
+		part.add(new Swimmer("Oz1011", "swimmer", "J. Savannah", 18, "TAS"));
+		part.add(new Swimmer("Oz1012", "swimmer", "R. Isabel", 31, "QLD"));
+		part.add(new Sprinter("Oz2001", "sprinter", "U. Bolt", 20, "VIC"));
+		part.add(new Sprinter("Oz2002", "sprinter", "S. Pearson", 34, "WA"));
+		part.add(new Sprinter("Oz2003", "sprinter", "F. Gump", 33, "QLD"));
+		part.add(new Sprinter("Oz2004", "sprinter", "R. Fenty", 41, "NT"));
+		part.add(new Sprinter("Oz2005", "sprinter", "S. Germanotta", 38, "TAS"));
+		part.add(new Sprinter("Oz2006", "sprinter", "C. Freeman", 44, "NSW"));
+		part.add(new Sprinter("Oz2007", "sprinter", "J. Ross", 52, "NT"));
+		part.add(new Sprinter("Oz2008", "sprinter", "P. Johnson", 23, "SA"));
+		part.add(new Sprinter("Oz2009", "sprinter", "B. Anna", 18, "NT"));
+		part.add(new Sprinter("Oz2010", "sprinter", "C. Zoe", 24, "SA"));
+		part.add(new Sprinter("Oz2011", "sprinter", "F. Natalie", 42, "NT"));
+		part.add(new Sprinter("Oz2012", "sprinter", "W. Kylie", 33, "WA"));
+		part.add(new Cyclist("Oz3001", "cyclist", "C. Evans", 24, "VIC"));
+		part.add(new Cyclist("Oz3002", "cyclist", "L. Armstrong", 25, "WA"));
+		part.add(new Cyclist("Oz3003", "cyclist", "H. Huntley", 24, "SA"));
+		part.add(new Cyclist("Oz3004", "cyclist", "P. Gilert", 27, "VIC"));
+		part.add(new Cyclist("Oz3005", "cyclist", "A. Chan", 25, "NSW"));
+		part.add(new Cyclist("Oz3006", "cyclist", "R. Tsang", 34, "NT"));
+		part.add(new Cyclist("Oz3007", "cyclist", "E. Kawamura", 32, "QLD"));
+		part.add(new Cyclist("Oz3008", "cyclist", "B. Hayes", 25, "TAS"));
+		part.add(new Cyclist("Oz3005", "cyclist", "K. Gavin", 27, "SA"));
+		part.add(new Cyclist("Oz3006", "cyclist", "T. Daniel", 20, "NT"));
+		part.add(new Cyclist("Oz3007", "cyclist", "E. Kawamura", 34, "VIC"));
+		part.add(new Cyclist("Oz3008", "cyclist", "I. Luke", 44, "WA"));
+		part.add(new SuperAthlete("Oz4001", "super", "T. Fernandez", 18, "NT"));
+		part.add(new SuperAthlete("Oz4002", "super", "C. Bird", 28, "TAS"));
+		part.add(new SuperAthlete("Oz4003", "super", "F. Jalal", 25, "NSW"));
+		part.add(new SuperAthlete("Oz4004", "super", "G. Seow", 26, "SA"));
+		part.add(new SuperAthlete("Oz4005", "super", "D. Chinn", 30, "QLD"));
+		part.add(new SuperAthlete("Oz4006", "super", "P. Lai", 43, "VIC"));
+		part.add(new SuperAthlete("Oz4007", "super", "L. Sade", 36, "NSW"));
+		part.add(new SuperAthlete("Oz4008", "super", "D. Laraine", 29, "QLD"));
+		part.add(new Official("Oz4009", "super", "C. Aletta", 24, "VIC"));
+		part.add(new Official("REF001", "Official", "Thomas", 50, "VIC"));
+		part.add(new Official("REF002", "Official", "Frank", 48, "QLD"));
+		part.add(new Official("REF003", "Official", "Tamora", 34, "NSW"));
+		part.add(new Official("REF004", "Official", "Nicole", 24, "NT"));
+		part.add(new Official("REF005", "Official", "Claudia", 20, "SA"));
+		part.add(new Official("REF006", "Official", "Lilith", 18, "QLD"));
+		part.add(new Official("REF007", "Official", "Michael", 24, "NSW"));
+		part.add(new Official("REF008", "Official", "Andrew", 28, "WA"));
+		
+
 	}
 	
 	
