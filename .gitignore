@@ -67,8 +67,11 @@ Temporary Items
 /DbParticipant.class
 /DbResult.class
 <<<<<<< HEAD
+<<<<<<< HEAD
 /GameFullException.class
 =======
+=======
+>>>>>>> 1319883c95506b1430232e4bb10a90a9317ed05d
 /IParticipant.class
 /DbParticipantTest.class
 /DbGameResult.class
@@ -77,4 +80,7 @@ Temporary Items
 /FileParticipant.class
 /FileGameResult.class
 /FileParticipantTest.class
+<<<<<<< HEAD
+>>>>>>> 1319883c95506b1430232e4bb10a90a9317ed05d
+=======
 >>>>>>> 1319883c95506b1430232e4bb10a90a9317ed05d
