@@ -60,8 +60,17 @@ public class DbParticipantTest {
 		
 		Boolean actual = gameDB.AddParticipants("Oz1001", "swimmer", "A. Edwin", 30, "VIC");
 		
-		Assert.assertEquals(false, actual);
+		Assert.assertEquals(true, actual);
 	}
+	public void testImpletedParticipant()
+	{
+		IParticipant gameDB = new DbParticipant();
+		
+		Boolean actual = gameDB.AddParticipants("Oz1001", "", "A. Edwin", 30, "VIC");
+		
+		Assert.assertEquals(true, actual);
+	}
+//	Study on creating a databse with a primary key and not notnull fields.
 	
 	@Test
 	public void testDeleteParticipants()

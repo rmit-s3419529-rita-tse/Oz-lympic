@@ -7,7 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class FileParticipantTest {
-
+	FileParticipant testFile;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -18,6 +18,8 @@ public class FileParticipantTest {
 
 	@Before
 	public void setUp() throws Exception {
+		testFile=new  FileParticipant("participants.txt");
+		testFile.PrintParticipants();
 	}
 
 	@After

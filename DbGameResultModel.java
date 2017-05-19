@@ -32,7 +32,7 @@ public class DbGameResultModel {
 		super();
 	}
 
-
+	
 	public Integer getListId() {
 		return listId;
 	}
@@ -42,7 +42,7 @@ public class DbGameResultModel {
 		this.listId = listId;
 	}
 
-
+	
 	public String getGameId() {
 		return gameId;
 	}

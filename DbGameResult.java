@@ -4,7 +4,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import org.hsqldb.Server;
+import java.util.Date;
+
+import org.hsqldb.server.Server;
 
 /**
  * The is the database of gameResult
@@ -58,18 +60,30 @@ public class DbGameResult implements IGameResult {
 			e2.printStackTrace();
 		}
 	}
+	public static void main(String[] args) {
+		Server hsqlServer = null;
 
+		hsqlServer = new Server();
+		hsqlServer.setLogWriter(null);
+		hsqlServer.setSilent(true);
+		hsqlServer.setDatabaseName(0, "TestDB");
+		hsqlServer.setDatabasePath(0, "file:TestDB");
+		hsqlServer.start();	
+		DbGameResult Db = new DbGameResult();
+		Db.AddResult("gameId"," officialId", "athleteId", 11.5,1);
+		Db.PrintResult();
+	}
 	public void PrintResult() {
 		try {
 			rs = connection.prepareStatement("select * from GAMERESULTS;").executeQuery();
 			while (rs.next())
 				System.out.println(
-						String.format("ID: %1s, type:%1s, name:%1s, age:%1s, state:%1s, score:%1s",
+						String.format("listId:%1s, gameId:%1s, athleteId:%1s, officialId:%1s, result:%1s, score:%1s",
 							rs.getInt(DbGameResultModel.COL_LISTID),
 							rs.getString(DbGameResultModel.COL_GAME_ID), 
 							rs.getString(DbGameResultModel.COL_OFFICIAL_ID),
 							rs.getString(DbGameResultModel.COL_ATHLETE_ID),
-							rs.getInt(DbGameResultModel.COL_RESULT),
+							rs.getDouble(DbGameResultModel.COL_RESULT),
 							rs.getInt(DbGameResultModel.COL_SCORE)));
 			// return null;
 		} catch (SQLException e2) {
@@ -94,5 +108,12 @@ public class DbGameResult implements IGameResult {
 			return null;
 		}
 		return result;
+	}
+
+	@Override
+	public void AddResult(String gameId, String officialId, String athleteId, Double result, Integer score,
+			Date timeStamp) {
+		// TODO Auto-generated method stub
+		
 	}
 }

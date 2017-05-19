@@ -3,7 +3,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import org.hsqldb.Server;
 
 /**
  * The is the database of Ozlympic Game Program which can connect to database
@@ -27,7 +26,7 @@ public class DbParticipant implements IParticipant {
 			//connection = DriverManager.getConnection("jdbc:hsqldb:file:TestDB", "sa", "123");			
 		} catch (SQLException e2) {
 			e2.printStackTrace();
-		} catch (ClassNotFoundException e2) {
+		} catch (ClassNotFoundException e2) {			
 			e2.printStackTrace();
 		}
 		// end of stub code for in/out stub
