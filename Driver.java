@@ -366,7 +366,7 @@ public class Driver implements Initializable {
 		
 		ta.setText(gameend);
 		
-		
+		//clear for next game
 		Game.resultsdisplay.clear();
 		Official.awardslist.clear();
 		
