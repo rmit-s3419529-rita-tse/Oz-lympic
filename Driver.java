@@ -366,16 +366,6 @@ public class Driver implements Initializable {
 		
 		ta.setText(gameend);
 		
-		/*
-		ta.appendText("GAME START");
-		ta.appendText(Game.resultsdisplay.toString());
-		ta.appendText("\n \n");
-		ta.appendText("WINNERS: ");
-		ta.appendText(Official.awardslist.toString());
-		ta.appendText("\n \n");
-		ta.appendText("WINNERS: ");
-		ta.appendText(Official.GameResults.toString());
-		*/
 		
 		Game.resultsdisplay.clear();
 		Official.awardslist.clear();
