@@ -15,7 +15,7 @@ public class Athlete extends Participant {
 	//Constructor
 	public Athlete(String ID, String type, String name, int age, String state, int score) {
 		super(ID, type, name, age, state);
-		//this.score=score;
+		this.score=score;
 
 	}
 

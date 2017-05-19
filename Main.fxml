@@ -19,7 +19,7 @@
 
 <AnchorPane fx:id="pane" prefHeight="616.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Driver">
    <children>
-      <BorderPane fx:id="pane" prefHeight="616.0" prefWidth="800.0">
+      <BorderPane fx:id="pane" prefHeight="700.0" prefWidth="800.0">
          <top>
             <MenuBar fx:id="menu" prefHeight="25.0" prefWidth="620.0" BorderPane.alignment="CENTER">
               <menus>
@@ -44,11 +44,10 @@
               <items>
                 <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <SplitPane fx:id="pane" dividerPositions="0.5" layoutY="1.0" prefHeight="297.0" prefWidth="564.0">
+                        <SplitPane fx:id="pane" dividerPositions="0.5" layoutY="1.0" prefHeight="330.0" prefWidth="563.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="240.0" prefWidth="274.0">
                                  <children>
-                                    <Button fx:id="btn2" layoutX="122.0" layoutY="248.0" mnemonicParsing="false" onAction="#addAthlete" text="+" />
                                     <TableView fx:id="table" layoutX="27.0" layoutY="39.0" prefHeight="200.0" prefWidth="223.0">
                                       <columns>
                                         <TableColumn fx:id="ID" prefWidth="53.0" text="ID" />
@@ -56,6 +55,9 @@
                                           <TableColumn fx:id="name" prefWidth="101.0" text="NAME" />
                                       </columns>
                                     </TableView>
+                                    <Button fx:id="btn2" layoutX="54.0" layoutY="251.0" mnemonicParsing="false" onAction="#addAthlete" text="+" />
+                                    <Button fx:id="btn2" layoutX="104.0" layoutY="251.0" mnemonicParsing="false" onAction="#removeAthlete" text="-" />
+                                    <Button fx:id="refereebtn" layoutX="154.0" layoutY="254.0" mnemonicParsing="false" onAction="#addReferee" text="Add Official" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="248.0" prefWidth="334.0">
@@ -64,20 +66,25 @@
                                        <font>
                                           <Font name="Calibri Light Italic" size="14.0" />
                                        </font></Text>
-                                    <Button fx:id="btn2" layoutX="128.0" layoutY="246.0" mnemonicParsing="false" onAction="#removeAthlete" text="-" />
-                                    <ListView fx:id="list" layoutX="39.0" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" />
+                                    <ListView fx:id="list" layoutX="39.0" layoutY="40.0" prefHeight="201.0" prefWidth="200.0" />
+                                    <Text fill="WHITE" layoutX="68.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Referee for the Game:">
+                                       <font>
+                                          <Font name="Calibri Bold Italic" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="referee" layoutX="108.0" layoutY="279.0" text="[ official ]" textFill="#fff3f3" />
                                  </children></AnchorPane>
                           </items>
                         </SplitPane>
                      </children>
                   </AnchorPane>
-                <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="276.0" prefWidth="581.0">
+                <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="254.0" prefWidth="563.0">
                      <children>
                         <Label fx:id="Message" layoutX="40.0" layoutY="14.0" prefHeight="42.0" prefWidth="236.0" text="Please make a selection." textFill="WHITE">
                            <font>
                               <Font name="Calibri Light" size="14.0" />
                            </font></Label>
-                        <TextArea fx:id="ta" layoutX="39.0" layoutY="69.0" prefHeight="163.0" prefWidth="475.0" />
+                        <TextArea fx:id="ta" layoutX="39.0" layoutY="74.0" prefHeight="190.0" prefWidth="486.0" />
                      </children>
                   </AnchorPane>
               </items>
@@ -100,6 +107,7 @@
                               </Text>
                            </children>
                         </VBox>
+                        <Button layoutX="76.0" layoutY="283.0" mnemonicParsing="false" onAction="#testPrint" text="Button" />
                      </children>
                   </AnchorPane>
                 <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="302.0" prefWidth="152.0">

@@ -26,14 +26,14 @@ public class Game {
 
 
 	//ArrayList to hold game events
-	ArrayList<Game> games = new ArrayList<Game>();
+	static ArrayList<Game> games = new ArrayList<Game>();
 
 	//Game constructor
-	public Game(String gameID, String gameType, Official off, ArrayList<Athlete> chosenAthletes){
+	public Game(String gameID, String gameType, Participant refselection, ArrayList<Athlete> chosenAthletes){
 		this.gameID = gameID;
 		Game.gameType = gameType;
 		this.chosenAthletes= chosenAthletes;
-		this.off=off;
+		this.off=(Official) refselection;
 	}
 
 	//Getters
@@ -96,7 +96,6 @@ public class Game {
 			}
 		}
 		
-
 		FinishLine();
 	}
 	

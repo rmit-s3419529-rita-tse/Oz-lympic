@@ -27,18 +27,18 @@ public class GameDB {
 		part.add(new Participant("Oz1010", "swimmer", "A. Allison", 40, "QLD"));
 		part.add(new Participant("Oz1011", "swimmer", "J. Savannah", 18, "TAS"));
 		part.add(new Participant("Oz1012", "swimmer", "R. Isabel", 31, "QLD"));
-		part.add(new Participant("Oz2001", "sprinters", "U. Bolt", 20, "VIC"));
-		part.add(new Participant("Oz2002", "sprinters", "S. Pearson", 34, "WA"));
-		part.add(new Participant("Oz2003", "sprinters", "F. Gump", 33, "QLD"));
-		part.add(new Participant("Oz2004", "sprinters", "R. Fenty", 41, "NT"));
-		part.add(new Participant("Oz2005", "sprinters", "S. Germanotta", 38, "TAS"));
-		part.add(new Participant("Oz2006", "sprinters", "C. Freeman", 44, "NSW"));
-		part.add(new Participant("Oz2007", "sprinters", "J. Ross", 52, "NT"));
-		part.add(new Participant("Oz2008", "sprinters", "P. Johnson", 23, "SA"));
-		part.add(new Participant("Oz2009", "sprinters", "B. Anna", 18, "NT"));
-		part.add(new Participant("Oz2010", "sprinters", "C. Zoe", 24, "SA"));
-		part.add(new Participant("Oz2011", "sprinters", "F. Natalie", 42, "NT"));
-		part.add(new Participant("Oz2012", "sprinters", "W. Kylie", 33, "WA"));
+		part.add(new Participant("Oz2001", "sprinter", "U. Bolt", 20, "VIC"));
+		part.add(new Participant("Oz2002", "sprinter", "S. Pearson", 34, "WA"));
+		part.add(new Participant("Oz2003", "sprinter", "F. Gump", 33, "QLD"));
+		part.add(new Participant("Oz2004", "sprinter", "R. Fenty", 41, "NT"));
+		part.add(new Participant("Oz2005", "sprinter", "S. Germanotta", 38, "TAS"));
+		part.add(new Participant("Oz2006", "sprinter", "C. Freeman", 44, "NSW"));
+		part.add(new Participant("Oz2007", "sprinter", "J. Ross", 52, "NT"));
+		part.add(new Participant("Oz2008", "sprinter", "P. Johnson", 23, "SA"));
+		part.add(new Participant("Oz2009", "sprinter", "B. Anna", 18, "NT"));
+		part.add(new Participant("Oz2010", "sprinter", "C. Zoe", 24, "SA"));
+		part.add(new Participant("Oz2011", "sprinter", "F. Natalie", 42, "NT"));
+		part.add(new Participant("Oz2012", "sprinter", "W. Kylie", 33, "WA"));
 		part.add(new Participant("Oz3001", "cyclist", "C. Evans", 24, "VIC"));
 		part.add(new Participant("Oz3002", "cyclist", "L. Armstrong", 25, "WA"));
 		part.add(new Participant("Oz3003", "cyclist", "H. Huntley", 24, "SA"));
@@ -77,7 +77,7 @@ public class GameDB {
 
 	public static void LoadDB() {
 		// add the list of Athletes and Officials into database
-		GameDatabase TestGame = new GameDatabase();
+		DbParticipant TestGame = new DbParticipant();
 		
 		
 		

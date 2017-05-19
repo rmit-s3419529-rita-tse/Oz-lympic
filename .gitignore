@@ -66,3 +66,14 @@ Temporary Items
 /TestDB.class
 /DbParticipant.class
 /DbResult.class
+<<<<<<< HEAD
+=======
+/IParticipant.class
+/DbParticipantTest.class
+/DbGameResult.class
+/DbGameResultModel.class
+/IGameResult.class
+/FileParticipant.class
+/FileGameResult.class
+/FileParticipantTest.class
+>>>>>>> 1319883c95506b1430232e4bb10a90a9317ed05d
