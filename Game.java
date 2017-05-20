@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -17,6 +18,7 @@ public class Game {
 	public String gameID;
 	static String gameType;
 	public Official off;
+	public Date d ;
 
 	//Hashmap for keeping game results for each event
 	static HashMap<Integer, Athlete> results = new HashMap<Integer, Athlete>();
@@ -33,7 +35,10 @@ public class Game {
 		this.gameID = gameID;
 		Game.gameType = gameType;
 		this.chosenAthletes= chosenAthletes;
-		this.off=(Official) refselection;
+
+		this.off=off;
+		d = new Date();
+
 	}
 
 	//Getters

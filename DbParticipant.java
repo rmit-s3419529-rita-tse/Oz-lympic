@@ -1,14 +1,16 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import org.hsqldb.Server;
+
+import org.hsqldb.lib.StringUtil;
 
 /**
- * The is the database of Ozlympic Game Program which can connect to database
+ * The is the DbParticipant class of Ozlympic Game which can connect to database
+ * It shows participants list on the database  and store it
  * 
- *
  * @author SZUYING CHEN
  * @version 4.0
  * @since 2017-05-08
@@ -23,16 +25,17 @@ public class DbParticipant implements IParticipant {
 		// making a connection
 		try {
 			Class.forName("org.hsqldb.jdbcDriver");
-			connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/TestDB", "sa", "123");
-			//connection = DriverManager.getConnection("jdbc:hsqldb:file:TestDB", "sa", "123");			
+//			connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/TestDB", "sa", "123"); sever mode
+			connection = DriverManager.getConnection("jdbc:hsqldb:file:TestDB", "sa", "123");			
 		} catch (SQLException e2) {
 			e2.printStackTrace();
-		} catch (ClassNotFoundException e2) {
+		} catch (ClassNotFoundException e2) {			
 			e2.printStackTrace();
 		}
 		// end of stub code for in/out stub
 	}
-
+	
+    // not using ,just for extra feature and testing
 	public Boolean AddParticipants(String ID, String strType, String strName, Integer Age, String State) {
 		Boolean result = false;
 		try {
@@ -46,6 +49,7 @@ public class DbParticipant implements IParticipant {
 		return result;
 	}
 
+	// not using ,just for extra feature and testing
 	public void DeleteParticipants() {
 		try {
 			connection.prepareStatement("DELETE FROM participants").execute();
@@ -54,6 +58,7 @@ public class DbParticipant implements IParticipant {
 			e2.printStackTrace();
 		}
 	}
+	
     //print data from participants    
 	public void PrintParticipants() {
 		try {
@@ -67,15 +72,19 @@ public class DbParticipant implements IParticipant {
 		}
 		System.out.println("There is no data!");
 	}
-    //use arrayList to list the data from participants	
-	public ArrayList<Participant> GetParticipants() {
+	
+    //use arrayList to store the different type of athlete and official from the participants 	
+	public ArrayList<Participant> GetParticipants(String type) {
 		ArrayList<Participant> participants = new ArrayList<Participant>();
+		ResultSet rs = null;
 		try {
+			PreparedStatement statement = connection.prepareStatement("select distinct * from participants where UPPER(type) = isnull(?, UPPER(type));");
+			statement.setString(1, StringUtil.isEmpty(type) ? type :type.toUpperCase());
 			rs = connection.prepareStatement("select * from participants;").executeQuery();
+			
 			while (rs.next())
 				participants.add(new Participant(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4),
 						rs.getString(5)));
-
 			
 		} catch (SQLException e2) {
 			e2.printStackTrace();
@@ -84,4 +93,9 @@ public class DbParticipant implements IParticipant {
 		return participants;
 	}
 
+	@Override
+	public ArrayList<Participant> GetParticipants() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

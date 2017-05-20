@@ -1,14 +1,12 @@
 
 public class DbGameResultModel {
 	
-	public static final String COL_LISTID = "LISTID";
 	public static final String COL_GAME_ID = "GAME_ID";
 	public static final String COL_OFFICIAL_ID = "OFFICIAL_ID";
 	public static final String COL_ATHLETE_ID = "ATHLETE_ID";
 	public static final String COL_RESULT = "RESULT";
 	public static final String COL_SCORE = "SCORE";
 	
-	private Integer listId;
 	private String gameId;
 	private String officialId;
 	private String athleteId;
@@ -16,10 +14,9 @@ public class DbGameResultModel {
 	private Integer score;
 	
 	
-	public DbGameResultModel(Integer listId, String gameId, String officialId, String athleteId, Double result,
+	public DbGameResultModel(String gameId, String officialId, String athleteId, Double result,
 			Integer score) {
 		super();
-		this.listId = listId;
 		this.gameId = gameId;
 		this.officialId = officialId;
 		this.athleteId = athleteId;
@@ -33,16 +30,7 @@ public class DbGameResultModel {
 	}
 
 
-	public Integer getListId() {
-		return listId;
-	}
-
-
-	public void setListId(Integer listId) {
-		this.listId = listId;
-	}
-
-
+	
 	public String getGameId() {
 		return gameId;
 	}

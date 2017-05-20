@@ -35,7 +35,7 @@ public class Ozlympic extends Application {
 
 
 	public static void main(String[] args) {
-        //run the database server        
+        //making a connection     
 		Server hsqlServer = null;
 
 		hsqlServer = new Server();

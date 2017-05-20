@@ -1,2 +1,6 @@
-The mouse ran down,
-mouse ran up the clock.
+gameId
+officialId
+athleteId
+Tue Apr 02 11:35:42 AEDT 2013
+55.98
+5
