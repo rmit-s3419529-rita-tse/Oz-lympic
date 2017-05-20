@@ -28,12 +28,12 @@ Oz3003, cyclist, H. Huntley, 24, SA
 Oz3004, cyclist, P. Gilert, 27, VIC
 Oz3005, cyclist, A. Chan, 25, NSW
 Oz3006, cyclist, R. Tsang, 34, NT
-Oz3007, cyclist, E. Kawamura, 32, QLD
+Oz3007, cyclist, E. Kawamura, 22, SA
 Oz3008, cyclist, B. Hayes, 25, TAS
-Oz3005, cyclist, K. Gavin, 27, SA
-Oz3006, cyclist, T. Daniel, 20, NT
-Oz3007, cyclist, E. Kawamura, 34, VIC
-Oz3008, cyclist, I. Luke, 44, WA
+Oz3009, cyclist, K. Gavin, 24, VIC
+Oz3010, cyclist, T. Daniel, 19, QLD
+Oz3011, cyclist, E. Kawamura, 30, NT
+Oz3012, cyclist, I. Luke, 27, WA
 Oz4001, super, T. Fernande, 18, NT
 Oz4002, super, C. Bird, 28, TAS
 Oz4003, super, F. Jalal, 25, NSW

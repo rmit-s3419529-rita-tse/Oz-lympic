@@ -77,12 +77,17 @@ public class Driver implements Initializable {
 	@FXML private TableColumn<Participant, String> name;
 
 	//use later when DB can be loaded
+<<<<<<< HEAD
 	//DbParticipant gdb = new DbParticipant();
     //public ObservableList<Participant> data = FXCollections.observableArrayList(gdb .GetParticipants());
+=======
+	DbParticipant gdb = new DbParticipant();
+	public ObservableList<Participant> data = FXCollections.observableArrayList(gdb .GetParticipants(null));
+>>>>>>> 7518d8b0bb39413dc3dcd70834be3e44275287ed
 		
 	//TEMPORARY for now - ObservableList to fill the table, gets data from databse
-	GameDB gb = new GameDB();
-	public ObservableList<Participant> data = FXCollections.observableArrayList(gb.part);
+	//GameDB gb = new GameDB();
+	//public ObservableList<Participant> data = FXCollections.observableArrayList(gb.part);
 	
 	//initalisations of table
 	@Override
@@ -183,8 +188,13 @@ public class Driver implements Initializable {
 			
 		//looping through gb.part database arraylist to find
 		
+<<<<<<< HEAD
       //for (Participant p : gdb.GetParticipants()){
 		for (Participant p : gb.part){
+=======
+	  for (Participant p : gdb.GetParticipants(null)){
+		//for (Participant p : gb.part){
+>>>>>>> 7518d8b0bb39413dc3dcd70834be3e44275287ed
 			if (p.getID().equals(output[0])){
 				
 				//printing to console to debug
@@ -262,43 +272,45 @@ public class Driver implements Initializable {
 	public void ConfirmSelection(ActionEvent e) throws NoRefereeException, WrongTypeException, TooFewAthleteException, GameFullException{
 		
 		do {
+			//checks number of athletes user selected
 		NumAthletes();
 
-		
+		//failed number of athletes
 		if (validNumAthletes=false){
 			ta.setText("please check number of selections");
 		} else {
+			//enough and not too many atheltes ==> check types of participants match game selection
 			TypeAthletes();
 		}
 		
-		
+		//failed type of athletes(wrong type for the game)
 		if (validTypeAthletes = false){
+			//clear lists as users update the lists
 			checked.clear();
 			unchecked.clear();
 			gameReady=false;
 			
 		} else {
 			
-			ta.setText("YOUR GAME IS READY. Please press START GAME.");
-			
+			//type of athletes match event type
 			//add checked type athletes list to checked list
 			for (Participant p : unchecked){
 			checked.add(p);
 			gameReady=false;
+			
+			//check if referee is selected
 			refChecked();
 		}
-			
+			//referee is not selected
 			if (refereeExists=false){
 				gameReady=false;
-			} else {
-			
-				
-		if (gameReady=false){
-		ta.setText("GAME NOT READY \n Please check your athletes selections.");
+			} 
 		}
 		
-		}
-		}
+		//should print only when all exceptions/checks are ok
+		//not right
+	//ta.setText("YOUR GAME IS READY. Please press START GAME.");
+
 		} while(gameReady);//while gameReady=true
 		
 	}
@@ -308,12 +320,12 @@ public class Driver implements Initializable {
 		
 		//check ref selection
 		checkReferee(refselection);
-	
 		
 	}
 	
 
-	Participant refselection;
+	static Participant refselection;
+	
 	//button to add referee - added to label
 	public void addReferee(ActionEvent e){
 	
@@ -321,7 +333,7 @@ public class Driver implements Initializable {
 		refselection = table.getSelectionModel().getSelectedItem();
 		
 		//check if is official
-		if (refselection.getType()=="Official" || refselection.getType()=="official"){
+		if (refselection.getType().equals("Official")){
 		
 		//add to label
 		referee.setText(refselection.getName());
@@ -353,7 +365,7 @@ public class Driver implements Initializable {
 
 	    	for (Participant p : unchecked) {
 	    		 
-	    		if (p.getType()=="sprinter" || p.getType()=="cyclist") {
+	    		if (p.getType().equals("sprinter") || p.getType().equals("cyclist")) {
 	    			try { throw new WrongTypeException ("\nYou've selected the wrong type of athletes for swim game.\n");
 	    		} catch (WrongTypeException e4) {
 	    			ta.setText(e4.toString());
@@ -370,7 +382,7 @@ public class Driver implements Initializable {
 		} else if (Event=="Track") {
 			for (Participant p : unchecked) {
 				 
-	    		if (p.getType()=="swimmer" || p.getType()=="cyclist") {
+	    		if (p.getType().equals("swimmer") || p.getType().equals("cyclist")) {
 	    			try { throw new WrongTypeException ("\nYou've selected the wrong type of athletes for track game\n");
 	    		} catch (WrongTypeException e5) {
 	    			ta.setText(e5.toString());
@@ -387,7 +399,7 @@ public class Driver implements Initializable {
 		} else if (Event == "Cycling") {
 			for (Participant p : unchecked) {
 				 
-	    		if (p.getType()=="swimmer" || p.getType()=="sprinter") {
+	    		if (p.getType().equals("swimmer") || p.getType().equals("sprinter")) {
 	    			try { throw new WrongTypeException ("\nYou've selected the wrong type of athletes for cycling game\n");
 	    		} catch (WrongTypeException e6) {
 	    			ta.setText(e6.toString());
@@ -407,13 +419,15 @@ public class Driver implements Initializable {
 				
 	//Method to Start Game Event; after Game ID is created and to add in Athletes
 	public void startGame(ActionEvent e){
+		
 				
 		if (gameReady=true) {
 					
 		//add checked athletes to arraylist		
 		for (Participant p : checked){
-			
-		Game.chosenAthletes.add((Athlete) p);
+		
+		//Game.chosenAthletes.add((Athlete) p);
+		Game.chosenAthletes.add(p);
 		}
 		
 		//printing to console to debug
@@ -516,8 +530,8 @@ public class Driver implements Initializable {
 	public void DisplayRankings(ActionEvent e){
 
 		System.out.println("\n ++++++++++ OZLYMPIC GAME RANKINGS +++++++++++++");
-		//Official.awardRank();
-		//need to update awardRank calling DB
+		Official.awardRank();
+		ta.setText(Official.displayranking);
 	}
 
 
