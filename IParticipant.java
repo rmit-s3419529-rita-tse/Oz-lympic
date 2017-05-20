@@ -21,5 +21,4 @@ public interface IParticipant {
 	void DeleteParticipants();
 	void PrintParticipants();
 	ArrayList<Participant> GetParticipants(String type);
-	ArrayList<Participant> GetParticipants();
 }
