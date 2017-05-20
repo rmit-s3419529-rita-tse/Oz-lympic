@@ -21,6 +21,9 @@ public class Official extends Participant {
 
 	//ArrayList to store sorted results of each game;
 	static TreeMap<Integer, Athlete> sort = new TreeMap<Integer, Athlete>();
+	
+	//arraylists for athlete who have competed
+	static ArrayList<Athlete> competed = new ArrayList<Athlete>();
 
 	//Winners of each game, handled as ID and Names to be used to check predictions and storing final game results
 	public static String winningAthlete;
@@ -29,8 +32,10 @@ public class Official extends Participant {
 	public static String Results1;
 	public static String Results2;
 	public static String Results3;
+	
+	static String displayranking;
 
-	//UPDATED CODE
+	
 	//Official's method to summarize the game results using a treemap.
 	public static void sumGame(HashMap results){
 
@@ -61,6 +66,7 @@ public class Official extends Participant {
 		winningAthlete=Gold.getID();
 		Results1=Gold.getName();
 
+
 		//2nd Place
 		Athlete Silver = it.next();
 		
@@ -72,6 +78,7 @@ public class Official extends Participant {
 		Silver.addScore(3);
 		SecondAth=Silver.getID();
 		Results2=Silver.getName();
+	
 
 		//3rd Place
 		Athlete Bronze = it.next();
@@ -84,55 +91,66 @@ public class Official extends Participant {
 		Bronze.addScore(1);
 		ThirdAth = Bronze.getID();
 		Results3=Bronze.getName();
-		
+	
 		//add this game results to GameResults arraylist
 		GameResults.add("OFFICIAL: " + Driver.refselection.getName() + " |  1: " + Results1 + " |  2: " + Results2 + " |  3: " + Results3);
 		
 		//after game results is recorded, list is cleared for the next game
 		winners.clear();
 		
-		
 		//clear treemap for next game
 		sort.clear();
 		
 	}
 	
-
 	
-	//score is going to be handled differently..... not within each athlete object
-	//Inner class to compare the Athletes score to produce overall ranking
-	static class RankComp implements Comparator<Athlete>{
-		@Override
-		public int compare(Athlete a1, Athlete a2) {
-			if (a1.getScore() < a2.getScore())  { //NO SCORE in athlete or participant
-				return 1;
-			} else {
-				return -1;
-			}
-		}
-	}
 	
-
-//still need!!!! do not delete
+	
 	//UPDATED CODE
 	//Method to generate the ranking of Athletes for Ozlympic
 	public static void awardRank(){
 
-		//The ranking is held is a TreeSet, loaded with Athletes Objects
-		TreeSet <Athlete> rankings = new TreeSet<Athlete>(new RankComp());
+		
+		ArrayList <Athlete> rank = new ArrayList<Athlete>();
+
+		
+	//	compare.putAll(competed);
+		Athlete min;
+
+		for (Athlete d : competed) {
+			if (rank.size() == 0) {
+				rank.add(d);
+			} else {
+
+				for (Athlete r : rank) {
+					if (d.getID().equals(r.getID())) {
+						r.addScore(d.getScore());
+					} else {
+						rank.add(d);
+						break;
+					}
+				}
+			}
+		}
 		
 
-		//adding all the athletes types to the rankings board
-		DbParticipant o = new DbParticipant();
-		o.GetParticipants();
+			StringBuilder allranks = new StringBuilder();
 
-
+			
 		//prints the athletes rankings in an order, with highest score first
-		for (Participant b:rankings) {
-			System.out.println(o);
+		for (Athlete a:rank) {
+			
+			allranks.append(a);
+			allranks.append("\n");
+			System.out.println(a);
+			
 		}
-
+		
+			String ranking = allranks.toString();
+			displayranking = ranking;
+			
 	}
+
 
 
 }

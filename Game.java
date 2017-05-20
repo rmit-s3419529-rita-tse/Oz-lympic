@@ -24,14 +24,16 @@ public class Game {
 	static HashMap<Integer, Athlete> results = new HashMap<Integer, Athlete>();
 
 	//ArrayList for chosen Athletes participating in the game event
-	static ArrayList<Athlete> chosenAthletes = new ArrayList<Athlete>();
+	static ArrayList<Participant> chosenAthletes = new ArrayList<Participant>();
 
 
 	//ArrayList to hold game events
 	static ArrayList<Game> games = new ArrayList<Game>();
 
 	//Game constructor
-	public Game(String gameID, String gameType, Participant refselection, ArrayList<Athlete> chosenAthletes){
+	public Game(String gameID, String gameType, Participant refselection, ArrayList<Participant> chosenAthletes){
+	//public Game(String gameID, String gameType, Participant refselection, ArrayList<Athlete> chosenAthletes){
+			
 		this.gameID = gameID;
 		Game.gameType = gameType;
 		this.chosenAthletes= chosenAthletes;
@@ -53,7 +55,9 @@ public class Game {
 		return off;
 	}
 
-	public static ArrayList<Athlete> getChosenAthletes() {
+
+	public static ArrayList<Participant> getChosenAthletes() {
+					
 		return chosenAthletes;
 	}
 
@@ -65,56 +69,75 @@ public class Game {
 	//NEW to print athlete time to GUI
 	static ArrayList <String> resultsdisplay = new ArrayList();
 	
-	
-	
 
 	
 
 	//Method that Runs the Game Event, loops through the chosenAthletes list, checks if their athlete types and generate a time for each
 	public static void runGame(){
 
-		System.out.println("\n Ready Set Go!!!  ----------------------------------- \n");
 		
-		for (Athlete athlete : chosenAthletes){
+		for (Participant athlete : chosenAthletes){
+		
 
-			if (athlete instanceof Swimmer){
-				Swimmer swim = (Swimmer) athlete;
+			
+			if (athlete.getType().equals("swimmer")){
+		
+				Swimmer swim = new Swimmer(athlete.getID(),athlete.getType(),athlete.getName(), athlete.getAge(), athlete.getState(),-1);
 				swim.compete();
 				
 				//add to arraylist and sends to GUI
 				resultsdisplay.add(athlete.getName() + "  ...   " + swim.time);
 				
-				System.out.println(athlete.getName() + "  ...   " + swim.time);
-				results.put((int) swim.time, athlete);
+				Official.competed.add(swim);
+				
+				
+				results.put((int) swim.time, swim);
 			}
-			else if (athlete instanceof Cyclist){
-				Cyclist c = (Cyclist) athlete;
+			else if 
+			
+			(athlete.getType().equals("cyclist")) {
+				
+				
+				Cyclist c = new Cyclist(athlete.getID(),athlete.getType(),athlete.getName(), athlete.getAge(), athlete.getState(),-1);
 				c.compete();
 				
 				resultsdisplay.add(athlete.getName() + "  ...  " + c.time);
 				
+				
+				Official.competed.add(c);
 				System.out.println(athlete.getName() + "  ...  " + c.time);
 				
-				results.put((int) c.time, athlete);
+				results.put((int) c.time, c);
 			}
-			else if (athlete instanceof Sprinter){
-				Sprinter s = (Sprinter) athlete;
+			else if 
+			
+			(athlete.getType().equals("sprinter"))
+				
+			{
+				Sprinter s = new Sprinter(athlete.getID(),athlete.getType(),athlete.getName(), athlete.getAge(), athlete.getState(),-1);
 				s.compete();
 				
 				resultsdisplay.add(athlete.getName() + "  ...   " + s.time);
 				
 				System.out.println(athlete.getName() + "  ...   " + s.time);
 				
-				results.put((int) s.time, athlete);
+				Official.competed.add(s);
+				results.put((int) s.time, s);
 			}
-			else if (athlete instanceof SuperAthlete){
-				SuperAthlete SA = (SuperAthlete) athlete;
+			else if 
+			
+			(athlete.getType().equals("super"))
+				
+				{
+				SuperAthlete SA = new SuperAthlete(athlete.getID(),athlete.getType(),athlete.getName(), athlete.getAge(), athlete.getState(),-1);
 				SA.compete(Game.gameType);
 				
 				resultsdisplay.add(athlete.getName() + "  ...   " + SA.time);
 				
 				System.out.println(athlete.getName() + "  ...   " + SA.time);
-				results.put((int) SA.time, athlete);
+				
+				Official.competed.add(SA);
+				results.put((int) SA.time, SA);
 			}
 		}
 		
@@ -122,7 +145,9 @@ public class Game {
 	}
 	
 	
-	//
+
+	
+	
 	//method to handle the official methods after the game is run
 	public static void FinishLine() {
 		System.out.println(".............................................");

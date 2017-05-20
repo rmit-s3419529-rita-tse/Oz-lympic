@@ -77,12 +77,12 @@ public class Driver implements Initializable {
 	@FXML private TableColumn<Participant, String> name;
 
 	//use later when DB can be loaded
-	//DbParticipant gdb = new DbParticipant();
-	//public ObservableList<Participant> data = FXCollections.observableArrayList(gdb .GetParticipants());
+	DbParticipant gdb = new DbParticipant();
+	public ObservableList<Participant> data = FXCollections.observableArrayList(gdb .GetParticipants(null));
 		
 	//TEMPORARY for now - ObservableList to fill the table, gets data from databse
-	GameDB gb = new GameDB();
-	public ObservableList<Participant> data = FXCollections.observableArrayList(gb.part);
+	//GameDB gb = new GameDB();
+	//public ObservableList<Participant> data = FXCollections.observableArrayList(gb.part);
 	
 	//initalisations of table
 	@Override
@@ -183,8 +183,8 @@ public class Driver implements Initializable {
 			
 		//looping through gb.part database arraylist to find
 		
-	  //for (Participant p : gdb.GetParticipants()){
-		for (Participant p : gb.part){
+	  for (Participant p : gdb.GetParticipants(null)){
+		//for (Participant p : gb.part){
 			if (p.getID().equals(output[0])){
 				
 				//printing to console to debug
@@ -299,7 +299,7 @@ public class Driver implements Initializable {
 		
 		//should print only when all exceptions/checks are ok
 		//not right
-	ta.setText("YOUR GAME IS READY. Please press START GAME.");
+	//ta.setText("YOUR GAME IS READY. Please press START GAME.");
 
 		} while(gameReady);//while gameReady=true
 		
@@ -315,6 +315,7 @@ public class Driver implements Initializable {
 	
 
 	static Participant refselection;
+	
 	//button to add referee - added to label
 	public void addReferee(ActionEvent e){
 	
@@ -322,7 +323,7 @@ public class Driver implements Initializable {
 		refselection = table.getSelectionModel().getSelectedItem();
 		
 		//check if is official
-		if (refselection.getType()=="Official" || refselection.getType()=="official"){
+		if (refselection.getType().equals("Official")){
 		
 		//add to label
 		referee.setText(refselection.getName());
@@ -354,7 +355,7 @@ public class Driver implements Initializable {
 
 	    	for (Participant p : unchecked) {
 	    		 
-	    		if (p.getType()=="sprinter" || p.getType()=="cyclist") {
+	    		if (p.getType().equals("sprinter") || p.getType().equals("cyclist")) {
 	    			try { throw new WrongTypeException ("\nYou've selected the wrong type of athletes for swim game.\n");
 	    		} catch (WrongTypeException e4) {
 	    			ta.setText(e4.toString());
@@ -371,7 +372,7 @@ public class Driver implements Initializable {
 		} else if (Event=="Track") {
 			for (Participant p : unchecked) {
 				 
-	    		if (p.getType()=="swimmer" || p.getType()=="cyclist") {
+	    		if (p.getType().equals("swimmer") || p.getType().equals("cyclist")) {
 	    			try { throw new WrongTypeException ("\nYou've selected the wrong type of athletes for track game\n");
 	    		} catch (WrongTypeException e5) {
 	    			ta.setText(e5.toString());
@@ -388,7 +389,7 @@ public class Driver implements Initializable {
 		} else if (Event == "Cycling") {
 			for (Participant p : unchecked) {
 				 
-	    		if (p.getType()=="swimmer" || p.getType()=="sprinter") {
+	    		if (p.getType().equals("swimmer") || p.getType().equals("sprinter")) {
 	    			try { throw new WrongTypeException ("\nYou've selected the wrong type of athletes for cycling game\n");
 	    		} catch (WrongTypeException e6) {
 	    			ta.setText(e6.toString());
@@ -409,14 +410,14 @@ public class Driver implements Initializable {
 	//Method to Start Game Event; after Game ID is created and to add in Athletes
 	public void startGame(ActionEvent e){
 		
-		
 				
 		if (gameReady=true) {
 					
 		//add checked athletes to arraylist		
 		for (Participant p : checked){
-			
-		Game.chosenAthletes.add((Athlete) p);
+		
+		//Game.chosenAthletes.add((Athlete) p);
+		Game.chosenAthletes.add(p);
 		}
 		
 		//printing to console to debug
@@ -519,8 +520,8 @@ public class Driver implements Initializable {
 	public void DisplayRankings(ActionEvent e){
 
 		System.out.println("\n ++++++++++ OZLYMPIC GAME RANKINGS +++++++++++++");
-		//Official.awardRank();
-		//need to update awardRank calling DB
+		Official.awardRank();
+		ta.setText(Official.displayranking);
 	}
 
 
