@@ -40,7 +40,7 @@ public class FileGameResult implements IGameResult {
 //public static void main(String[] args){
 //	
 //    SimpleDateFormat dateformat2 = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-//    String strdate2 = "02-04-2013 11:35:42";
+//    String strdate2 = "02-04-2015 11:35:42";
 //    Date timeStamp=null;
 //    try {
 //        timeStamp = dateformat2.parse(strdate2);
@@ -50,7 +50,7 @@ public class FileGameResult implements IGameResult {
 //
 //	
 //	 FileGameResult testFileRs =new FileGameResult("gameResults.txt");
-//	 testFileRs.AddResult("gameId", "officialId", "athleteId",  55.98, 5, timeStamp);
+//	 testFileRs.AddResult("001", "013", "athleteId",  55.98, 5, timeStamp);
 //}
 
 

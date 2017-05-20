@@ -92,10 +92,4 @@ public class DbParticipant implements IParticipant {
 		}
 		return participants;
 	}
-
-	@Override
-	public ArrayList<Participant> GetParticipants() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

@@ -1,6 +1,6 @@
-gameId
-officialId
+001
+013
 athleteId
-Tue Apr 02 11:35:42 AEDT 2013
+Thu Apr 02 11:35:42 AEDT 2015
 55.98
 5
