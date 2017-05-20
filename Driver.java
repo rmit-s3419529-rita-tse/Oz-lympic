@@ -262,43 +262,45 @@ public class Driver implements Initializable {
 	public void ConfirmSelection(ActionEvent e) throws NoRefereeException, WrongTypeException, TooFewAthleteException, GameFullException{
 		
 		do {
+			//checks number of athletes user selected
 		NumAthletes();
 
-		
+		//failed number of athletes
 		if (validNumAthletes=false){
 			ta.setText("please check number of selections");
 		} else {
+			//enough and not too many atheltes ==> check types of participants match game selection
 			TypeAthletes();
 		}
 		
-		
+		//failed type of athletes(wrong type for the game)
 		if (validTypeAthletes = false){
+			//clear lists as users update the lists
 			checked.clear();
 			unchecked.clear();
 			gameReady=false;
 			
 		} else {
 			
-			ta.setText("YOUR GAME IS READY. Please press START GAME.");
-			
+			//type of athletes match event type
 			//add checked type athletes list to checked list
 			for (Participant p : unchecked){
 			checked.add(p);
 			gameReady=false;
+			
+			//check if referee is selected
 			refChecked();
 		}
-			
+			//referee is not selected
 			if (refereeExists=false){
 				gameReady=false;
-			} else {
-			
-				
-		if (gameReady=false){
-		ta.setText("GAME NOT READY \n Please check your athletes selections.");
+			} 
 		}
 		
-		}
-		}
+		//should print only when all exceptions/checks are ok
+		//not right
+	ta.setText("YOUR GAME IS READY. Please press START GAME.");
+
 		} while(gameReady);//while gameReady=true
 		
 	}
@@ -308,12 +310,11 @@ public class Driver implements Initializable {
 		
 		//check ref selection
 		checkReferee(refselection);
-	
 		
 	}
 	
 
-	Participant refselection;
+	static Participant refselection;
 	//button to add referee - added to label
 	public void addReferee(ActionEvent e){
 	
@@ -407,6 +408,8 @@ public class Driver implements Initializable {
 				
 	//Method to Start Game Event; after Game ID is created and to add in Athletes
 	public void startGame(ActionEvent e){
+		
+		
 				
 		if (gameReady=true) {
 					

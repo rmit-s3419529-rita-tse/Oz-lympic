@@ -86,7 +86,7 @@ public class Official extends Participant {
 		Results3=Bronze.getName();
 		
 		//add this game results to GameResults arraylist
-		GameResults.add("1: " + Results1 + " |  2: " + Results2 + " |  3: " + Results3);
+		GameResults.add("OFFICIAL: " + Driver.refselection.getName() + " |  1: " + Results1 + " |  2: " + Results2 + " |  3: " + Results3);
 		
 		//after game results is recorded, list is cleared for the next game
 		winners.clear();
@@ -97,25 +97,23 @@ public class Official extends Participant {
 		
 	}
 	
+
 	
-	
-	
-	/*
-	score is going to be handled differently..... not within each athlete object
+	//score is going to be handled differently..... not within each athlete object
 	//Inner class to compare the Athletes score to produce overall ranking
 	static class RankComp implements Comparator<Athlete>{
 		@Override
 		public int compare(Athlete a1, Athlete a2) {
-			if (a1.getScore() < a2.getScore())  {
+			if (a1.getScore() < a2.getScore())  { //NO SCORE in athlete or participant
 				return 1;
 			} else {
 				return -1;
 			}
 		}
 	}
-	*/
+	
 
-/*	still need!!!! do not delete
+//still need!!!! do not delete
 	//UPDATED CODE
 	//Method to generate the ranking of Athletes for Ozlympic
 	public static void awardRank(){
@@ -123,18 +121,18 @@ public class Official extends Participant {
 		//The ranking is held is a TreeSet, loaded with Athletes Objects
 		TreeSet <Athlete> rankings = new TreeSet<Athlete>(new RankComp());
 		
+
 		//adding all the athletes types to the rankings board
-		rankings.addAll(GameDB.sprinters);
-		rankings.addAll(GameDB.cyclists);
-		rankings.addAll(GameDB.superAthletes);
-		rankings.addAll(GameDB.swimmers);
+		DbParticipant o = new DbParticipant();
+		o.GetParticipants();
+
 
 		//prints the athletes rankings in an order, with highest score first
-		for (Athlete a:rankings) {
-			System.out.println(a);
+		for (Participant b:rankings) {
+			System.out.println(o);
 		}
 
 	}
-*/
+
 
 }

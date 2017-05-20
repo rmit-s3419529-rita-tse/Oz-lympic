@@ -35,7 +35,6 @@ public class Game {
 		this.gameID = gameID;
 		Game.gameType = gameType;
 		this.chosenAthletes= chosenAthletes;
-
 		this.off=off;
 		d = new Date();
 

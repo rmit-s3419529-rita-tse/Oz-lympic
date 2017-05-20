@@ -13,10 +13,10 @@ public class SuperAthlete extends Athlete {
 	public double time;
 
 	//Constructor
-	public SuperAthlete(String ID, String type, String name, int age, String state) {
-	//public SuperAthlete(String ID, String type, String name, int age, String state, int score) {
-		//super(ID, type, name, age, state, score);
-		super(ID, type, name, age, state);
+	//public SuperAthlete(String ID, String type, String name, int age, String state) {
+	public SuperAthlete(String ID, String type, String name, int age, String state, int score) {
+		super(ID, type, name, age, state, score);
+		//super(ID, type, name, age, state);
 	}
 
 	//Compete Method

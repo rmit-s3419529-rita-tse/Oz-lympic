@@ -13,10 +13,10 @@ public class Cyclist extends Athlete {
 	public double time;
 
 	//Constructor
-	public Cyclist(String ID, String type, String name, int age, String state) {
-	//public Cyclist(String ID, String type, String name, int age, String state, int score) {
-		//super(ID, type, name, age, state, score);
-		super(ID, type, name, age, state);
+	//public Cyclist(String ID, String type, String name, int age, String state) {
+	public Cyclist(String ID, String type, String name, int age, String state, int score) {
+		super(ID, type, name, age, state, score);
+		//super(ID, type, name, age, state);
 	}
 
 	//Compete Method
