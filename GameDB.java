@@ -52,10 +52,10 @@ public class GameDB {
 		part.add(new Cyclist("Oz3006", "cyclist", "R. Tsang", 34, "NT"));
 		part.add(new Cyclist("Oz3007", "cyclist", "E. Kawamura", 32, "QLD"));
 		part.add(new Cyclist("Oz3008", "cyclist", "B. Hayes", 25, "TAS"));
-		part.add(new Cyclist("Oz3005", "cyclist", "K. Gavin", 27, "SA"));
-		part.add(new Cyclist("Oz3006", "cyclist", "T. Daniel", 20, "NT"));
-		part.add(new Cyclist("Oz3007", "cyclist", "E. Kawamura", 34, "VIC"));
-		part.add(new Cyclist("Oz3008", "cyclist", "I. Luke", 44, "WA"));
+		part.add(new Cyclist("Oz3009", "cyclist", "K. Gavin", 27, "SA"));
+		part.add(new Cyclist("Oz3010", "cyclist", "T. Daniel", 20, "NT"));
+		part.add(new Cyclist("Oz3011", "cyclist", "E. Kawamura", 34, "VIC"));
+		part.add(new Cyclist("Oz3012", "cyclist", "I. Luke", 44, "WA"));
 		part.add(new SuperAthlete("Oz4001", "super", "T. Fernandez", 18, "NT"));
 		part.add(new SuperAthlete("Oz4002", "super", "C. Bird", 28, "TAS"));
 		part.add(new SuperAthlete("Oz4003", "super", "F. Jalal", 25, "NSW"));
@@ -64,7 +64,7 @@ public class GameDB {
 		part.add(new SuperAthlete("Oz4006", "super", "P. Lai", 43, "VIC"));
 		part.add(new SuperAthlete("Oz4007", "super", "L. Sade", 36, "NSW"));
 		part.add(new SuperAthlete("Oz4008", "super", "D. Laraine", 29, "QLD"));
-		part.add(new Official("Oz4009", "super", "C. Aletta", 24, "VIC"));
+		part.add(new SuperAthlete("Oz4009", "super", "C. Aletta", 24, "VIC"));
 		part.add(new Official("REF001", "Official", "Thomas", 50, "VIC"));
 		part.add(new Official("REF002", "Official", "Frank", 48, "QLD"));
 		part.add(new Official("REF003", "Official", "Tamora", 34, "NSW"));

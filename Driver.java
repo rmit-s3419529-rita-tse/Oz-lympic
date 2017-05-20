@@ -58,6 +58,8 @@ public class Driver implements Initializable {
 	private Button refereebtn;
 	@FXML
 	private Label referee;
+	@FXML
+	private Button confirm;
 	
 	@FXML
 	private Label Message;
@@ -73,7 +75,6 @@ public class Driver implements Initializable {
 	@FXML private TableColumn<Participant, String> ID;
 	@FXML private TableColumn<Participant, String> type;
 	@FXML private TableColumn<Participant, String> name;
-	
 
 	//use later when DB can be loaded
 	//DbParticipant gdb = new DbParticipant();
@@ -91,12 +92,7 @@ public class Driver implements Initializable {
 		name.setCellValueFactory(new PropertyValueFactory<Participant, String>("name"));
 		table.setItems(data);
 		table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-	}
-	
-	//not sure if needed
-	//displays and confirms message
-	String msg = null;
-	
+	}	
 		
 	//Button actions for Sport event selections
 	public void selectSwim(ActionEvent event) {
@@ -104,7 +100,6 @@ public class Driver implements Initializable {
 
 		Swimcount++;
 		GenerateGameID("SW0");
-		selection = 7;
 		Event="Swimming";
 	}
 	
@@ -113,7 +108,6 @@ public class Driver implements Initializable {
 
 			Trackcount++;
 			GenerateGameID("T0");
-			selection =8;
 			Event="Track";
 	}
 	
@@ -122,15 +116,10 @@ public class Driver implements Initializable {
 
 		Cyclecount++;
 		GenerateGameID("C0");
-		selection =9;
 		Event="Cycling";
 		
 	}
 	
-	//Game selection..maybe not needed
-	private int selection;
-
-
 
 	//Counters for Game Events, and initial Game ID
 	private int Swimcount = 0;
@@ -173,52 +162,41 @@ public class Driver implements Initializable {
 	
 	//unchecked participants list
 	ArrayList<Participant> unchecked = new ArrayList<Participant>();
+	ArrayList<Participant> checked = new ArrayList<Participant>(); 
 	
-	//add selected athletes to list Game arraylist
+	//add selected athletes to list unchecked Athletes list
 	public void getUserSelectedAthletes(){
 	//method to loop through arraylist (participants)
 	//use id too retrieve one whole participant object
-	//public void getAthlete(){
-
 	//use split to split the id, name, type and add them into array
 	//use the id to call the athlete object
 		
 		for (int i=0; i < list.getItems().size(); i++){ 
 			
+			//printing to console to debug
 			System.out.println(list.getItems().get(i));
 			
 			String[] output = list.getItems().get(i).split("\\-");
+			
+			//printing to console to debug
 			System.out.println(output[0]);
 			
 		//looping through gb.part database arraylist to find
-		//for (Participant p : gdb.GetParticipants()){
+		
+	  //for (Participant p : gdb.GetParticipants()){
 		for (Participant p : gb.part){
 			if (p.getID().equals(output[0])){
+				
+				//printing to console to debug
 			System.out.println(p.getName()+p.getAge());
-			//Game.chosenAthletes.add((Athlete) p);
-			unchecked.add(p);
-			//add to one arraylist to check for duplicates, wrong type
 			
-			//add directly to arraylist
-			Game.chosenAthletes.add((Athlete) p);
+			//gets user's selected athletes
+			unchecked.add(p);
+			
 			}
 		} 
 		
 		}				
-	}
-	
-	
-	//to be continued...only handling duplicates...do last
-	public void checkAthletesSelection(){
-		
-		//remove duplicates
-		Set<Participant> set = new HashSet<Participant>(unchecked);
-		
-		Game.chosenAthletes.add((Athlete) set);
-		//for testing purposes
-		   for (Object theFruit : set){
-			      System.out.println(theFruit);
-		   }
 	}
 	
 
@@ -230,7 +208,12 @@ public class Driver implements Initializable {
 			try {
 		throw new TooFewAthleteException("Not enough athletes");
 			} catch (TooFewAthleteException e1) {
+				ta.setText(e1.toString());
+				
+				//printing to console to debug
 				System.out.println(e1);
+				
+				gameReady=false;
 			}
 	} else if 
 	//Gamefull exception
@@ -238,42 +221,103 @@ public class Driver implements Initializable {
 		try {
 		throw new GameFullException("Too many athletes in this game.");
 		} catch (GameFullException e2){
+			
+			//printing to console to debug
 		System.out.println(e2);
+		
+		ta.setText(e2.toString());
+		gameReady=false;
+		
 		}
 	}
 	}
 	
+	boolean validNumAthletes = false;
 	
+	public void NumAthletes() throws TooFewAthleteException, GameFullException {
 		
-	//button to debug print console
-	public void ConfirmSelection(ActionEvent e) throws TooFewAthleteException, GameFullException, NoRefereeException, WrongTypeException{
-		
-		//EXCEPTION CHECKS
+		//checks list size - not enough or too many
 		checkAthleteNo(list.getItems().size());
-		checkReferee(refselection);
-		
-		//not done
-		checkAthleteType(unchecked);
-		
-		//PRINTING TO CONSOLE TO CHECK
-		//loop takes in size of list,
-		//but needs to be trimmed before using it to call particiapnts to create athletes objects
-
-		
-		getUserSelectedAthletes();
-	System.out.println(Game.getChosenAthletes().toString());
 	
 	}
-
-		//checkAthletesSelection();
+	
+	
+	boolean validTypeAthletes;
+	
+	public void TypeAthletes() throws WrongTypeException, NoRefereeException {
+		
+		//get list into arraylist
+		getUserSelectedAthletes();
+		
+		//checks athlete types
+		checkAthleteType(unchecked);
+		
+	}
 
 	
+	
+	boolean gameReady = false;
+		
+	//confirm button to debug print console
+	public void ConfirmSelection(ActionEvent e) throws NoRefereeException, WrongTypeException, TooFewAthleteException, GameFullException{
+		
+		do {
+		NumAthletes();
+
+		
+		if (validNumAthletes=false){
+			ta.setText("please check number of selections");
+		} else {
+			TypeAthletes();
+		}
+		
+		
+		if (validTypeAthletes = false){
+			checked.clear();
+			unchecked.clear();
+			gameReady=false;
+			
+		} else {
+			
+			ta.setText("YOUR GAME IS READY. Please press START GAME.");
+			
+			//add checked type athletes list to checked list
+			for (Participant p : unchecked){
+			checked.add(p);
+			gameReady=false;
+			refChecked();
+		}
+			
+			if (refereeExists=false){
+				gameReady=false;
+			} else {
+			
+				
+		if (gameReady=false){
+		ta.setText("GAME NOT READY \n Please check your athletes selections.");
+		}
+		
+		}
+		}
+		} while(gameReady);//while gameReady=true
+		
+	}
+	
+	
+	public void refChecked() throws NoRefereeException {
+		
+		//check ref selection
+		checkReferee(refselection);
+	
+		
+	}
+	
+
 	Participant refselection;
 	//button to add referee - added to label
 	public void addReferee(ActionEvent e){
 	
 		//take from selection from Observablelist
-		
 		refselection = table.getSelectionModel().getSelectedItem();
 		
 		//check if is official
@@ -284,60 +328,104 @@ public class Driver implements Initializable {
 		}	
 	}
 	
-	
+	boolean refereeExists;
 	//EXCEPTION
     public void checkReferee(Participant refselection) throws NoRefereeException {
-		if (refselection==null) {
+    	
+    	if (refselection==null) {
 			try {
-		throw new NoRefereeException("You haven not selected a referee for this game.");
-			} catch (NoRefereeException e1) {
-				ta.setText(e1.toString()); //to textarea GUI
-			//	Message.setText(e1.toString()); //to GUI
-				System.out.println(e1);
+		throw new NoRefereeException("\nYou have not selected a referee for this game.\n Please select one before you proceed");
+			} catch (NoRefereeException e3) {
+				ta.setText(e3.toString());
+				
+				//printing to console to debug
+				System.out.println(e3);
+				refereeExists=false;
 			}
 	}
 	}
     
-    //EXCEPTION--- not done
-    public void checkAthleteType(ArrayList<Participant> unchecked) throws WrongTypeException {
-    	
-    	for (Participant p : unchecked) {
-    		
-    if ((Event == "Swimming") && (p.getType()!="swimmer" || p.getType()!="super")){
-    		try { 
-    			throw new WrongTypeException ("wrong athlete type for swim game.");
-    		} catch (WrongTypeException e1) {
-    			ta.setText(e1.toString());
-    			System.out.println(e1);
-    		}
-    	}		
-    	}
     
-    }
-    
-    
-	
-	
-	
+	// EXCEPTION
+	public void checkAthleteType(ArrayList<Participant> unchecked) throws WrongTypeException {
 
-	
-	
-	//add this observable list to Arraylist for Game to run
-	//might have to handled by the start button.........with exceptions.
+		if (Event == "Swimming") {
 
+	    	for (Participant p : unchecked) {
+	    		 
+	    		if (p.getType()=="sprinter" || p.getType()=="cyclist") {
+	    			try { throw new WrongTypeException ("\nYou've selected the wrong type of athletes for swim game.\n");
+	    		} catch (WrongTypeException e4) {
+	    			ta.setText(e4.toString());
+	    			//printing to console to debug
+	    			System.out.println(e4);
+	    			
+	    			validTypeAthletes=false;
+	    			gameReady=false;
+	    			unchecked.clear();
+	    			break;
+	    		}
+	    	}	
+		} 
+		} else if (Event=="Track") {
+			for (Participant p : unchecked) {
+				 
+	    		if (p.getType()=="swimmer" || p.getType()=="cyclist") {
+	    			try { throw new WrongTypeException ("\nYou've selected the wrong type of athletes for track game\n");
+	    		} catch (WrongTypeException e5) {
+	    			ta.setText(e5.toString());
+	    			//printing to console to debug
+	    			System.out.println(e5);
+	    			
+	    			validTypeAthletes=false;
+	    			gameReady=false;
+	    			unchecked.clear();
+	    			break;
+	    		}
+	    	}	
+			}
+		} else if (Event == "Cycling") {
+			for (Participant p : unchecked) {
+				 
+	    		if (p.getType()=="swimmer" || p.getType()=="sprinter") {
+	    			try { throw new WrongTypeException ("\nYou've selected the wrong type of athletes for cycling game\n");
+	    		} catch (WrongTypeException e6) {
+	    			ta.setText(e6.toString());
+	    			//printing to console to debug
+	    			System.out.println(e6);
+	    			
+	    			validTypeAthletes=false;
+	    			gameReady=false;
+	    			unchecked.clear();
+	    			break;
+	    		}
+	    	}	
+			}
+		}
+	}
+		
 				
 	//Method to Start Game Event; after Game ID is created and to add in Athletes
 	public void startGame(ActionEvent e){
+				
+		if (gameReady=true) {
+					
+		//add checked athletes to arraylist		
+		for (Participant p : checked){
+			
+		Game.chosenAthletes.add((Athlete) p);
+		}
 		
+		//printing to console to debug
+	System.out.println(Game.getChosenAthletes().toString());
 		
-		//checks if chosen has enough athletes or not enough
-		//checks if there's an official selected
-		//NoRefereeException
-
-
-		System.out.println("====================  GAME INFO ===================");
+	//create new game
 		newGame();
+		
+		} else {
+			ta.setText("SORRY YOUR GAME NOT READY");
 
+	}
 	}
 	
 	
@@ -346,16 +434,15 @@ public class Driver implements Initializable {
 		
 		//create new game, add to games arraylist
 		Game n = new Game(GID, Event, refselection, Game.chosenAthletes);
-		Game.games.add(n);
-
-		System.out.println("___________________________________________________");
-		//System.out.println("GAME ID   " + n.getGameID() + " |  EVENT   " +  n.getGameType());
-		System.out.println("___________________________________________________");
+		Game.games.add(n);		
+		
 		Game.runGame();
 		
 		//display to GUI
 		StringBuilder finish = new StringBuilder();
-		finish.append("GAME START");
+		finish.append("====================  GAME INFO ===================");
+		finish.append("\n \n");
+		finish.append("GAME ID   " + n.getGameID() + " |  EVENT   " +  n.getGameType());
 		finish.append("\n \n");
 		finish.append(Game.resultsdisplay.toString());
 		finish.append("\n \n");
@@ -369,8 +456,9 @@ public class Driver implements Initializable {
 		//clear for next game
 		Game.resultsdisplay.clear();
 		Official.awardslist.clear();
+		unchecked.clear();
+		checked.clear();
 		
-
 	}
 	
 
@@ -406,21 +494,30 @@ public class Driver implements Initializable {
 	//Method to display each game winners
 	public void DisplayResults(ActionEvent e){
 
-		System.out.println("\n ========= Game Results: =========== \n");
-		for (int i=0; i < Game.games.size(); i++){
-			System.out.println(Game.games.get(i).getGameID() + " | ");
-			System.out.println(Official.GameResults.get(i));
-			System.out.println("__________________________________________________________");
-		}
-		System.out.println("---------------------------------------------------------");
+		//display to GUI
+				StringBuilder allresults = new StringBuilder();
+				allresults.append("\n ========= Game Results: =========== \n");
+				
+				for (int i=0; i < Game.games.size(); i++){
+				allresults.append("\n \n");
+				allresults.append(Game.games.get(i).getGameID() + " | ");
+				allresults.append("\n");
+				allresults.append(Official.GameResults.get(i));
+				allresults.append("\n \n");
+				allresults.append("________________________________________________");
+				}
+				
+				String all = allresults.toString();
+				ta.setText(all);
 
 	}
 
-	//Method to Display Overall Rankings of Athletes
+	//Method to Display Overall Rankings of Athletes.....to be done
 	public void DisplayRankings(ActionEvent e){
 
 		System.out.println("\n ++++++++++ OZLYMPIC GAME RANKINGS +++++++++++++");
 		//Official.awardRank();
+		//need to update awardRank calling DB
 	}
 
 
@@ -431,10 +528,5 @@ public class Driver implements Initializable {
 		Platform.exit();
 		System.exit(0);
 	}
-
-
-
-
-
 
 }
