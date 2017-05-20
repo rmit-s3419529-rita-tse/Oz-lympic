@@ -77,13 +77,8 @@ public class Driver implements Initializable {
 	@FXML private TableColumn<Participant, String> name;
 
 	//use later when DB can be loaded
-<<<<<<< HEAD
-	//DbParticipant gdb = new DbParticipant();
-    //public ObservableList<Participant> data = FXCollections.observableArrayList(gdb .GetParticipants());
-=======
 	DbParticipant gdb = new DbParticipant();
 	public ObservableList<Participant> data = FXCollections.observableArrayList(gdb .GetParticipants(null));
->>>>>>> 7518d8b0bb39413dc3dcd70834be3e44275287ed
 		
 	//TEMPORARY for now - ObservableList to fill the table, gets data from databse
 	//GameDB gb = new GameDB();
@@ -188,13 +183,8 @@ public class Driver implements Initializable {
 			
 		//looping through gb.part database arraylist to find
 		
-<<<<<<< HEAD
-      //for (Participant p : gdb.GetParticipants()){
-		for (Participant p : gb.part){
-=======
 	  for (Participant p : gdb.GetParticipants(null)){
 		//for (Participant p : gb.part){
->>>>>>> 7518d8b0bb39413dc3dcd70834be3e44275287ed
 			if (p.getID().equals(output[0])){
 				
 				//printing to console to debug
