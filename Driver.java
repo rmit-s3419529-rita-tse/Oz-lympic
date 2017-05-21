@@ -77,7 +77,7 @@ public class Driver implements Initializable {
 	@FXML private TableColumn<Participant, String> name;
 
 	//use later when DB can be loaded
-	DbParticipant gdb = new DbParticipant();
+	IParticipant gdb = new ParticipantHandler("participants.txt");
 	public ObservableList<Participant> data = FXCollections.observableArrayList(gdb .GetParticipants(null));
 		
 	//TEMPORARY for now - ObservableList to fill the table, gets data from databse
