@@ -17,7 +17,7 @@ public class Game {
 
 	public String gameID;
 	static String gameType;
-	public Official off;
+	static Official off;
 	public Date d ;
 
 	//Hashmap for keeping game results for each event
@@ -32,7 +32,6 @@ public class Game {
 
 	//Game constructor
 	public Game(String gameID, String gameType, Participant refselection, ArrayList<Participant> chosenAthletes){
-	//public Game(String gameID, String gameType, Participant refselection, ArrayList<Athlete> chosenAthletes){
 			
 		this.gameID = gameID;
 		Game.gameType = gameType;
@@ -70,7 +69,6 @@ public class Game {
 	static ArrayList <String> resultsdisplay = new ArrayList();
 	
 
-	
 
 	//Method that Runs the Game Event, loops through the chosenAthletes list, checks if their athlete types and generate a time for each
 	public static void runGame(){
@@ -78,11 +76,10 @@ public class Game {
 		
 		for (Participant athlete : chosenAthletes){
 		
-
 			
 			if (athlete.getType().equals("swimmer")){
 		
-				Swimmer swim = new Swimmer(athlete.getID(),athlete.getType(),athlete.getName(), athlete.getAge(), athlete.getState(),-1);
+				Swimmer swim = new Swimmer(athlete.getID(),athlete.getType(),athlete.getName(), athlete.getAge(), athlete.getState(),0);
 				swim.compete();
 				
 				//add to arraylist and sends to GUI
@@ -98,7 +95,7 @@ public class Game {
 			(athlete.getType().equals("cyclist")) {
 				
 				
-				Cyclist c = new Cyclist(athlete.getID(),athlete.getType(),athlete.getName(), athlete.getAge(), athlete.getState(),-1);
+				Cyclist c = new Cyclist(athlete.getID(),athlete.getType(),athlete.getName(), athlete.getAge(), athlete.getState(),0);
 				c.compete();
 				
 				resultsdisplay.add(athlete.getName() + "  ...  " + c.time);
@@ -114,7 +111,7 @@ public class Game {
 			(athlete.getType().equals("sprinter"))
 				
 			{
-				Sprinter s = new Sprinter(athlete.getID(),athlete.getType(),athlete.getName(), athlete.getAge(), athlete.getState(),-1);
+				Sprinter s = new Sprinter(athlete.getID(),athlete.getType(),athlete.getName(), athlete.getAge(), athlete.getState(),0);
 				s.compete();
 				
 				resultsdisplay.add(athlete.getName() + "  ...   " + s.time);
@@ -129,7 +126,7 @@ public class Game {
 			(athlete.getType().equals("super"))
 				
 				{
-				SuperAthlete SA = new SuperAthlete(athlete.getID(),athlete.getType(),athlete.getName(), athlete.getAge(), athlete.getState(),-1);
+				SuperAthlete SA = new SuperAthlete(athlete.getID(),athlete.getType(),athlete.getName(), athlete.getAge(), athlete.getState(),0);
 				SA.compete(Game.gameType);
 				
 				resultsdisplay.add(athlete.getName() + "  ...   " + SA.time);
@@ -150,12 +147,9 @@ public class Game {
 	
 	//method to handle the official methods after the game is run
 	public static void FinishLine() {
-		System.out.println(".............................................");
+
 		Official.sumGame(results);
 		Official.awardWinners();
-
-
-		System.out.println("===========================================.\n \n");
 
 		//Clear list for new game
 		chosenAthletes.clear();

@@ -103,10 +103,9 @@ public class Official extends Participant {
 		
 	}
 	
+
 	
 	
-	
-	//UPDATED CODE
 	//Method to generate the ranking of Athletes for Ozlympic
 	public static void awardRank(){
 
@@ -114,28 +113,48 @@ public class Official extends Participant {
 		ArrayList <Athlete> rank = new ArrayList<Athlete>();
 
 		
-	//	compare.putAll(competed);
 		Athlete min;
-
-		for (Athlete d : competed) {
-			if (rank.size() == 0) {
-				rank.add(d);
-			} else {
-
-				for (Athlete r : rank) {
-					if (d.getID().equals(r.getID())) {
-						r.addScore(d.getScore());
-					} else {
-						rank.add(d);
-						break;
-					}
-				}
+		
+		//adds first competed athletes to rank
+		if (rank.isEmpty()){
+			
+			for (Athlete d : competed) {
+			rank.add(d);
 			}
+			
+			//if rank is not empty
+		} else {
+				
+			//loop through competed list
+				for (Athlete c : competed) {
+					
+					//checks if rank contains same athlete	in 2nd competed list
+					if (rank.contains(c)) {
+						
+						//loops through rank
+						for (Athlete r : rank) {
+							
+							//checks if thei ID matches
+							if (c.getID().equals(r.getID())) {
+								
+								//add their score
+								c.addScore(r.getScore());
+								break;
+							}
+						}
+		
+				
+			}
+				}
 		}
+			
+			
+		
 		
 
 			StringBuilder allranks = new StringBuilder();
 
+			allranks.append("\n========== OZLYMPIC GAME RANKINGS ============\n");
 			
 		//prints the athletes rankings in an order, with highest score first
 		for (Athlete a:rank) {
