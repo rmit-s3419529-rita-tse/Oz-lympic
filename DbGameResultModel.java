@@ -1,9 +1,17 @@
 
+/**
+ * The is the DbGameResultModel class of Ozlympic Game
+ * It shows the method of database of the gameResult
+ * 
+ * @author SZUYING CHEN
+ * @version 2.1
+ * @since 2017-05-14
+ */
 public class DbGameResultModel {
 	
-	public static final String COL_GAME_ID = "GAME_ID";
-	public static final String COL_OFFICIAL_ID = "OFFICIAL_ID";
-	public static final String COL_ATHLETE_ID = "ATHLETE_ID";
+	public static final String COL_GAME_ID = "GAMEID";
+	public static final String COL_OFFICIAL_ID = "OFFICIALID";
+	public static final String COL_ATHLETE_ID = "ATHLETEID";
 	public static final String COL_RESULT = "RESULT";
 	public static final String COL_SCORE = "SCORE";
 	
@@ -79,7 +87,15 @@ public class DbGameResultModel {
 	public void setScore(Integer score) {
 		this.score = score;
 	}
+
+
+	@Override
+	public String toString() {
+		return "gameId=" + gameId + ", officialId=" + officialId + ", athleteId=" + athleteId
+				+ ", result=" + result + ", score=" + score + "";
+	}
 	
 	
 	
 }
+

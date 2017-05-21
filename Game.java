@@ -22,6 +22,8 @@ public class Game {
 
 	//Hashmap for keeping game results for each event
 	static HashMap<Integer, Athlete> results = new HashMap<Integer, Athlete>();
+	
+	static HashMap<String, Double> gameTime = new HashMap<String, Double>();
 
 	//ArrayList for chosen Athletes participating in the game event
 	static ArrayList<Participant> chosenAthletes = new ArrayList<Participant>();
@@ -38,7 +40,6 @@ public class Game {
 		this.chosenAthletes= chosenAthletes;
 		this.off=off;
 		d = new Date();
-
 	}
 
 	//Getters
@@ -71,7 +72,7 @@ public class Game {
 
 
 	//Method that Runs the Game Event, loops through the chosenAthletes list, checks if their athlete types and generate a time for each
-	public static void runGame(){
+	public static void runGame(String gameID, Participant official){
 
 		
 		for (Participant athlete : chosenAthletes){
@@ -89,6 +90,7 @@ public class Game {
 				
 				
 				results.put((int) swim.time, swim);
+				gameTime.put(swim.getID(), swim.time);
 			}
 			else if 
 			
@@ -105,6 +107,7 @@ public class Game {
 				System.out.println(athlete.getName() + "  ...  " + c.time);
 				
 				results.put((int) c.time, c);
+				gameTime.put(c.getID(), c.time);
 			}
 			else if 
 			
@@ -120,6 +123,7 @@ public class Game {
 				
 				Official.competed.add(s);
 				results.put((int) s.time, s);
+				gameTime.put(s.getID(), s.time);
 			}
 			else if 
 			
@@ -135,10 +139,11 @@ public class Game {
 				
 				Official.competed.add(SA);
 				results.put((int) SA.time, SA);
+				gameTime.put(SA.getID(), SA.time);
 			}
 		}
 		
-		FinishLine();
+		FinishLine(gameID, official, gameTime);
 	}
 	
 	
@@ -146,10 +151,10 @@ public class Game {
 	
 	
 	//method to handle the official methods after the game is run
-	public static void FinishLine() {
+	public static void FinishLine(String gameID, Participant official, HashMap<String, Double> gameTime) {
 
 		Official.sumGame(results);
-		Official.awardWinners();
+		Official.awardWinners(gameID, official, gameTime);
 
 		//Clear list for new game
 		chosenAthletes.clear();
@@ -157,5 +162,7 @@ public class Game {
 
 
 }
+
+
 
 

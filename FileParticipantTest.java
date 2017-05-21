@@ -21,7 +21,6 @@ public class FileParticipantTest {
 
 	@Before
 	public void setUp() throws Exception {
-		
 	}
 
 	@After
@@ -47,39 +46,17 @@ public class FileParticipantTest {
 		Assert.assertTrue(actual.size() == 12);
 	}
 	
-	@Test 
-	public void TestGetParticipants__Cyclist()
-	{
-		testFile= new FileParticipant("participants.txt");
-		
-		ArrayList<Participant> actual = testFile.GetParticipants(IParticipant.CYCLIST);
-		Assert.assertTrue(actual.size() == 12);
+	@Test
+	public void test() {
+//		
+//		URL url = this.getClass().getResource("/test.wsdl");
+//		File testWsdl = new File(url.getFile());
+//		fail("Not yet implemented");
+//		
+//DbParticipant gameDB = new DbParticipant();
+//		
+//		ArrayList<Participant> actual = gameDB.GetParticipants(null);
+//		Assert.assertTrue(actual.size() > 0);
 	}
-	
-	@Test 
-	public void TestGetParticipants_Official()
-	{
-		testFile= new FileParticipant("participants.txt");
-		
-		ArrayList<Participant> actual = testFile.GetParticipants(IParticipant.OFFICIAL);
-		Assert.assertTrue(actual.size() == 8);
-	}
-	
-	@Test 
-	public void TestGetParticipants_SPRINTER()
-	{
-		testFile= new FileParticipant("participants.txt");
-		
-		ArrayList<Participant> actual = testFile.GetParticipants(IParticipant.SPRINTER);
-		Assert.assertTrue(actual.size() == 12);
-	}
-	
-	@Test 
-	public void TestGetParticipants_Super()
-	{
-		testFile= new FileParticipant("participants.txt");
-		
-		ArrayList<Participant> actual = testFile.GetParticipants(IParticipant.SUPER);
-		Assert.assertTrue(actual.size() == 9);
-	}
+
 }

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import org.hsqldb.lib.StringUtil;
 
+import com.sun.xml.internal.ws.util.StringUtils;
+
 /**
  * The is the DbParticipant class of Ozlympic Game which can connect to database
  * It shows participants list on the database  and store it
@@ -21,7 +23,7 @@ public class DbParticipant implements IParticipant {
 	static Connection connection = null;
 	static ResultSet rs = null;
 
-	public DbParticipant() throws SQLException, ClassNotFoundException {	
+	public DbParticipant() throws SQLException, ClassNotFoundException {		
 		// making a connection
 		try {
 			Class.forName("org.hsqldb.jdbcDriver");
@@ -85,11 +87,12 @@ public class DbParticipant implements IParticipant {
 		try {
 			PreparedStatement statement = connection.prepareStatement("select distinct * from participants where UPPER(type) = isnull(?, UPPER(type));");
 			statement.setString(1, StringUtil.isEmpty(type) ? type :type.toUpperCase());
-			rs = connection.prepareStatement("select * from participants;").executeQuery();
+			rs = statement.executeQuery();
 			
-			while (rs.next())
+			while (rs.next()) {
 				participants.add(new Participant(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4),
 						rs.getString(5)));
+			}
 			
 		} catch (SQLException e2) {
 			e2.printStackTrace();

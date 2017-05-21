@@ -22,7 +22,7 @@ public class DbGameResult implements IGameResult {
 	static Connection connection = null;
 	static ResultSet rs = null;
 
-	public DbGameResult() {
+	public DbGameResult() throws SQLException, ClassNotFoundException {
 		// making a connection
 		try {
 			String currentPath = Paths.get(".").toAbsolutePath().normalize().toString();
@@ -33,9 +33,9 @@ public class DbGameResult implements IGameResult {
 			connection = DriverManager.getConnection("jdbc:hsqldb:file:TestDB", "sa", "123");
 			connection.prepareStatement("select * from GAMERESULTS").executeQuery();
 		} catch (SQLException e2) {
-			e2.printStackTrace();
+			throw e2;
 		} catch (ClassNotFoundException e2) {
-			e2.printStackTrace();
+			throw e2;
 		}
 		// end of stub code for in/out stub
 	}
@@ -120,4 +120,20 @@ public class DbGameResult implements IGameResult {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public String getNewGameID(String gameType) {
+		ArrayList<DbGameResultModel> result = new ArrayList<DbGameResultModel>();
+		result = GetResult();
+		int maxID = 0;
+		for(DbGameResultModel item : result)
+		{
+			if(item.getGameId().contains(gameType)) {
+				if(Integer.parseInt(item.getGameId().replace(gameType, "")) > maxID)
+					maxID = Integer.parseInt(item.getGameId().replace(gameType, ""));
+			}
+		}
+		return gameType + (maxID + 1);
+	}
 }
+
