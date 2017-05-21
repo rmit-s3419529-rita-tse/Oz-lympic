@@ -93,6 +93,14 @@ public class Driver implements Initializable {
 		table.setItems(data);
 		table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 	}	
+	
+	//Counters for Game Events, and initial Game ID
+	private int Swimcount = 0;
+	private int Cyclecount = 0;
+	private int Trackcount = 0;
+	private String GID=null;
+	private String Event=null;
+	
 		
 	//Button actions for Sport event selections
 	public void selectSwim(ActionEvent event) {
@@ -121,13 +129,6 @@ public class Driver implements Initializable {
 	}
 	
 
-	//Counters for Game Events, and initial Game ID
-	private int Swimcount = 0;
-	private int Cyclecount = 0;
-	private int Trackcount = 0;
-	private String GID=null;
-	private String Event=null;
-	
 	
 	//list to handle user selections on gui - empty to start with
 	static ObservableList<Participant> chosen;
@@ -268,6 +269,10 @@ public class Driver implements Initializable {
 		//failed number of athletes
 		if (validNumAthletes=false){
 			ta.setText("please check number of selections");
+			checked.clear();
+			unchecked.clear();
+			gameReady=false;
+			
 		} else {
 			//enough and not too many atheltes ==> check types of participants match game selection
 			TypeAthletes();
