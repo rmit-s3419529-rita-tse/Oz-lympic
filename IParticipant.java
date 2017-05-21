@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public interface IParticipant {
 	
 	final String SWIMMER = "swimmer";
-	final String SPRINTERS = "sprinters";
+	final String SPRINTER = "sprinter";
 	final String CYCLIST = "cyclist";
 	final String SUPER = "super";
 	final String OFFICIAL = "Official";

@@ -1,7 +1,10 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -28,7 +31,15 @@ public class FileParticipantTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+//		
+//		URL url = this.getClass().getResource("/test.wsdl");
+//		File testWsdl = new File(url.getFile());
+//		fail("Not yet implemented");
+//		
+//DbParticipant gameDB = new DbParticipant();
+//		
+//		ArrayList<Participant> actual = gameDB.GetParticipants(null);
+//		Assert.assertTrue(actual.size() > 0);
 	}
 
 }

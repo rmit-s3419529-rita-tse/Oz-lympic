@@ -1,8 +1,24 @@
 # Oz-lympic
-t
+Version 2.0
+
+Student No s3588016 Szu-Ying Chen
+Student No s3419529 Rita Hiu Laam Tse
+
+Advanced Programming
+Master of Information Technology, RMIT
+
+Updated Ozlympic game with GUI and Database component.
+Users selects 3 types of sports game - Cycling, Swimming and Track and selects 5-8 athletes (Cyclists, Swimmers, Sprinters, and Super Athletes) for each game evet.
+For each game to run, there must be enough athletes, but not over 8. A referee must also be selected for the game. These settings are confirmed before a game could be run.
+
+The data of the athletes are provided from an embedded database or text file. Results are stored and a saved into a text file as well.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+Version 1.0
+
+Student No s3419529 Rita Hiu Laam Tse
+
 Advanced Progamming
-Student No s3419529
-Rita Hiu Laam Tse
 Master of Information Technology, RMIT
 
 Ozlympic is a text-based game which allow users to run three types of sports game - Cycling, Swimming, and Track, with

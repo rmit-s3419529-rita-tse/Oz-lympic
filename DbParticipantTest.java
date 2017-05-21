@@ -58,7 +58,7 @@ public class DbParticipantTest {
 		actual = gameDB.GetParticipants(IParticipant.OFFICIAL);
 		Assert.assertTrue(actual.size() > 0);
 		
-		actual = gameDB.GetParticipants(IParticipant.SPRINTERS);
+		actual = gameDB.GetParticipants(IParticipant.SPRINTER);
 		Assert.assertTrue(actual.size() > 0);
 		
 		actual = gameDB.GetParticipants(IParticipant.SUPER);
@@ -93,23 +93,48 @@ public class DbParticipantTest {
 	}
 	
 	@Test
+	public void testGetParticipants_SPRINTER() {
+		DbParticipant gameDB = new DbParticipant();
+		
+		ArrayList<Participant> actual = gameDB.GetParticipants(IParticipant.SPRINTER);
+		Assert.assertTrue(actual.size() > 0);
+	}
+	
+	
+	@Test
+	public void testGetParticipants_super() {
+		DbParticipant gameDB = new DbParticipant();
+		
+		ArrayList<Participant> actual = gameDB.GetParticipants(IParticipant.SUPER);
+		Assert.assertTrue(actual.size() > 0);
+	}
+	
+	
+	@Test
+	public void testGetParticipants_swimmer() {
+		DbParticipant gameDB = new DbParticipant();
+		
+		ArrayList<Participant> actual = gameDB.GetParticipants(IParticipant.SWIMMER);
+		Assert.assertTrue(actual.size() > 0);
+	}
+	
+	@Test
 	public void testAddParticipants()
 	{
 		IParticipant gameDB = new DbParticipant();
 		
-		Boolean actual = gameDB.AddParticipants("Oz1001", "swimmer", "A. Edwin", 30, "VIC");
+		Boolean actual = gameDB.AddParticipants("Oz10013", "swimmer", "H. Eddy", 24, "VIC");
 		
 		Assert.assertEquals(true, actual);
 	}
 	public void testImpletedParticipant()
 	{
-		IParticipant gameDB = new DbParticipant();
+		IParticipant  gameDB = new DbParticipant();
 		
 		Boolean actual = gameDB.AddParticipants("Oz1001", "", "A. Edwin", 30, "VIC");
 		
 		Assert.assertEquals(true, actual);
 	}
-//	Study on creating a databse with a primary key and not notnull fields.
 	
 	@Test
 	public void testDeleteParticipants()
