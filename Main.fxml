@@ -37,7 +37,7 @@
          <children>
             <ImageView fitHeight="192.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@aboriginal_flag.jpg" />
+                  <Image url="@ozlympicrings.png" />
                </image></ImageView>
             <Text fx:id="instruction" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Select a Sport Event" underline="true">
                <font>
@@ -97,7 +97,7 @@
             <Font name="Calibri Bold" size="16.0" />
          </font>
       </Label>
-      <Text fill="WHITE" layoutX="256.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ozlympic">
+      <Text fill="WHITE" layoutX="216.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ozlympic">
          <font>
             <Font name="Calibri Bold Italic" size="36.0" />
          </font>

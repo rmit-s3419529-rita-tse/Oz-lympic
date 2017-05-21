@@ -2,7 +2,7 @@
 #swimbtn {
 		-fx-font-size: 14px;
   -fx-text-fill: #ffffff;
-  -fx-background-color: #ffc20a;
+  -fx-background-color: #c47600;
   -fx-padding: 10 20 10 20;
   -fx-font-weight: bold;
 }
@@ -12,7 +12,7 @@
 #trackbtn {
 		-fx-font-size: 14px;
   -fx-text-fill: #ffffff;
-  -fx-background-color: #ffc20a;
+  -fx-background-color: #c47600;
   -fx-padding: 10 20 10 20;
   -fx-font-weight: bold;
 }
@@ -20,9 +20,9 @@
   -fx-background-color: #e6ad00;
 }
 #cyclebtn {
-		-fx-font-size: 14px;
+	-fx-font-size: 14px;
   -fx-text-fill: #ffffff;
-  -fx-background-color: #ffc20a;
+  -fx-background-color: #c47600;
   -fx-padding: 10 20 10 20;
   -fx-font-weight: bold;
 }
@@ -32,7 +32,7 @@
 #refereebtn {
 	-fx-font-size: 14px;
   -fx-text-fill: #ffffff;
-  -fx-background-color: #3498db;
+  -fx-background-color: #0070ba;
   -fx-padding: 10 20 10 20;
   -fx-font-weight: bold;
 }
@@ -42,7 +42,7 @@
 #confirm {
 	-fx-font-size: 14px;
   -fx-text-fill: #ffffff;
-  -fx-background-color: #3498db;
+  -fx-background-color: #0070ba;
   -fx-padding: 10 20 10 20;
   -fx-font-weight: bold;
 }
@@ -59,34 +59,34 @@
 #startbtn {
 	-fx-font-size: 14px;
   -fx-text-fill: #ffffff;
-  -fx-background-color: #63d934;
+  -fx-background-color: #1f8c64;
   -fx-padding: 10 20 10 20;
   -fx-font-weight: bold;
 }
 #startbtn:hover {
-  -fx-background-color: #1f8c64;
+  -fx-background-color: #63d934;
 }
 
 #resultsbtn {
 	-fx-font-size: 14px;
   -fx-text-fill: #ffffff;
-  -fx-background-color: #63d934;
+  -fx-background-color: #1f8c64;
   -fx-padding: 10 20 10 20;
   -fx-font-weight: bold;
 }
 #resultsbtn:hover {
-  -fx-background-color: #1f8c64;
+  -fx-background-color: #63d934;
 }
 
 #rankingsbtn {
 	-fx-font-size: 14px;
   -fx-text-fill: #ffffff;
-  -fx-background-color: #63d934;
+  -fx-background-color: #1f8c64;
   -fx-padding: 10 20 10 20;
   -fx-font-weight: bold;
 }
 #rankingsbtn:hover {
-  -fx-background-color: #1f8c64;
+  -fx-background-color: #63d934;
 }
 
 
@@ -95,12 +95,12 @@
 #btn2 {
 	-fx-font-size: 14px;
   -fx-text-fill: #ffffff;
-  -fx-background-color: #f44242;
+  -fx-background-color: #b30000;
   -fx-padding: 5 10 5 10;
   -fx-font-weight: bold;
 }
 #btn2:hover {
-  -fx-background-color: #fc1919;
+  -fx-background-color: #eb0000;
 }
 
 #pane {
