@@ -3,6 +3,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * The is the FileParticipant class of Ozlympic Game
+ * It can read a text file from the participants list
+ * 
+ * @author SZUYING CHEN
+ * @version 1.1
+ * @since 2017-05-16
+ */
+
 public class FileParticipant implements IParticipant {
 	private String strFilePath;
 	public FileParticipant(String filePath){
@@ -22,17 +31,9 @@ public class FileParticipant implements IParticipant {
 
 	@Override
 	public void PrintParticipants() {
-//        for test to print the participants list
-//				ArrayList<Participant> test =GetParticipants("jku");
-//        		for (int i = 0; i < test.size(); i++) {
-//        			System.out.print(test.get(i).getID() + "   " );
-//        			System.out.print(test.get(i).getType() + "  " );
-//        			System.out.print(test.get(i).getName() + "  " );
-//        			System.out.print(test.get(i).getAge() + "  " );
-//        			System.out.println(test.get(i).getState() + "  " );
-//        		}
-	}
 
+	}
+    //Reading text files using an ArrayList
 	@Override
 	public ArrayList<Participant> GetParticipants(String type) {
 		
@@ -67,10 +68,5 @@ public class FileParticipant implements IParticipant {
 		}
 		return participants;
 	}
-
-//    public static void main(String[] arg){
-//    	FileParticipant testFile;
-//		testFile=new  FileParticipant("participants.txt");
-//		testFile.PrintParticipants();
 }
 

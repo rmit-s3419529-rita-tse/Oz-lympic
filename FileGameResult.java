@@ -33,7 +33,7 @@ public class FileGameResult implements IGameResult {
 
 	@Override
 	public ArrayList<DbGameResultModel> GetResult() {
-		// TODO Auto-generated method stub
+
 		ArrayList<DbGameResultModel> participants = new  ArrayList<DbGameResultModel>();
 		return null;
 	}
