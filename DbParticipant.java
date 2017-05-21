@@ -21,16 +21,16 @@ public class DbParticipant implements IParticipant {
 	static Connection connection = null;
 	static ResultSet rs = null;
 
-	public DbParticipant() {		
+	public DbParticipant() throws SQLException, ClassNotFoundException {	
 		// making a connection
 		try {
 			Class.forName("org.hsqldb.jdbcDriver");
 //			connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/TestDB", "sa", "123"); sever mode
 			connection = DriverManager.getConnection("jdbc:hsqldb:file:TestDB", "sa", "123");			
 		} catch (SQLException e2) {
-			e2.printStackTrace();
+			throw e2;
 		} catch (ClassNotFoundException e2) {			
-			e2.printStackTrace();
+			throw e2;
 		}
 		// end of stub code for in/out stub
 	}
@@ -38,11 +38,16 @@ public class DbParticipant implements IParticipant {
     // not using ,just for extra feature and testing
 	public Boolean AddParticipants(String ID, String strType, String strName, Integer Age, String State) {
 		Boolean result = false;
-		try {
-			result = connection.prepareStatement("insert into participants (id, type, name, age, state) " + "values ('" + ID
-					+ "', '" + strType + "', '" + strName + "', " + Age + ", '" + State + "');").execute();
+		try {			
+				 PreparedStatement statement = connection.prepareStatement("insert into participants (id, type, name, age, state) " 
+					 + "values (?, ?, ? ,? , ?);");
+				 statement.setString(1, ID);
+				 statement.setString(2, strType);
+				 statement.setString(3, strName);
+				 statement.setInt(4, Age);
+				 statement.setString(5, State);
+				 result = statement.executeUpdate() > 0 ? true : false;
 
-			connection.commit();
 		} catch (SQLException e2) {
 			e2.printStackTrace();
 		}

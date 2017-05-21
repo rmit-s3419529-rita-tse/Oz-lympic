@@ -46,7 +46,7 @@ public class DbParticipantTest {
 	
 	@Test
 	public void testGetParticipants() {
-		DbParticipant gameDB = new DbParticipant();
+		IParticipant gameDB = new ParticipantHandler("");
 	
 		ArrayList<Participant> actual = gameDB.GetParticipants(null);
 		
@@ -70,7 +70,7 @@ public class DbParticipantTest {
 	
 	@Test
 	public void testGetParticipants_All() {
-		DbParticipant gameDB = new DbParticipant();
+		IParticipant gameDB = new ParticipantHandler("");
 		
 		ArrayList<Participant> actual = gameDB.GetParticipants(null);
 		Assert.assertTrue(actual.size() > 0);
@@ -78,7 +78,7 @@ public class DbParticipantTest {
 	
 	@Test
 	public void testGetParticipants_Cyclist() {
-		DbParticipant gameDB = new DbParticipant();
+		IParticipant gameDB = new ParticipantHandler("");
 		
 		ArrayList<Participant> actual = gameDB.GetParticipants(IParticipant.CYCLIST);
 		Assert.assertTrue(actual.size() > 0);
@@ -86,7 +86,7 @@ public class DbParticipantTest {
 	
 	@Test
 	public void testGetParticipants_Official() {
-		DbParticipant gameDB = new DbParticipant();
+		IParticipant gameDB = new ParticipantHandler("");
 		
 		ArrayList<Participant> actual = gameDB.GetParticipants(IParticipant.OFFICIAL);
 		Assert.assertTrue(actual.size() > 0);
@@ -94,7 +94,7 @@ public class DbParticipantTest {
 	
 	@Test
 	public void testGetParticipants_SPRINTER() {
-		DbParticipant gameDB = new DbParticipant();
+		IParticipant gameDB = new ParticipantHandler("");
 		
 		ArrayList<Participant> actual = gameDB.GetParticipants(IParticipant.SPRINTER);
 		Assert.assertTrue(actual.size() > 0);
@@ -103,7 +103,7 @@ public class DbParticipantTest {
 	
 	@Test
 	public void testGetParticipants_super() {
-		DbParticipant gameDB = new DbParticipant();
+		IParticipant gameDB = new ParticipantHandler("");
 		
 		ArrayList<Participant> actual = gameDB.GetParticipants(IParticipant.SUPER);
 		Assert.assertTrue(actual.size() > 0);
@@ -112,7 +112,7 @@ public class DbParticipantTest {
 	
 	@Test
 	public void testGetParticipants_swimmer() {
-		DbParticipant gameDB = new DbParticipant();
+		IParticipant gameDB = new ParticipantHandler("");
 		
 		ArrayList<Participant> actual = gameDB.GetParticipants(IParticipant.SWIMMER);
 		Assert.assertTrue(actual.size() > 0);
@@ -121,25 +121,18 @@ public class DbParticipantTest {
 	@Test
 	public void testAddParticipants()
 	{
-		IParticipant gameDB = new DbParticipant();
+		IParticipant gameDB = new ParticipantHandler("");
 		
-		Boolean actual = gameDB.AddParticipants("Oz10013", "swimmer", "H. Eddy", 24, "VIC");
+		Boolean actual = gameDB.AddParticipants("Oz99998", "swimmer", "H. Eddy", 24, "VIC");
 		
 		Assert.assertEquals(true, actual);
 	}
 	public void testImpletedParticipant()
 	{
-		IParticipant  gameDB = new DbParticipant();
+		IParticipant gameDB = new ParticipantHandler("");
 		
 		Boolean actual = gameDB.AddParticipants("Oz1001", "", "A. Edwin", 30, "VIC");
 		
 		Assert.assertEquals(true, actual);
 	}
-	
-	@Test
-	public void testDeleteParticipants()
-	{		
-		
-	}
-
-}
+}	

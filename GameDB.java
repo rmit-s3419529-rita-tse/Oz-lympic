@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -84,7 +85,16 @@ public class GameDB {
 
 	public static void LoadDB() {
 		// add the list of Athletes and Officials into database
-		DbParticipant TestGame = new DbParticipant();
+		DbParticipant TestGame = null;
+		try {
+			TestGame = new DbParticipant();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 		
 		
 		
