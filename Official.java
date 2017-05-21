@@ -5,8 +5,8 @@ import java.util.*;
  * which handles the results and scoring system of the Games.
  *
  * @author  Rita Tse
- * @version 1.0
- * @since   2017-04-07
+ * @version 2.0
+ * @since   2017-05-22
  */
 
 public class Official extends Participant {
@@ -48,7 +48,7 @@ public class Official extends Participant {
 	static ArrayList <String> awardslist = new ArrayList();
 	
 	//Award the Top 3 Athletes their points and record their names in the Game Results list
-	public static void awardWinners() {
+	public static void awardWinners(String gameID, Participant official, HashMap<String, Double> gameTime) {
 		
 		System.out.println("*************** W I N N E R S ****************");  
 		Collection<Athlete> winners = sort.values();
@@ -70,12 +70,12 @@ public class Official extends Participant {
 		//2nd Place
 		Athlete Silver = it.next();
 		
-		awardslist.add("2nd PLACE  : " + Silver.getName() + " has scored 3pts.");
+		awardslist.add("2nd PLACE  : " + Silver.getName() + " has scored 2pts.");
 		System.out.println("2nd PLACE  : " + Silver.getName());
-		System.out.println(Silver.getName() + " has scored 3pts.");
+		System.out.println(Silver.getName() + " has scored 2pts.");
 		System.out.println("\n");
 		
-		Silver.addScore(3);
+		Silver.addScore(2);
 		SecondAth=Silver.getID();
 		Results2=Silver.getName();
 	
@@ -94,6 +94,17 @@ public class Official extends Participant {
 	
 		//add this game results to GameResults arraylist
 		GameResults.add("OFFICIAL: " + Driver.refselection.getName() + " |  1: " + Results1 + " |  2: " + Results2 + " |  3: " + Results3);
+		
+		IGameResult gameResultHandler = new GameResultHandler("participants.txt");
+		gameResultHandler.AddResult(gameID, official.getID(), Gold.getID(), Double.parseDouble(gameTime.get(Gold.getID()).toString()), 5, new Date());
+		gameResultHandler.AddResult(gameID, official.getID(), Silver.getID(), Double.parseDouble(gameTime.get(Silver.getID()).toString()), 2, new Date());
+		gameResultHandler.AddResult(gameID, official.getID(), Bronze.getID(), Double.parseDouble(gameTime.get(Bronze.getID()).toString()), 1, new Date());
+		
+		while(it.hasNext())
+		{
+			Athlete other = it.next();
+			gameResultHandler.AddResult(gameID, official.getID(), other.getID(), Double.parseDouble(gameTime.get(other.getID()).toString()), 0, new Date());
+		}
 		
 		//after game results is recorded, list is cleared for the next game
 		winners.clear();
