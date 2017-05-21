@@ -102,7 +102,7 @@ public class DbParticipantTest {
 	
 	
 	@Test
-	public void testGetParticipants_super() {
+	public void testGetParticipants_Super() {
 		IParticipant gameDB = new ParticipantHandler("");
 		
 		ArrayList<Participant> actual = gameDB.GetParticipants(IParticipant.SUPER);
@@ -111,7 +111,7 @@ public class DbParticipantTest {
 	
 	
 	@Test
-	public void testGetParticipants_swimmer() {
+	public void testGetParticipants_Swimmer() {
 		IParticipant gameDB = new ParticipantHandler("");
 		
 		ArrayList<Participant> actual = gameDB.GetParticipants(IParticipant.SWIMMER);
