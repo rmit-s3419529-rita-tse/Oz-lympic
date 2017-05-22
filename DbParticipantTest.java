@@ -1,23 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
-import org.hsqldb.Server;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-/**
- * Test cases for the DbParticipant class
- * To test connection,display participants table
- *
- * @author SZUYING CHEN
- * @version 1.0
- * @since 2017-05-15
- */
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;

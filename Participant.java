@@ -44,4 +44,11 @@ public class Participant {
 	public String getType() {
 		return type.get();
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this.ID.toString().trim().equals(((Participant)obj).ID.toString().trim()))
+			return true;
+		return false;
+	}
 }

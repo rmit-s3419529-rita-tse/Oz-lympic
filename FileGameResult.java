@@ -144,5 +144,3 @@ public class FileGameResult implements IGameResult {
 		return gameType + (maxID + 1);
 	}
 }
-
-

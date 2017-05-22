@@ -186,9 +186,13 @@ public class Driver implements Initializable {
 
 		for (int i = 0; i < list.getItems().size(); i++) {
 
+			// printing to console to debug
+			System.out.println(list.getItems().get(i));
 
 			String[] output = list.getItems().get(i).split("\\-");
 
+			// printing to console to debug
+			System.out.println(output[0]);
 
 			// looping through gb.part database arraylist to find
 
@@ -196,6 +200,8 @@ public class Driver implements Initializable {
 				// for (Participant p : gb.part){
 				if (p.getID().equals(output[0])) {
 
+					// printing to console to debug 
+					System.out.println(p.getName() + p.getAge());
 
 					// gets user's selected athletes
 					if(!unchecked.contains(p))
@@ -218,6 +224,8 @@ public class Driver implements Initializable {
 			} catch (TooFewAthleteException e1) {
 				ta.appendText(e1.toString());
 
+				// printing to console to debug
+				System.out.println(e1);
 				validNumAthletes = false;
 				gameReady = false;
 			}
@@ -227,7 +235,8 @@ public class Driver implements Initializable {
 			try {
 				throw new GameFullException("Too many athletes in this game.");
 			} catch (GameFullException e2) {
-
+				// printing to console to debug
+				System.out.println(e2);
 				validNumAthletes = false;
 				ta.setText(e2.toString());
 				gameReady = false;
@@ -359,6 +368,8 @@ public class Driver implements Initializable {
 			} catch (NoRefereeException e3) {
 				ta.appendText(e3.toString());
 
+				// printing to console to debug
+				System.out.println(e3);
 				refereeExists = false;
 			}
 		}
@@ -376,6 +387,8 @@ public class Driver implements Initializable {
 						throw new WrongTypeException("\nYou've selected the wrong type of athletes for swim game.\n");
 					} catch (WrongTypeException e4) {
 						ta.setText(e4.toString());
+						// printing to console to debug
+						System.out.println(e4);
 
 						validTypeAthletes = false;
 						gameReady = false;
@@ -392,6 +405,8 @@ public class Driver implements Initializable {
 						throw new WrongTypeException("\nYou've selected the wrong type of athletes for track game\n");
 					} catch (WrongTypeException e5) {
 						ta.setText(e5.toString());
+						// printing to console to debug
+						System.out.println(e5);
 
 						validTypeAthletes = false;
 						gameReady = false;
@@ -408,6 +423,8 @@ public class Driver implements Initializable {
 						throw new WrongTypeException("\nYou've selected the wrong type of athletes for cycling game\n");
 					} catch (WrongTypeException e6) {
 						ta.setText(e6.toString());
+						// printing to console to debug
+						System.out.println(e6);
 
 						validTypeAthletes = false;
 						gameReady = false;
@@ -443,6 +460,8 @@ public class Driver implements Initializable {
 				Game.chosenAthletes.add(p);
 			}
 
+			// printing to console to debug
+			System.out.println(Game.getChosenAthletes().toString());
 
 			// create new game
 			newGame();
@@ -542,6 +561,7 @@ public class Driver implements Initializable {
 	// Method to Display Overall Rankings of Athletes.....to be done
 	public void DisplayRankings(ActionEvent e) {
 
+		System.out.println("++++++++++ OZLYMPIC GAME RANKINGS +++++++++++++\n");
 		ta.setText("++++++++++ OZLYMPIC GAME RANKINGS +++++++++++++\n");
 		Official.awardRank();
 		

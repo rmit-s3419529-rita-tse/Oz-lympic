@@ -136,4 +136,3 @@ public class DbGameResult implements IGameResult {
 		return gameType + (maxID + 1);
 	}
 }
-

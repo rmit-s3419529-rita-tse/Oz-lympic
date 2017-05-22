@@ -36,10 +36,15 @@ public class Athlete extends Participant {
 		return score += points;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if(this.getID().toString().trim().equals(((Athlete)obj).getID().toString().trim()))
+			return true;
+		return false;
+	}
+
 	//Prints Athlete details
 	public String toString(){
 		return " | ID: " + getID() + " |  " +  getType() + "  |  "  + getName() + "   ===  Total Score : " + getScore();
 	}
-
-
 }

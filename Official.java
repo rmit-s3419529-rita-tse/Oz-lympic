@@ -5,8 +5,8 @@ import java.util.*;
  * which handles the results and scoring system of the Games.
  *
  * @author  Rita Tse
- * @version 2.0
- * @since   2017-05-22
+ * @version 1.0
+ * @since   2017-04-07
  */
 
 public class Official extends Participant {

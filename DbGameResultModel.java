@@ -1,12 +1,4 @@
 
-/**
- * The is the DbGameResultModel class of Ozlympic Game
- * It shows the method of database of the gameResult
- * 
- * @author SZUYING CHEN
- * @version 2.1
- * @since 2017-05-14
- */
 public class DbGameResultModel {
 	
 	public static final String COL_GAME_ID = "GAMEID";
@@ -98,4 +90,3 @@ public class DbGameResultModel {
 	
 	
 }
-

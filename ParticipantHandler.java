@@ -1,14 +1,5 @@
 import java.util.ArrayList;
 
-/**
- * The is the ParticipantHandler class of Ozlympic Game
- * which can handle external data by two way - database mode or file mode 
- * 
- * @author SZUYING CHEN
- * @version 1.0
- * @since 2017-05-21
- */
-
 public class ParticipantHandler implements IParticipant {
 
 	private IParticipant dbMode;
